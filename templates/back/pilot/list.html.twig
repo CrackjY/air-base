@@ -1,0 +1,38 @@
+{% extends 'layout_back.html.twig' %}
+
+{% block content %}
+    <h2 class="mt-3 mb-3 text-center">Pilots</h2>
+
+    <div class="table-responsive">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Name</th>
+                    <th>address</th>
+                    <th>Salary</th>
+                    <th>date</th>
+                    <th>Enabled</th>
+                </tr>
+            </thead>
+            <tbody>
+
+            {% for pilot in pilots %}
+                <tr>
+                    <td>{{ pilot.id }}</td>
+                    <td>{{ pilot.name }}</td>
+                    <td>{{ pilot.address }}</td>
+                    <td>{{ pilot.salary }} €</td>
+                    <td>{{ pilot.date | date }}</td>
+                    <td>{{ pilot.enabled }}</td>
+                </tr>
+            {% endfor %}
+
+            </tbody>
+        </table>
+    </div>
+
+    <div class="container-add"></div>
+
+    <a class="link-new-item mb-3" href="/?page=admin/pilots/new"><strong class="btn-more">+</strong></a>
+{% endblock content %}

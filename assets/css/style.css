@@ -1,0 +1,158 @@
+html, body {
+    font-family: Arial;
+    height: 100%;
+    color: #818182;
+}
+nav.back, nav.front {
+    background: #040404c7;
+}
+nav.back a, nav.front a {
+    color: white;
+    font-weight: bold;
+    font-size: 14px;
+    margin-top: 6px;
+}
+.form-control {
+    margin-bottom: 10px;
+    border-radius: 0;
+}
+.form-control:focus {
+    box-shadow: 0 0 0 white;
+}
+input[type="text"] {
+    border-right: none;
+    border-left: none;
+    border-top: none;
+    border-radius: 0;
+    border-bottom: solid 2px grey;
+}
+input[type="search"] {
+    border-radius: 0;
+}
+select {
+    border-radius: 0;
+}
+.fly-card {
+    margin-bottom: 10px;
+}
+.btn {
+    border-radius: 0;
+
+}
+.btn:focus {
+    box-shadow: 0 0 0 white;
+}
+.link-new-item:hover {
+    text-decoration: none;
+}
+.link-new-item .btn-more {
+    border: solid 2px #de3b34;
+    border-radius: 100%;
+    font-size: 35px;
+    padding: 0 10px 0 10px;
+    color: #de3b34;
+}
+.link-new-item .btn-more:hover {
+    background: #de3b34;
+    color: white;
+}
+.btn-edit {
+    background: #888888;
+    color: white;
+    border: solid 0.5px white;
+    font-weight: bold;
+    width: 11em;
+    height: 2.5em;
+    margin-top: 18px;
+    cursor: pointer;
+    float: right;
+}
+.btn-edit:hover{
+    background: #888888;
+    color: white;
+}
+img.airplane-icon {
+    width: 20px;
+    margin: 0 10px 0 10px;
+}
+table thead {
+    color: ;
+}
+.block-new input {
+}
+.link-new-item {
+    float: right;
+}
+table .th-trash {
+    cursor: pointer;
+}
+input[type=checkbox].input-checkbox {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -ms-appearance: none;
+    -border-radius: 4px;
+    height: 25px;
+    width: 25px;
+    border: 1px solid #ccc;
+    background-repeat:no-repeat;
+    background-position:center;
+    background-size:100%;
+}
+.fa-fighter-jet{
+}
+.toggle-group {
+    background: transparent !important;
+}
+.toggle-group .toggle-on {
+    background: #4CAF50;
+    border: solid 1px grey !important;
+    border-radius: 6px !important;
+}
+
+/*Listing*/
+.container-add {
+    width: 100%;
+    position: absolute;
+    left: 0;
+    top: 13%;
+    display: flex;
+    justify-content: center;
+}
+.container-add .add {
+    background: #0000008f;
+    /*background-image: url('../../../assets/imgs/bg-flight.svg');*/
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    padding: 20px;
+    height: 45em;
+    width: 50%;
+}
+.container-add .add label {
+    color: white;
+    font-weight: bold;
+}
+/* the end for container-add*/
+
+/* test listing flight */
+.block-star-spec {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 30px;
+}
+.block-star-spec .line-spec {
+    width: 150px;
+    height: 1px;
+    background: #fdd8d1;
+}
+.block-star-spec i {
+    position: relative;
+    right: 81px;
+    top: -7.6px;
+    font-size: 1.2em;
+    z-index: 1000;
+    color: #fd5a3c;
+}
+.close {
+    position: relative;
+}

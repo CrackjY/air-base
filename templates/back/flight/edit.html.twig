@@ -1,0 +1,51 @@
+{% extends 'layout_back.html.twig' %}
+
+{% block content %}
+    <div class="add">
+        <div class="row">
+            <form class="form" method="POST">
+                <label>Name of fly</label>
+                <div class="form-group">
+                    <input value="{{flight.name}}" type="text" class="form-control" id="name" name="name" placeholder="Fly name">
+                </div>
+                <label>Departure city</label>
+                <div class="form-group">
+                    <select class="form-control" id="departureCityId" name="departureCityId">
+                        <option value="{{flight.departure_city_id}}">{{flight.departure_city}}</option>
+                        {% for departureCity in cities %}
+                            <option value="{{ departureCity.id }}">{{ departureCity.name }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <label>Arrival city</label>
+                <div class="form-group">
+                    <select class="form-control" id="arrivalCityId" name="arrivalCityId">
+                        <option value="{{flight.arrival_city_id}}">{{flight.arrival_city}}</option>
+                        {% for arrivalCity in cities %}
+                            <option value="{{ arrivalCity.id }}">{{ arrivalCity.name }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <label>Pilot name</label>
+                <div class="form-group">
+                    <select class="form-control" id="pilotId"  name="pilotId">
+                        <option value="{{flight.pilot_id}}">{{flight.pilot_name}}</option>
+                        {% for pilot in pilots %}
+                            <option value="{{ pilot.id }}">{{ pilot.name }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <label>Airplane name</label>
+                <div class="form-group">
+                    <select class="form-control" id="airplaneId" name="airplaneId">
+                        <option value="{{flight.airplane_id}}">{{flight.airplane_name}}</option>
+                        {% for airplane in airplanes %}
+                            <option value="{{ airplane.id }}">{{ airplane.name }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <button type="submit" class="btn-edit confirm">Confirm</button>
+            </form>
+        </div>
+    </div>
+{% endblock content %}

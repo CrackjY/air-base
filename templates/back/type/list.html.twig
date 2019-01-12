@@ -1,0 +1,34 @@
+{% extends 'layout_back.html.twig' %}
+
+{% block content %}
+    <h2 class="mt-3 mb-3 text-center">Types</h2>
+
+    <div class="table-responsive">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Name</th>
+                    <th>Date</th>
+                    <th>Enabled</th>
+                </tr>
+            </thead>
+            <tbody>
+
+            {% for type in types %}
+                <tr>
+                    <td>{{ type.id }}</td>
+                    <td>{{ type.name }}</td>
+                    <td>{{ type.date }}</td>
+                    <td>{{ type.enabled }}</td>
+                </tr>
+            {% endfor %}
+
+            </tbody>
+        </table>
+    </div>
+
+    <div class="container-add"></div>
+
+    <a class="link-new-item mb-3" href="/?page=admin/types/new"><strong class="btn-more">+</strong></a>
+{% endblock content %}

@@ -1,0 +1,34 @@
+{% extends 'layout_back.html.twig' %}
+
+{% block content %}
+    <h2 class="mt-3 mb-3 text-center">Flights</h2>
+    <div class="block-star-spec">
+        <div class="line-spec"></div>
+        <i class="fa fa-snowflake-o" aria-hidden="true"></i>
+    </div>
+    
+    <div class="table-responsive">
+        <table class="table text-center">
+            <thead>
+                <tr>
+                    <th class="th-trash"><i class="fa fa-trash fa-2x" aria-hidden="true"></i></th>
+                    <th>#</th>
+                    <th>Name</th>
+                    <th>Departure city</th>
+                    <th>Arrival city</th>
+                    <th>Pilot</th>
+                    <th>Airplane</th>
+                    <th>Date</th>
+                    <th>Enabled</th>
+                    <th>Edit</th>
+                </tr>
+            </thead>
+            <tbody class="tbody-flight"></tbody>
+        </table>
+    </div>
+
+    <div class="container-add">
+    </div>
+
+    <a class="link-new-item mb-3" href="/?page=admin/flights/new"><strong class="btn-more">+</strong></a>
+{% endblock content %}

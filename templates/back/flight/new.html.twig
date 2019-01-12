@@ -1,0 +1,54 @@
+<div class="add">
+    <div class="close">
+        <i class="fa fa-times text-white fa-2x" aria-hidden="true"></i>
+    </div>
+    <form class="form" method="POST">
+        <label>Name of fly</label>
+        <div class="form-row">
+            <div class="col">
+                <input type="text" class="form-control" id="name" name="name" placeholder="Fly name">
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col">
+                <label>Departure city</label>
+                <select class="form-control" id="departureCityId" name="departureCityId">
+                    <option value="">Select your departure city</option>
+                    {% for departureCity in cities %}
+                        <option value="{{ departureCity.id }}">{{ departureCity.name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="col">
+                <label>Arrival city</label>
+                <select class="form-control" id="arrivalCityId" name="arrivalCityId">
+                    <option value="">Select your arrival city</option>
+                    {% for arrivalCity in cities %}
+                        <option value="{{ arrivalCity.id }}">{{ arrivalCity.name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col">
+                <label>Pilot</label>
+                <select class="form-control" id="pilotId"  name="pilotId">
+                    <option value="">Select your pilot</option>
+                    {% for pilot in pilots %}
+                        <option value="{{ pilot.id }}">{{ pilot.name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="col">
+            <label>Airplane name</label>
+                <select class="form-control" id="airplaneId" name="airplaneId">
+                    <option value="">Select your airplane</option>
+                    {% for airplane in airplanes %}
+                        <option value="{{ airplane.id }}">{{ airplane.name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+        </div>
+        <button type="submit" class="btn-edit text-white confirm">Confirm</button>
+    </form>
+</div>

@@ -1,0 +1,27 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+    <h1 class="mb-3 mt-3 text-center">Find your flight <i class="fa fa-plane text-dark"></i></h1>
+    <form class="form" method="POST">
+        <div class="row">
+            <div class="input-group mb-5">
+                <input type="search" class="form-control" name="flightSearch" placeholder="Search a fly" aria-label="Search a flight">
+                <div class="input-group-append">
+                    <button class="btn btn-danger" type="submit"><i class='fa fa-search'></i></button>
+                </div>
+            </div>
+        </div>
+    </form>
+
+    {% for fly in flights %}
+        <div class="card w-75 fly-card">
+            <div class="card-body">
+                <h5 class="card-title">{{ fly.name }}</h5>
+                <p class="card-text">{{ fly.departure_city }} <img class="airplane-icon" src="assets/imgs/airplane-icon.png"> {{ fly.arrival_city }}</p>
+                <p class="card-text float-right">Post the {{ fly.date | date }}</p>
+                <a href="#" class="btn btn-danger">Show more...</a>
+            </div>
+        </div>
+    {% endfor %}
+
+{% endblock content %}
