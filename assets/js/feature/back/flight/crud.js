@@ -34,7 +34,7 @@ if (location.href == $locationHref) {
 							${enabledText}
                         </td>
 	                    <td>
-	                        <a href="/?page=admin/flights/edit&amp;id=${flight.id}"><i class="fa fa-pencil fa-2x text-danger text-center" aria-hidden="true"></i></a>
+	                        <a href="/air-base/?page=admin/flights/edit&amp;id=${flight.id}"><i class="fa fa-pencil fa-2x text-danger text-center" aria-hidden="true"></i></a>
 	                    </td>
                     </tr>
 				`;
@@ -71,6 +71,8 @@ if (location.href == $locationHref) {
 					fetch($urlDelete + flightIds.join(), {
 						method: 'DELETE',
 					});
+
+					flightIds = [];
 				}
 
 				document.querySelectorAll('.row-flight').forEach((row) => {

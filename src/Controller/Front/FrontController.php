@@ -9,7 +9,7 @@ class FrontController extends Controller
     public function homeAction()
     {
         $this->render('front/home.html.twig', array(
-/*            'flights' => $this->flightModel->listingWithPilotAndAirplane(),*/
+            'flights' => $this->flightModel->listingWithPilotAndAirplane(),
         ));
     }
 }

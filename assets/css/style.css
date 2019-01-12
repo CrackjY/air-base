@@ -98,8 +98,6 @@ input[type=checkbox].input-checkbox {
     background-position:center;
     background-size:100%;
 }
-.fa-fighter-jet{
-}
 .toggle-group {
     background: transparent !important;
 }
@@ -151,7 +149,7 @@ input[type=checkbox].input-checkbox {
     top: -7.6px;
     font-size: 1.2em;
     z-index: 1000;
-    color: #fd5a3c;
+    color: #dc3545;
 }
 .close {
     position: relative;
