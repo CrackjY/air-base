@@ -7,7 +7,7 @@
     let values;
     let formValues = {};
     let table = document.querySelector('.table-responsive');
-    let url = 'http://air-base.com.local/';
+    let url = 'http://localhost/air-base/';
     let linkNewItem = document.querySelector('.link-new-item');
     let urlPieces = {
         admin: '?page=admin',
@@ -50,6 +50,8 @@
                         method: 'POST',
                         body: fd,
                     });
+
+                    location.reload();
                 })
 
                 document.querySelector('.close').addEventListener('click', function(e) {
@@ -65,7 +67,7 @@
             
             newAction();
             createObj();
-            
+
             document.querySelector('.container-add').classList.add('d-flex');
         });
     };

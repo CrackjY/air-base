@@ -10,7 +10,7 @@ class Routing extends Instance
     {
         parent::__construct();
 
-        if ($_SERVER['REQUEST_URI'] == '/') {
+        if ($_SERVER['REQUEST_URI'] == '/air-base/') {
             $this->frontController->homeAction();
         }
 

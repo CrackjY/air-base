@@ -1,9 +1,9 @@
 let flightIds = [];
-let $locationHref = 'http://air-base.com.local/?page=admin/flights';
+let $locationHref = 'http://localhost/air-base/?page=admin/flights';
 let tbodyFlight = document.querySelector('.tbody-flight');
 let trash = document.querySelector('.th-trash');
-let $urlApi = 'http://air-base.com.local/?page=api/admin/flights';
-let $urlDelete = '/?page=admin/flights/delete&id=';
+let $urlApi = 'http://localhost/air-base/?page=api/admin/flights';
+let $urlDelete = 'http://localhost/air-base/?page=admin/flights/delete&id=';
 
 if (location.href == $locationHref) {
 	fetch($urlApi)
