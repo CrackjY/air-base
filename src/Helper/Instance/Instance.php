@@ -2,6 +2,7 @@
 
 namespace Helper\Instance;
 
+use App\Controller\User\SecurityController;
 use Helper\Core\SuperGlobal;
 use App\Controller\Back\AirplaneController;
 use App\Controller\Back\BackController;
@@ -10,10 +11,20 @@ use App\Controller\Back\FlightController;
 use App\Controller\Back\TypeController;
 use App\Controller\Front\FrontController;
 use App\Controller\Back\PilotController;
+use Helper\Session\Flash;
+use Helper\Session\Session;
 
 class Instance
 {
-    //Super global
+    // flash && Session
+   protected $flash;
+
+   protected $session;
+
+    // Security
+    protected $securityController;
+
+    // Super global
     protected $sg;
 
     // Front
@@ -34,7 +45,13 @@ class Instance
 
     public function __construct()
     {
-        //SUPER GLOBAL
+        // flash && Session
+        $this->flash = new Flash();
+        $this->session = new Session();
+        // Security
+        $this->securityController = new SecurityController();
+
+        // SUPER GLOBAL
         $this->sg = new SuperGlobal();
 
         // FRONT

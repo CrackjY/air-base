@@ -7,6 +7,9 @@ use App\Model\CityModel;
 use App\Model\FlightModel;
 use App\Model\TypeModel;
 use App\Model\PilotModel;
+use Helper\Session\Session;
+use Helper\Session\Flash;
+use App\Model\User\UserModel;
 
 /**
  * Class Controller
@@ -22,7 +25,14 @@ abstract class Controller extends SuperGlobal
 
     protected $method;
 
-    //* Model
+    protected $flash;
+
+    protected $session;
+
+    // User
+    protected $userModel;
+
+    // Model
     protected $airplaneModel;
 
     protected $cityModel;
@@ -38,7 +48,14 @@ abstract class Controller extends SuperGlobal
      */
     public function __construct() // i will optimise
     {
-        //Instance Model
+        // User
+        $this->userModel = new userModel();
+
+        // Session && flash
+        $this->session = new Session();
+        $this->flash = new Flash();
+
+        // Instance Model
         $this->airplaneModel = new AirplaneModel();
         $this->cityModel = new CityModel();
         $this->typeModel = new TypeModel();

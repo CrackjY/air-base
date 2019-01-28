@@ -1,0 +1,29 @@
+{% if flashSuccess %}
+    <div class="alert alert-success msg-auth-success" role="alert">
+        {{ flashSuccess }}
+    </div>
+{% endif %}
+
+{% if flashEditSuccess %}
+    <div class="alert alert-success msg-auth-success" role="alert">
+        {{ flashEditSuccess }}
+    </div>
+{% endif %}
+
+{% if messages.authenticationFailed %}
+    <div class="alert alert-danger" role="alert">
+        {{ messages.authenticationFailed }}
+    </div>
+{% endif %}
+
+{% if msg %}
+    <div class="alert alert-success  msg-auth-success" role="alert">
+        {{ msg }}
+    </div>
+{% endif %}
+
+{% if errors.error %}
+    <div class="alert alert-danger msg" role="alert">
+        {{ errors.error }}
+    </div>
+{% endif %}

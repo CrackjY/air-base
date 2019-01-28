@@ -1,0 +1,28 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+    {#<h1 class="text-center mb-3">Login</h1>#}
+
+    {% include 'security/message.html.twig' %}
+
+    <div class="login">
+        <form id="form-login" method="POST" action="">
+            <div class="">
+                <div>
+                   {# <label for="" class="">E-mail</label>#}
+                    <input class="form-control" type="text" name="email" id="login-email" placeholder="Email">
+                </div>
+            </div>
+            <div class="">
+                <div>
+                    {#<label for="" class="">Password</label>#}
+                    <input class="form-control" type="password" name="password" id="login-password" placeholder="Password">
+                </div>
+            </div>
+            <div class="text-center">
+                <button class="btn btn-block btn-danger" type="submit">Login</button>
+                <button class="btn btn-block btn-warning text-white" type="submit">Forgot password ?</button>
+            </div>
+        </form>
+    </div>
+{% endblock content %}

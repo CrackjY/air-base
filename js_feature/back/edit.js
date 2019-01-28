@@ -6,7 +6,6 @@
     let confirm;
     let values;
     let formValues = {};
-    let table = document.querySelector('.table-responsive');
     let linkNewItem = document.querySelector('.link-new-item');
 
     let newAction = () => {

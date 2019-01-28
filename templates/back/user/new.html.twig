@@ -1,0 +1,71 @@
+{% extends 'layout_back.html.twig' %}
+
+{% block content %}
+
+    <div class="content">
+        <h1>New user</h1>
+
+        {% include 'security/message.html.twig' %}
+
+        <form id="" method="POST" action="">
+            <div class="form-group row">
+                <label for="firstname" class="col-sm-2 col-form-label col-form-label-sm">Firstname</label>
+                <div class="col-sm-10">
+                    <input class="form-control form-control-sm" type="text" name="firstname" id="firstname">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="lastname" class="col-sm-2 col-form-label col-form-label-sm">Lastname</label>
+                <div class="col-sm-10">
+                    <input class="form-control form-control-sm" type="text" name="lastname" id="lastname">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="pseudo" class="col-sm-2 col-form-label col-form-label-sm">Pseudo</label>
+                <div class="col-sm-10">
+                    <input class="form-control form-control-sm" type="text" name="pseudo" id="pseudo">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="adress" class="col-sm-2 col-form-label col-form-label-sm">Adress</label>
+                <div class="col-sm-10">
+                    <input class="form-control form-control-sm" type="text" name="adress" id="adress">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="zip-code" class="col-sm-2 col-form-label col-form-label-sm">Zip code</label>
+                <div class="col-sm-10">
+                    <input class="form-control form-control-sm" type="number" min="0" name="zip_code" id="zip-code">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="city" class="col-sm-2 col-form-label col-form-label-sm">City</label>
+                <div class="col-sm-10">
+                    <input class="form-control form-control-sm" type="text" name="city" id="city">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="phone" class="col-sm-2 col-form-label col-form-label-sm">Phone number</label>
+                <div class="col-sm-10">
+                    <input class="form-control form-control-sm" type="number" min="0" name="phone" id="phone">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="email" class="col-sm-2 col-form-label col-form-label-sm">E-mail</label>
+                <div class="col-sm-10">
+                    <input class="form-control form-control-sm" type="email" name="email" id="email">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="password" class="col-sm-2 col-form-label col-form-label-sm">Password</label>
+                <div class="col-sm-10">
+                    <input class="form-control form-control-sm" type="password" name="password" id="password">
+                </div>
+            </div>
+            <div class="text-center">
+                <button class="btn btn-info" type="submit">Register now !</button>
+            </div>
+        </form>
+    </div>
+
+{% endblock content %}

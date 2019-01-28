@@ -8,12 +8,11 @@ class FrontController extends Controller
 {
     public function homeAction()
     {
-        $this->render('front/home.html.twig', []);
+        $this->render('front/home.html.twig', [
+            'msg' => $this->flash->unsetMessage('authenticationSuccess'),
+        ]);
     }
 
-    /**
-     *
-     */
     public function flightDataJson()
     {
         $this->jsonEncode($this->flightModel->listingWithPilotAndAirplaneFront());

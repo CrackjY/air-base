@@ -1,0 +1,63 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+    <h1 class="text-center mb-4">Register</h1>
+
+    {% include 'security/message.html.twig' %}
+
+    <div class="register">
+        <form id="" method="POST" action="">
+            <div class="form-row">
+                <div class="col">
+                    {#<label for="firstname" class="">Firstname</label>#}
+                    <input class="form-control" type="text" name="firstname" id="firstname" placeholder="Firstname">
+                </div>
+                <div class="col">
+                   {# <label for="lastname" class="">Lastname</label>#}
+                    <input class="form-control" type="text" name="lastname" id="lastname" placeholder="Lastname">
+                </div>
+            </div>
+            <div class="">
+                <div class="">
+                    {#<label for="adress" class="">Adress</label>#}
+                    <input class="form-control" type="text" name="adress" id="adress" placeholder="Adress">
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="col">
+                    {#<label for="zip-code" class="">Zip code</label>#}
+                    <input class="form-control" type="number" min="0" name="zip_code" id="zip-code" placeholder="Zip code">
+                </div>
+                <div class="col">
+                    {#<label for="city" class="">City</label>#}
+                    <input class="form-control" type="text" name="city" id="city" placeholder="City">
+                </div>
+            </div>
+            <div class="">
+                <div class="">
+                    {#<label for="phone" class="">Phone number</label>#}
+                    <input class="form-control" type="number" min="0" name="phone" id="phone" placeholder="Phone">
+                </div>
+            </div>
+            <div class="">
+                <div class="">
+                    {#<label for="email" class="">E-mail</label>#}
+                    <input class="form-control" type="email" name="email" id="email" placeholder="Email">
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="col">
+                    {#<label for="pseudo" class="">Pseudo</label>#}
+                    <input class="form-control" type="text" name="pseudo" id="pseudo" placeholder="Pseudo">
+                </div>
+                <div class="col">
+                    {#<label for="password" class="">Password</label>#}
+                    <input class="form-control" type="password" name="password" id="password" placeholder="Password">
+                </div>
+            </div>
+            <div class="">
+                <button class="btn btn-block btn-primary" type="submit">Register now !</button>
+            </div>
+        </form>
+    </div>
+{% endblock content %}

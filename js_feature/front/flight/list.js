@@ -2,12 +2,13 @@
 	let renderer;
 	let flights = [];
 
-	fetch($urlApiFlightFront)
-		.then(response => response.json())
-		.then(data => {
-			data.map((flight) => {
-				flights.push(flight);
-				renderer = `
+	if (location.href === 'http://localhost/air-base/') {
+		fetch($urlApiFlightFront)
+			.then(response => response.json())
+			.then(data => {
+				data.map((flight) => {
+					flights.push(flight);
+					renderer = `
 					<div class="row-card">
 				        <div class="card w-75 flight-card mb-4">
 				            <div class="card-body">
@@ -19,15 +20,16 @@
 				        </div>
 			        </div>
 				`;
-				document.querySelector('.block-front-flight').innerHTML += renderer;
-			});
+					document.querySelector('.block-front-flight').innerHTML += renderer;
+				});
 
-			document.querySelector(".btn-search").addEventListener('click', (e) => {
-				e.preventDefault();
-				console.log(document.querySelector("input[type=search]").value);
+				document.querySelector(".btn-search").addEventListener('click', (e) => {
+					e.preventDefault();
+					console.log(document.querySelector("input[type=search]").value);
 
-				console.log(flights);
-			});
-		})
-		.catch(error => console.error('error : ', error));
+					console.log(flights);
+				});
+			})
+			.catch(error => console.error('error : ', error));
+	}
 })();

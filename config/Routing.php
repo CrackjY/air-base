@@ -16,8 +16,16 @@ class Routing extends Instance
 
         if (isset($_GET['page'])) {
             switch ($_GET['page']) {
-                //Front
-
+                // Security
+                case 'register';
+                    $this->securityController->registerAction();
+                    exit;
+                case 'login';
+                    $this->securityController->loginAction();
+                    exit;
+                case 'logout';
+                    $this->securityController->logout();
+                    exit;
                 //Back
                 case 'admin';
                     $this->backController->homeAction();

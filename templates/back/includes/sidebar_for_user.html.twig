@@ -1,0 +1,21 @@
+<div class="btn-navigation">
+    <div class="barre"></div>
+    <div class="barre"></div>
+    <div class="barre"></div>
+</div>
+<div class="sidebar">
+    <div class="icon-sidebar-back">
+    </div>
+    <ul class="ul-sidebar">
+
+        {% if usersConnected %}
+            <li class="color-orange">Users connected</li>
+        {% endif %}
+
+        {% for user in users %}
+            <li id="" class="text-white">{{ user.pseudo }}</li>
+        {% else %}
+            <li id="" class="text-white">Users disconnected !</li>
+        {% endfor %}
+    </ul>
+</div>

@@ -1,11 +1,9 @@
 {% extends 'layout.html.twig' %}
 
-{% block landing %}
-    {% include 'front/includes/landing.html.twig' %}
-    {% block search %}
-        {% include 'front/includes/search.html.twig' %}
-    {% endblock search %}
-{% endblock landing %}
+{% block search %}
+    {% include 'security/message.html.twig' %}
+    {% include 'front/includes/search.html.twig' %}
+{% endblock search %}
 
 {% block content %}
     <div class="cards-xysn">

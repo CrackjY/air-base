@@ -1,0 +1,52 @@
+{% extends 'layout_back.html.twig' %}
+
+{% block content %}
+    <h1>Users</h1>
+    <div class="content">
+        {% include 'security/message.html.twig' %}
+        <a href="/admin-user-new" class="badge badge-pill badge-primary">New user</a>
+        <div class="table-responsive">
+            <table class="table-crud table">
+                <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Role</th>
+                    <th>Pseudo</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>Adress</th>
+                    <th>City</th>
+                    <th>State</th>
+                    <th>Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for user in users %}
+                    <tr class="tr-content">
+                        <td class="text-primary"><b>{{ user.id }}</b></td>
+                        <td>
+
+                        </td>
+                        <td>{{ user.pseudo }}</td>
+                        <td>{{ user.email }}</td>
+                        <td>{{ user.phone_number }}</td>
+                        <td>{{ user.adress }}</td>
+                        <td>{{ user.city }}</td>
+                        <td>
+                            {% if user.enabled %}
+                                <span class="badge badge-pill badge-success">Activé</span>
+                            {% else %}
+                                <span class="badge badge-pill badge-danger">Désactivé</span>
+                            {% endif %}
+                        </td>
+                        <td>
+                            <a href="/admin-user-edit?id={{ user.id }}" class="badge badge-pill badge-primary">Edit</a>
+                            <a href="" class=""></a>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}

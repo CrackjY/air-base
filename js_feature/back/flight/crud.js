@@ -50,14 +50,14 @@ if (location.href == $locationHrefFlightBack) {
 					element.parentNode.parentNode.setAttribute('checked', 'checked');
 					flightIds.push(element.getAttribute('value'));
 				}
-			}
+			};
 
 			document.querySelectorAll('.input-checkbox').forEach((checkboxElement) => {
 				checkboxElement.addEventListener('click', function(e) {
 					e.preventDefault();
 					checkboxAction(this)
 				});
-			})
+			});
 
 			trash.addEventListener('click', (e) => {
 				e.preventDefault();

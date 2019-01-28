@@ -2,4 +2,25 @@
     <i class="fa fa-fighter-jet fa-3x ml-4 mr-4" aria-hidden="true"></i>
     <a class="" href="/air-base/?page=admin">Shortcut Admin</a>
     <a class="" href="/air-base/">Home</a>
+    {% if session.pseudo is not defined %}
+        <a class="" href="/air-base/?page=register">Register</a>
+        <a class="" href="/air-base/?page=login">Login</a>
+    {% endif %}
+
+    {% if session.pseudo %}
+        <div class="profile">
+            <ul>
+                <li class="li-pseudo"><i class="fa fa-user-circle" aria-hidden="true"></i> {{ session.pseudo | capitalize }} <i class="fa fa-caret-down" aria-hidden="true"></i>
+                    <ul class="sub-profile-ul">
+                        <li class="sub-profile">My profile</li>
+                        <li class="sub-profile">Link !</li>
+                        <li class="sub-profile">Link !</li>
+                        <li class="sub-profile">
+                            <a class="" href="/air-base/?page=logout">Logout</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    {% endif %}
 </nav>
