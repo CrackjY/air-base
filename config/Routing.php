@@ -64,9 +64,13 @@ class Routing extends Instance
                     $this->flightController->deleteAction();
                     exit;
 
-                //API
+                //API Flight
                 case 'api/admin/flights';
                     $this->flightController->flightDataJson();
+                    exit;
+                    // front
+                case 'api/flights';
+                    $this->frontController->flightDataJson();
                     exit;
             }
         }

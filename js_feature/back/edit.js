@@ -7,16 +7,7 @@
     let values;
     let formValues = {};
     let table = document.querySelector('.table-responsive');
-    let url = 'http://localhost/air-base/';
     let linkNewItem = document.querySelector('.link-new-item');
-    let urlPieces = {
-        admin: '?page=admin',
-        airplanes: '?page=admin/airplanes',
-        types: '?page=admin/types',
-        pilots: '?page=admin/pilots',
-        flights: '?page=admin/flights',
-        cities: '?page=admin/cities',
-    };
 
     let newAction = () => {
         fetchApi = fetch(url + urlPiece + '/new');
@@ -52,7 +43,7 @@
                     });
 
                     location.reload();
-                })
+                });
 
                 document.querySelector('.close').addEventListener('click', function(e) {
                     document.querySelector('.container-add').classList.remove('d-flex');
@@ -91,7 +82,6 @@
 
     if (document.querySelector('.add')) {
         console.log(document.querySelector('.close'))
-       
     }
 
 })();

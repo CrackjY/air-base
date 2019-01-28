@@ -8,8 +8,17 @@ class FrontController extends Controller
 {
     public function homeAction()
     {
-        $this->render('front/home.html.twig', array(
-            'flights' => $this->flightModel->listingWithPilotAndAirplane(),
-        ));
+        $this->render('front/home.html.twig', []);
+    }
+
+    /**
+     *
+     */
+    public function flightDataJson()
+    {
+        $this->jsonEncode($this->flightModel->listingWithPilotAndAirplaneFront());
+    }
+
+    public function searchAction() {
     }
 }

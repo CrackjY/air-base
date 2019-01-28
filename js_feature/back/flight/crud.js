@@ -1,12 +1,9 @@
 let flightIds = [];
-let $locationHref = 'http://localhost/air-base/?page=admin/flights';
 let tbodyFlight = document.querySelector('.tbody-flight');
 let trash = document.querySelector('.th-trash');
-let $urlApi = 'http://localhost/air-base/?page=api/admin/flights';
-let $urlDelete = 'http://localhost/air-base/?page=admin/flights/delete&id=';
 
-if (location.href == $locationHref) {
-	fetch($urlApi)
+if (location.href == $locationHrefFlightBack) {
+	fetch($urlApiFlightBack)
 		.then(response => response.json())
 		.then(data => {
 			data.forEach(flight => {
@@ -68,7 +65,7 @@ if (location.href == $locationHref) {
 				if (flightIds.length < 0) {
 					console.log('empty !');
 				} else {
-					fetch($urlDelete + flightIds.join(), {
+					fetch($urlDeleteFlightBack + flightIds.join(), {
 						method: 'DELETE',
 					});
 

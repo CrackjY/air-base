@@ -58,24 +58,4 @@ class FlightController extends Controller
     public function deleteAction() {
         $this->flightModel->delete($this->get('id'));
     }
-
-  //   public function getSecureWhereInString($values, $type = 'int') {
-  //   if (!is_array($values)) {
-  //     return $this->getSecureString($values, $type);
-  //   }
-  //   $sanitizedValues = array();
-  //   foreach ($values as $value) {
-  //     $sanitizedValues[] = $this->getSecureString($value, $type);
-  //   }
-  //   return implode(',', $sanitizedValues);
-  // }
-  // public function getSecureString($values, $type = 'int') {
-  //   if ($type == 'int') {
-  //     return filter_var($values, FILTER_VALIDATE_INT);
-  //   } else if ($type == 'string') {
-  //     return "'".addslashes($values)."'";
-  //   } else {
-  //     return addslashes($values);
-  //   }
-  // }
 }
