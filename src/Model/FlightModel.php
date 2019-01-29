@@ -123,9 +123,10 @@ class FlightModel extends Model
             INNER JOIN city AS city2 ON city2.id = flight.arrival_city_id 
             INNER JOIN pilot AS p ON p.id = flight.pilot_id 
             INNER JOIN airplane AS a ON a.id = flight.airplane_id
-            LIKE %?%
+            WHERE flight.name
+            LIKE ?
         ');
-        $sql->execute([$term]);
+        $sql->execute(array('%'.$term.'%'));
 
         return $sql->fetchAll(\PDO::FETCH_ASSOC);
     }

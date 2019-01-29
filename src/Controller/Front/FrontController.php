@@ -10,6 +10,7 @@ class FrontController extends Controller
     {
         $this->render('front/home.html.twig', [
             'msg' => $this->flash->unsetMessage('authenticationSuccess'),
+            'flights' => $this->flightModel->listingWithPilotAndAirplaneFront(),
         ]);
     }
 
@@ -19,5 +20,8 @@ class FrontController extends Controller
     }
 
     public function searchAction() {
+        $this->render('front/search_result.html.twig', [
+            'flights' => $this->flightModel->searchByTerm($this->post('flightSearch'))
+        ]);
     }
 }

@@ -1,3 +1,4 @@
+/*
 (() => {
 	let renderer;
 	let flights = [];
@@ -13,9 +14,9 @@
 				        <div class="card w-75 flight-card mb-4">
 				            <div class="card-body">
 				                <h5 class="card-title">${flight.name }</h5>
-				                <p class="card-text">${flight.departure_city } <img class="airplane-icon" src="assets/imgs/airplane-icon.png"> ${flight.arrival_city }</p>
+				                <p class="card-text">${flight.departure_city } <img class="airplane-icon" src="assets/imgs/vol_icon.png"> ${flight.arrival_city }</p>
 				                <p class="card-text float-right">Post the ${flight.date}</p>
-				                <a href="#" class="btn btn-danger">Show more...</a>
+				                <a href="#" class="btn btn-show-more">Show more...</a>
 				            </div>
 				        </div>
 			        </div>
@@ -25,11 +26,14 @@
 
 				document.querySelector(".btn-search").addEventListener('click', (e) => {
 					e.preventDefault();
-					console.log(document.querySelector("input[type=search]").value);
 
-					console.log(flights);
+					const inputSearch = document.querySelector("input[type=search]").value;
+					const cards = document.querySelectorAll('.card');
+					flights.forEach((flight) => {
+
+					});
 				});
 			})
 			.catch(error => console.error('error : ', error));
 	}
-})();
+})();*/

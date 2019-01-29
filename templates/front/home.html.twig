@@ -1,13 +1,22 @@
 {% extends 'layout.html.twig' %}
 
-{% block search %}
-    {% include 'security/message.html.twig' %}
-    {% include 'front/includes/search.html.twig' %}
-{% endblock search %}
-
 {% block content %}
+    {% include 'security/message.html.twig' %}
     <div class="cards-xysn">
-        <div class="block-front-flight"></div>
+        <div class="block-front-flight">
+            {% for flight in flights %}
+                <div class="row-card">
+                    <div class="card w-75 flight-card mb-4">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ flight.name }}</h5>
+                            <p class="card-text">{{ flight.departure_city }}<img class="airplane-icon" src="assets/imgs/vol_icon.png"> {{ flight.arrival_city }}</p>
+                            <p class="card-text float-right">Post the {{ flight.date | date }}</p>
+                            <a href="#" class="btn btn-show-more">Show more...</a>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
         <div class="test--">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem dicta dignissimos ducimus est ex hic in, ipsum iste labore libero nam nemo porro qui quidem ratione recusandae repudiandae rerum voluptas?</div>
     </div>
 {% endblock content %}
