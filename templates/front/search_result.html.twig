@@ -13,6 +13,8 @@
                     </div>
                 </div>
             </div>
+        {% else %}
+            <div class="alert alert-danger">Sorry, no flights match your expectations.</div>
         {% endfor %}
     </div>
 {% endblock content %}

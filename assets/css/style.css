@@ -7,7 +7,8 @@ nav.front {
     background: #383d41;
     padding: 10px;
 }
-nav.back a, nav.front a {
+nav.back a {
+    color: red;
 }
 nav.front a {
     color: white;
