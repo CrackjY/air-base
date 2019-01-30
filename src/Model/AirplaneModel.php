@@ -14,8 +14,8 @@ class AirplaneModel extends Model
     public function insert($name, $capacity, $type_id)
     {
         return $this
-            ->prepareSql('INSERT INTO airplane(name, capacity, type_id, date, enabled) VALUES(?, ?, ?, ?, ?)')
-            ->execute([$name, $capacity, $type_id, $this->dateFormat, $this->enabled]);
+            ->prepareSql('INSERT INTO airplane(name, capacity_economic, capacity_business, capacity_first, capacity, type_id, date, enabled) VALUES(?, ?, ?, ?, ?, ?, ?, ?)')
+            ->execute([$name, null, null, null, $capacity, $type_id, $this->dateFormat, $this->enabled]);
     }
 
     public function listing()
@@ -36,7 +36,7 @@ class AirplaneModel extends Model
 
     public function listingWithType($start, $limit)
     {
-        $sql = $this->prepareSql('SELECT airplane.id, airplane.name as airplane_name, airplane.capacity, type.name as type_name, airplane.date, airplane.enabled FROM airplane, type WHERE airplane.type_id = type.id ORDER BY airplane.id DESC LIMIT '.$start.','.$limit);
+        $sql = $this->prepareSql('SELECT airplane.id, airplane.name as airplane_name, airplane.capacity_economic, airplane.capacity_business, airplane.capacity_first, airplane.capacity, type.name as type_name, airplane.date, airplane.enabled FROM airplane, type WHERE airplane.type_id = type.id ORDER BY airplane.id DESC LIMIT '.$start.','.$limit);
         $sql->execute([]);
 
         return $sql->fetchAll(\PDO::FETCH_ASSOC);

@@ -18,23 +18,26 @@ if (location.href == $locationHrefFlightBack) {
 				tbodyFlight.innerHTML += `
 					<tr class="row-flight">
 						<td>
-	                        <input type="checkbox" value="${flight.id}" id="checkbox-${flight.id}" class="input-checkbox">
-	                    </td>
-	                    <td>${flight.id}</td>
-	                    <td>${flight.name}</td>
-	                    <td>${flight.departure_city}</td>
-	                    <td>${flight.arrival_city}</td>
-	                    <td>${flight.pilot_name}</td>
-	                    <td>${flight.airplane_name}</td>
-	                    <td>${flight.date}</td>
-	                    <td>
+							<input type="checkbox" value="${flight.id}" id="checkbox-${flight.id}" class="input-checkbox">
+						</td>
+						<td>${flight.id}</td>
+						<td>${flight.name}</td>
+						<td>${flight.departure_city}</td>
+						<td>${flight.arrival_city}</td>
+						<td>${flight.date_of_departure}</td>
+						<td>${flight.date_of_arrival}</td>
+						<td>${flight.pilot_name}</td>
+						<td>${flight.price} €</td>
+						<td>${flight.airplane_name}</td>
+						<td>${flight.capacity}</td>
+						<td>${flight.date}</td>
+						<td>
 							${enabledText}
-                        </td>
-	                    <td>
-	                        <a href="/air-base/?page=admin/flights/edit&amp;id=${flight.id}"><i class="fa fa-pencil fa-2x text-danger text-center" aria-hidden="true"></i></a>
-	                    </td>
-                    </tr>
-				`;
+						</td>
+						<td>
+							<a href="/air-base/?page=admin/flights/edit&amp;id=${flight.id}"><i class="fa fa-pencil fa-2x text-danger text-center" aria-hidden="true"></i></a>
+						</td>
+					</tr>`;
 			});
 
 			let checkboxAction = (element) => {

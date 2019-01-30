@@ -60,10 +60,14 @@ class FlightModel extends Model
             SELECT 
             flight.id, 
             flight.name,
+            flight.date_of_departure,
+            flight.date_of_arrival,
             city1.name as departure_city,
             city2.name as arrival_city,
             p.name as pilot_name,
+            flight.price,
             a.name as airplane_name,
+            a.capacity,
             flight.date, 
             flight.enabled
             FROM flight 

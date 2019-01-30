@@ -9,6 +9,9 @@
                 <tr>
                     <th>#</th>
                     <th>Name</th>
+                    <th>Capacity economic</th>
+                    <th>Capacity business</th>
+                    <th>Capacity first</th>
                     <th>Capacity</th>
                     <th>Type</th>
                     <th>Date</th>
@@ -22,6 +25,9 @@
                 <tr>
                     <td>{{ airplane.id }}</td>
                     <td>{{ airplane.airplane_name }}</td>
+                    <td>{{ airplane.capacity_economic }}</td>
+                    <td>{{ airplane.capacity_business }}</td>
+                    <td>{{ airplane.capacity_first }}</td>
                     <td>{{ airplane.capacity }}</td>
                     <td>{{ airplane.type_name }}</td>
                     <td>{{ airplane.date | date }}</td>

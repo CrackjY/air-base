@@ -1,0 +1,40 @@
+<form>
+    <div class="form-group">
+        <label for="flightName">Name of flight</label>
+        <input type="text" class="form-control" id="flightName" placeholder="Name of flight">
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label for="DateOfDeparture">Date of departure</label>
+            <input type="date" id="DateOfDeparture" class="form-control" />
+        </div>
+        <div class="form-group col-md-6">
+            <label for="DateOfArrival">Date of arrival</label>
+            <input type="date" id="DateOfArrival" class="form-control" />
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label for="DepartureCity">Departure city</label>
+            <select class="form-control" id="DepartureCity" name="searchByDepartureCity" placeholder="Departure city">
+                <option>...</option>
+            </select>
+        </div>
+        <div class="form-group col-md-6">
+            <label for="arrivalCity">Arrival city</label>
+            <select class="form-control" id="arrivalCity" name="searchByarrivalCity" placeholder="Arrival city">
+                <option>...</option>
+            </select>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="traveler">Traveler</label>
+        <select class="form-control" id="traveler" name="searchByClass" placeholder="Traveler">
+            <option>...</option>
+            <option>economic</option>
+            <option>business</option>
+            <option>first</option>
+        </select>
+    </div>
+    <button class="btn btn-block btn-criteria" type="submit"><i class='fa fa-search'></i></button>
+</form>
