@@ -25,11 +25,6 @@ nav.front a {
     border: 1px solid rgba(0,0,0,.125);
     border-radius: 0;
 }
-.card-img-front {
-    width: 121px;
-    height: 117px;
-    float: left;
-}
 .card-body {
     padding: 0;
 }
@@ -37,6 +32,7 @@ nav.front a {
     position: relative;
     left: 14px;
     padding-right: 17px;
+    padding-top: 9px;
 }
 .btn-show-more-front {
     background: #ec6d26bd;

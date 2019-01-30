@@ -20,6 +20,9 @@ class Routing extends Instance
                 case 'flights/search';
                     $this->frontController->searchAction();
                     exit;
+                case 'flights/advanced-search';
+                    $this->frontController->advancedSearchAction();
+                    exit;
 
                 // Security
                 case 'register';

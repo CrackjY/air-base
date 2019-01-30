@@ -17,6 +17,7 @@ class FrontController extends Controller
         $this->render('front/home.html.twig', [
             'msg' => $this->flash->unsetMessage('authenticationSuccess'),
             'flights' => $this->flightModel->listingWithPilotAndAirplaneFront(),
+            'cities' => $this->cityModel->listNames(),
         ]);
     }
 
@@ -28,6 +29,20 @@ class FrontController extends Controller
     public function searchAction() {
         $this->render('front/search_result.html.twig', [
             'flights' => $this->flightModel->searchByTerm($this->post('flightSearch'))
+        ]);
+    }
+
+    public function advancedSearchAction() {
+        $criteria = $this->flightModel->advancedSearch(
+            $this->post('searchByDateOfDeparture'),
+            $this->post('searchByDateOfarrival'),
+            $this->post('searchByDepartureCity'),
+            $this->post('searchByarrivalCity')
+        );
+
+        $this->render('front/advanced_search.html.twig', [
+            'cities' => $this->cityModel->listNames(),
+            'criteria' => $criteria,
         ]);
     }
 }

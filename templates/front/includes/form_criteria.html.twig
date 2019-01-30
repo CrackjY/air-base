@@ -1,16 +1,16 @@
-<form>
-    <div class="form-group">
+<form method="POST" action="/air-base/?page=flights/advanced-search">
+    {#<div class="form-group">
         <label for="flightName">Name of flight</label>
         <input type="text" class="form-control" id="flightName" placeholder="Name of flight">
-    </div>
+    </div>#}
     <div class="form-row">
         <div class="form-group col-md-6">
             <label for="DateOfDeparture">Date of departure</label>
-            <input type="date" id="DateOfDeparture" class="form-control" />
+            <input type="date" id="DateOfDeparture" name="searchByDateOfDeparture" class="form-control" />
         </div>
         <div class="form-group col-md-6">
             <label for="DateOfArrival">Date of arrival</label>
-            <input type="date" id="DateOfArrival" class="form-control" />
+            <input type="date" id="DateOfArrival" name="searchByDateOfarrival" class="form-control" />
         </div>
     </div>
     <div class="form-row">
@@ -18,22 +18,37 @@
             <label for="DepartureCity">Departure city</label>
             <select class="form-control" id="DepartureCity" name="searchByDepartureCity" placeholder="Departure city">
                 <option>...</option>
+                {% for departureCity in cities %}
+                    <option>{{ departureCity.name }}</option>
+                {% endfor %}
             </select>
         </div>
         <div class="form-group col-md-6">
             <label for="arrivalCity">Arrival city</label>
             <select class="form-control" id="arrivalCity" name="searchByarrivalCity" placeholder="Arrival city">
                 <option>...</option>
+                {% for arrivalCity in cities %}
+                    <option>{{ arrivalCity.name }}</option>
+                {% endfor %}
             </select>
         </div>
     </div>
     <div class="form-group">
-        <label for="traveler">Traveler</label>
-        <select class="form-control" id="traveler" name="searchByClass" placeholder="Traveler">
+        <label for="searchByClass">Class</label>
+        <select class="form-control" id="searchByClass" name="searchByClass" placeholder="Class">
             <option>...</option>
             <option>economic</option>
             <option>business</option>
             <option>first</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="traveler">Traveler</label>
+        <select class="form-control" id="traveler" name="searchByTraveler" placeholder="Traveler">
+            <option>...</option>
+            <option>adult</option>
+            <option>children</option>
+            <option>baby</option>
         </select>
     </div>
     <button class="btn btn-block btn-criteria" type="submit"><i class='fa fa-search'></i></button>

@@ -67,6 +67,13 @@ CREATE TABLE class (
 	enabled boolean
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+CREATE TABLE traveler (
+	id int auto_increment primary key,
+	name varchar(255),
+	date datetime,
+	enabled boolean
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
 CREATE TABLE IF NOT EXISTS `user` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `firstname` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
@@ -99,6 +106,35 @@ INSERT INTO `airplane` (`id`, `name`, `capacity_economic`, `capacity_business`, 
 (2, 'b572', 50, 30, 10, 90, 1, '2019-01-28 08:01:20', 1),
 (3, 'a689', 25, 5, 15, 45, 2, '2019-01-28 08:01:35', 1),
 (4, 'b427', 40, 10, 10, 60, 1, '2019-01-28 08:01:47', 1);
+
+INSERT INTO `pilot` (`id`, `name`, `address`, `salary`, `date`, `enabled`) VALUES
+(1, 'yassine', '3 rue de paris 71 000 mÃ¢con', '5000.00', '2019-01-28 08:01:23', 1),
+(2, 'myriam', '10 rue de londre 40 001', '43.00', '2019-01-28 08:01:51', 1),
+(3, 'max', '1 rue prÃ©sident kenedy', '6000.00', '2019-01-28 08:01:18', 1);
+COMMIT;
+
+INSERT INTO `class` (`id`, `name`, `date`, `enabled`) VALUES
+(1, 'economic', '2019-01-02 00:00:00', 1),
+(2, 'business', '2019-01-02 00:00:00', 1),
+(3, 'first', '2019-01-02 00:00:00', 1);
+COMMIT;
+
+INSERT INTO `type` (`id`, `name`, `date`, `enabled`) VALUES
+(1, 'boeing', '2019-01-28 08:01:43', 1),
+(2, 'airbus', '2019-01-28 08:01:50', 1);
+COMMIT;
+
+INSERT INTO `city` (`id`, `name`, `date`, `enabled`) VALUES
+(1, 'london', '2019-01-28 08:01:15', 1),
+(2, 'paris', '2019-01-28 08:01:21', 1),
+(3, 'lyon', '2019-01-28 08:01:27', 1);
+COMMIT;
+
+INSERT INTO `traveler` (`id`, `name`, `date`, `enabled`) VALUES
+(1, 'adult', '2019-01-04 00:00:00', 1),
+(2, 'children', '2019-01-04 00:00:00', 1),
+(3, 'baby', '2019-01-04 00:00:00', 1);
+COMMIT;
 
 ALTER TABLE `airplane`
   ADD CONSTRAINT `fk_type_id` FOREIGN KEY (`type_id`) REFERENCES `type` (`id`) ON DELETE CASCADE;
