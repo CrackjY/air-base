@@ -3,12 +3,12 @@ html, body {
     height: 100%;
     color: #818182;
 }
-nav.front {
+nav.front, nav.back {
     background: #383d41;
     padding: 10px;
 }
 nav.back a {
-    color: red;
+    color: white;
 }
 nav.front a {
     color: white;
