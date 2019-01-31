@@ -27,7 +27,7 @@ class AirplaneController extends Controller
         $start = ($currentPage -1) * $limit;
 
         // $this->jsonEncode($this->airplaneModel->listingWithType($start, $limit));
-        
+
         $this->render('back/airplane/list.html.twig', array(
             'airplanesWithType' => $this->airplaneModel->listingWithType($start, $limit),
         ));
@@ -36,7 +36,16 @@ class AirplaneController extends Controller
     public function newAction()
     {
         if($_SERVER['REQUEST_METHOD'] == 'POST') {
-            $this->airplaneModel->insert($this->post('name'), $this->post('capacity'), $this->post('type'));
+            $this->airplaneModel->insert(
+                $this->post('name'),
+                $this->post('capacityEconomic'),
+                $this->post('capacityBusiness'),
+                $this->post('capacityFirst'),
+                $this->post('capacity'),
+                $this->post('type')
+            );
+
+            $this->redirect('/air-base/?page=admin/airplanes');
         }
 
         $this->render('back/airplane/new.html.twig', array(

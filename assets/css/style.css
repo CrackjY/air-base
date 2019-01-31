@@ -1,19 +1,18 @@
 html, body {
-    font-family: Arial;
+    font-family: Circular,"Helvetica Neue",Helvetica,Arial,sans-serif;
     height: 100%;
     color: #818182;
 }
 nav.front, nav.back {
     background: #383d41;
-    padding: 10px;
 }
-nav.back a {
+nav.back a, nav.front  a {
     color: white;
 }
-nav.front a {
-    color: white;
-    margin-left: 15px;
+nav.back a:hover, nav.front a:hover {
+    background: #ec6d26;
 }
+/* content front */
 .content {
     margin-top: 30px;
 }
@@ -21,21 +20,18 @@ nav.front a {
     margin-left: 30px;
     margin-right: 30px;
 }
+/* cards for home, search and advanced search */
 .card {
-    border: 1px solid rgba(0,0,0,.125);
     border-radius: 0;
 }
-.card-body {
-    padding: 0;
+.cards-xysn .block-front-flight .row-card .card .card-body {
+    padding: 8px;
 }
-.sub-card-p {
-    position: relative;
-    left: 14px;
-    padding-right: 17px;
-    padding-top: 9px;
+.cards-xysn .block-front-flight .row-card .card .card-footer {
+    border-radius: 0;
 }
 .btn-show-more-front {
-    background: #ec6d26bd;
+    background: #383d41;
     color: white;
     border: none;
     width: 30px;
@@ -52,6 +48,7 @@ nav.front a {
 .btn:focus {
     box-shadow: 0 0 0 white;
 }
+/* back new item */
 .link-new-item {
     float: right;
 }
@@ -69,6 +66,7 @@ nav.front a {
     background: #de3b34;
     color: white;
 }
+/* back btn edition */
 .btn-edit {
     background: #888888;
     color: white;
@@ -84,13 +82,6 @@ nav.front a {
     background: #888888;
     color: white;
 }
-img.airplane-icon {
-    width: 40px;
-    margin: 0 10px 0 10px;
-}
-.block-new input {
-}
-
 table .th-trash {
     cursor: pointer;
 }
@@ -121,9 +112,6 @@ table .th-trash {
     height: 45em;
     width: 50%;
 }
-/* the end for container-add*/
-
-/* test listing flight */
 .block-star-spec {
     display: flex;
     justify-content: center;
@@ -142,10 +130,11 @@ table .th-trash {
     z-index: 1000;
     color: #dc3545;
 }
+/* back close popup new */
 .close {
-    position: relative;
+position: relative;
 }
-/* front home */
+/* front home, search and advanced search */
 .landing-div {
     background-image: url(../imgs/landing.jpg);
     height: 23em;
@@ -158,7 +147,6 @@ table .th-trash {
     height: 60em;
     display: flex;
     padding: 9px;
-    /*overflow: auto;*/
 }
 .block-front-flight {
     width: 60%;
@@ -172,4 +160,8 @@ table .th-trash {
     background: orange;
     color:white;
     padding: 5px;
+}
+img.airplane-icon {
+    width: 40px;
+    margin: 0 10px 0 10px;
 }

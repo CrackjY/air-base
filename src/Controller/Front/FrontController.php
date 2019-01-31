@@ -28,7 +28,8 @@ class FrontController extends Controller
 
     public function searchAction() {
         $this->render('front/search_result.html.twig', [
-            'flights' => $this->flightModel->searchByTerm($this->post('flightSearch'))
+            'flights' => $this->flightModel->searchByTerm($this->post('flightSearch')),
+            'cities' => $this->cityModel->listNames(),
         ]);
     }
 

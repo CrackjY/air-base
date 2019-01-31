@@ -46,7 +46,6 @@ input[type=checkbox].input-checkbox {
     border-radius: 10px;
     margin-left: -10px;
 }
-/* endSearch */
 /* Criteria */
 .form-criteria-- {
     background: #383d41;
@@ -58,4 +57,3 @@ input[type=checkbox].input-checkbox {
     background: #ec6d26;
     color: white;
 }
-/* endCriteria */

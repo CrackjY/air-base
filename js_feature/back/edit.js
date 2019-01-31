@@ -41,7 +41,7 @@
                         body: fd,
                     });
 
-                    location.reload();
+                    /*location.reload();*/
                 });
 
                 document.querySelector('.close').addEventListener('click', function(e) {

@@ -22,6 +22,8 @@ class PilotController extends Controller
     {
         if($_SERVER['REQUEST_METHOD'] == 'POST') {
             $this->pilotModel->insert($this->post('name'), $this->post('address'), $this->post('salary'));
+
+            $this->redirect('/air-base/?page=admin/pilots');
         }
 
         $this->render('back/pilot/new.html.twig');

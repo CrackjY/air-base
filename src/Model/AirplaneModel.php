@@ -11,11 +11,11 @@ class AirplaneModel extends Model
         parent::__construct();
     }
 
-    public function insert($name, $capacity, $type_id)
+    public function insert($name, $capicityEconomic, $capacityBusiness, $capacityFirst, $capacity, $type_id)
     {
         return $this
             ->prepareSql('INSERT INTO airplane(name, capacity_economic, capacity_business, capacity_first, capacity, type_id, date, enabled) VALUES(?, ?, ?, ?, ?, ?, ?, ?)')
-            ->execute([$name, null, null, null, $capacity, $type_id, $this->dateFormat, $this->enabled]);
+            ->execute([$name, $capicityEconomic, $capacityBusiness, $capacityFirst, $capacity, $type_id, $this->dateFormat, $this->enabled]);
     }
 
     public function listing()

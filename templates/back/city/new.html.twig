@@ -1,14 +1,12 @@
-{# {% extends 'layout_back.html.twig' %}
-
-{% block content %} #}
-<!-- <h2 name="form" class="mb-3 text-center">New city</h2> -->
-
-<div class="add">
-    <form class="form" method="POST">
-        <div class="form-group">
-            <input type="text" class="form-control" id="name" name="name" placeholder="City Name">
-        </div>
-        <button type="submit" class="btn-edit confirm">Confirm</button>
-    </form>
-</div>
-{# {% endblock content %} #}
+{% extends 'layout_back.html.twig' %}
+{% block content %}
+    <h2 class="mb-3 text-center">New city</h2>
+    <div class="add">
+        <form class="form" method="POST">
+            <div class="form-group">
+                <input type="text" class="form-control" id="name" name="name" placeholder="City Name">
+            </div>
+            <button type="submit" class="btn-edit confirm">Confirm</button>
+        </form>
+    </div>
+ {% endblock content %}

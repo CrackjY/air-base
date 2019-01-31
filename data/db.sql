@@ -2,34 +2,32 @@ DROP DATABASE IF EXISTS air_base;
 
 CREATE DATABASE air_base CHARACTER SET utf8 COLLATE utf8_general_ci;
 
-DROP TABLE IF EXISTS `airplane`;
 CREATE TABLE IF NOT EXISTS `airplane` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) DEFAULT NULL,
-  `capacity_economic` int(11) DEFAULT NULL,
-  `capacity_business` int(11) DEFAULT NULL,
-  `capacity_first` int(11) DEFAULT NULL,
-  `capacity` int(11) DEFAULT NULL,
-  `type_id` int(11) DEFAULT NULL,
-  `date` datetime DEFAULT NULL,
-  `enabled` tinyint(1) DEFAULT NULL,
+  `name` varchar(255),
+  `capacity_economic` int(11),
+  `capacity_business` int(11),
+  `capacity_first` int(11),
+  `capacity` int(11),
+  `type_id` int(11),
+  `date` datetime,
+  `enabled` tinyint(1),
   PRIMARY KEY (`id`),
   KEY `fk_type_id` (`type_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 
-DROP TABLE IF EXISTS `flight`;
 CREATE TABLE IF NOT EXISTS `flight` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) DEFAULT NULL,
-  `departure_city_id` int(11) DEFAULT NULL,
-  `arrival_city_id` int(11) DEFAULT NULL,
-  `date_of_departure` date DEFAULT NULL,
-  `date_of_arrival` date DEFAULT NULL,
-  `pilot_id` int(11) DEFAULT NULL,
-  `price` decimal(10,2) DEFAULT NULL,
-  `airplane_id` int(11) DEFAULT NULL,
-  `date` datetime DEFAULT NULL,
-  `enabled` tinyint(1) DEFAULT NULL,
+  `name` varchar(255),
+  `departure_city_id` int(11),
+  `arrival_city_id` int(11),
+  `date_of_departure` date,
+  `date_of_arrival` date,
+  `pilot_id` int(11),
+  `price` decimal(10,2),
+  `airplane_id` int(11),
+  `date` datetime,
+  `enabled` tinyint(1),
   PRIMARY KEY (`id`),
   KEY `fk_departure_city_id` (`departure_city_id`),
   KEY `fk_arrival_city_id` (`arrival_city_id`),
@@ -76,18 +74,18 @@ CREATE TABLE traveler (
 
 CREATE TABLE IF NOT EXISTS `user` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `firstname` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `lastname` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `pseudo` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `birth_date` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `adress` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `zip_code` int(20) DEFAULT NULL,
-  `city` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `phone_number` int(20) DEFAULT NULL,
-  `email` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `encrypt_password` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `date` datetime DEFAULT NULL,
-  `enabled` tinyint(1) DEFAULT NULL,
+  `firstname` varchar(255),
+  `lastname` varchar(255),
+  `pseudo` varchar(255),
+  `birth_date` varchar(255),
+  `adress` varchar(255),
+  `zip_code` int(20),
+  `city` varchar(255),
+  `phone_number` int(20),
+  `email` varchar(255),
+  `encrypt_password` varchar(255),
+  `date` datetime,
+  `enabled` tinyint(1),
   PRIMARY KEY (`id`),
   UNIQUE KEY `email` (`email`),
   UNIQUE KEY `pseudo` (`pseudo`)
@@ -96,16 +94,37 @@ CREATE TABLE IF NOT EXISTS `user` (
 INSERT INTO `user` (`id`, `firstname`, `lastname`, `pseudo`, `birth_date`, `adress`, `zip_code`, `city`, `phone_number`, `email`, `encrypt_password`, `date`, `enabled`) VALUES
 (1, 'yassine', 'latti', 'crack', '03/08/1993', '3 boulevard', 71000, 'Macon', 768887944, 'yassine.latti@gmail.com', '$2y$10$ePDhdDkq8VMOy4S67KqWF.poT2XtWg3Wx3zjJGGMusOYHaAmMtuAy', '2019-01-28 10:01:03', 1);
 
+INSERT INTO `class` (`id`, `name`, `date`, `enabled`) VALUES
+(1, 'economic', '2019-01-02 00:00:00', 1),
+(2, 'business', '2019-01-02 00:00:00', 1),
+(3, 'first', '2019-01-02 00:00:00', 1);
+COMMIT;
+
+INSERT INTO `traveler` (`id`, `name`, `date`, `enabled`) VALUES
+(1, 'adult', '2019-01-04 00:00:00', 1),
+(2, 'children', '2019-01-04 00:00:00', 1),
+(3, 'baby', '2019-01-04 00:00:00', 1);
+COMMIT;
+
 INSERT INTO `flight` (`id`, `name`, `departure_city_id`, `arrival_city_id`, `date_of_departure`, `date_of_arrival`, `pilot_id`, `price`, `airplane_id`, `date`, `enabled`) VALUES
-(23, 'doubai', 1, 2, '2019-01-01', '2019-01-03', 1, '300.00', 2, '2018-11-05 17:11:31', 1),
-(24, 'constantine', 2, 3, '2019-01-04', '2019-01-05', 2, '412.00', 1, '2018-11-06 17:11:31', 1),
-(25, 'alger', 3, 1, '2019-01-12', '2019-01-25', 1, '140.00', 2, '2018-11-07 17:11:31', 1);
+(1, 'etats unis', 3, 2, '2019-02-02', '2019-02-09', 1, '150.00', 1, '2019-01-31 15:01:58', 1),
+(2, 'angleterre', 4, 1, '2019-02-16', '2019-02-26', 2, '410.00', 3, '2019-01-31 15:01:13', 1),
+(3, 'france', 4, 5, '2019-03-01', '2019-03-06', 2, '90.00', 3, '2019-01-31 15:01:18', 1);
 
 INSERT INTO `airplane` (`id`, `name`, `capacity_economic`, `capacity_business`, `capacity_first`, `capacity`, `type_id`, `date`, `enabled`) VALUES
-(1, 'a541', 70, 15, 15, 100, 2, '2019-01-28 08:01:08', 1),
-(2, 'b572', 50, 30, 10, 90, 1, '2019-01-28 08:01:20', 1),
-(3, 'a689', 25, 5, 15, 45, 2, '2019-01-28 08:01:35', 1),
-(4, 'b427', 40, 10, 10, 60, 1, '2019-01-28 08:01:47', 1);
+(1, 'a245', 150, 100, 100, 450, 1, '2019-01-31 15:01:56', 1),
+(2, 'a625', 200, 150, 50, 400, 1, '2019-01-31 15:01:28', 1),
+(3, 'b285', 203, 105, 40, 348, 2, '2019-01-31 15:01:53', 1),
+(4, 'b625', 71, 69, 154, 294, 2, '2019-01-31 15:01:19', 1),
+(5, 'a412', 366, 100, 50, 516, 1, '2019-01-31 15:01:55', 1);
+
+INSERT INTO `city` (`id`, `name`, `date`, `enabled`) VALUES
+(1, 'london', '2019-01-31 15:01:15', 1),
+(2, 'miami', '2019-01-31 15:01:31', 1),
+(3, 'los angeles', '2019-01-31 15:01:47', 1),
+(4, 'paris', '2019-01-31 15:01:01', 1),
+(5, 'mÃ¢con', '2019-01-31 15:01:09', 1);
+COMMIT;
 
 INSERT INTO `pilot` (`id`, `name`, `address`, `salary`, `date`, `enabled`) VALUES
 (1, 'yassine', '3 rue de paris 71 000 mÃ¢con', '5000.00', '2019-01-28 08:01:23', 1),
@@ -113,27 +132,9 @@ INSERT INTO `pilot` (`id`, `name`, `address`, `salary`, `date`, `enabled`) VALUE
 (3, 'max', '1 rue prÃ©sident kenedy', '6000.00', '2019-01-28 08:01:18', 1);
 COMMIT;
 
-INSERT INTO `class` (`id`, `name`, `date`, `enabled`) VALUES
-(1, 'economic', '2019-01-02 00:00:00', 1),
-(2, 'business', '2019-01-02 00:00:00', 1),
-(3, 'first', '2019-01-02 00:00:00', 1);
-COMMIT;
-
 INSERT INTO `type` (`id`, `name`, `date`, `enabled`) VALUES
-(1, 'boeing', '2019-01-28 08:01:43', 1),
-(2, 'airbus', '2019-01-28 08:01:50', 1);
-COMMIT;
-
-INSERT INTO `city` (`id`, `name`, `date`, `enabled`) VALUES
-(1, 'london', '2019-01-28 08:01:15', 1),
-(2, 'paris', '2019-01-28 08:01:21', 1),
-(3, 'lyon', '2019-01-28 08:01:27', 1);
-COMMIT;
-
-INSERT INTO `traveler` (`id`, `name`, `date`, `enabled`) VALUES
-(1, 'adult', '2019-01-04 00:00:00', 1),
-(2, 'children', '2019-01-04 00:00:00', 1),
-(3, 'baby', '2019-01-04 00:00:00', 1);
+(1, 'airbus', '2019-01-31 15:01:18', 1),
+(2, 'boeing', '2019-01-31 15:01:28', 1);
 COMMIT;
 
 ALTER TABLE `airplane`

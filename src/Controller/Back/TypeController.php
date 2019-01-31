@@ -22,6 +22,8 @@ class TypeController extends Controller
     {
         if($_SERVER['REQUEST_METHOD'] == 'POST') {
             $this->typeModel->insert($this->post('name'));
+
+            $this->redirect('/air-base/?page=admin/types');
         }
 
         $this->render('back/type/new.html.twig');

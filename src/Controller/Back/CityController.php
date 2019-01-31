@@ -22,6 +22,8 @@ class CityController extends Controller
     {
         if($_SERVER['REQUEST_METHOD'] == 'POST') {
             $this->cityModel->insert($this->post('name'));
+
+            $this->redirect('/air-base/?page=admin/cities');
         }
 
         $this->render('back/city/new.html.twig');

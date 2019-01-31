@@ -1,22 +1,37 @@
 {% extends 'layout.html.twig' %}
 
 {% block content %}
-    <div class="block-front-flight">
-        {% for flight in flights %}
-            <div class="row-card">
-                <div class="card w-75 flight-card mb-4">
-                    <div class="card-body">
-                        <h5 class="card-title">{{ flight.name }}</h5>
-                        <p class="card-text">{{ flight.departure_city }}<img class="airplane-icon" src="assets/imgs/vol_icon.png"> {{ flight.arrival_city }}</p>
-                        <p class="card-text float-left mr-5">Departure : {{ flight.date_of_departure }}</p>
-                        <p class="card-text float-left mr-5">Arrival : {{ flight.date_of_arrival }}</p>
-                        <p class="card-text float-right">Post the {{ flight.date | date }}</p>
-                        <a href="#" class="btn btn-show-more">Show more...</a>
+    <div class="cards-xysn">
+        <div class="block-front-flight">
+            {% for flight in flights %}
+                <div class="row-card">
+                    <div class="card w-75 flight-card mb-4">
+                        <div class="card-body">
+                            <h5 class="card-title text-warning font-weight-bold">{{ flight.name }}</h5>
+                            <p class="card-text">
+                                {{ flight.departure_city }}
+                                <img class="airplane-icon" src="assets/imgs/vol_icon.png">
+                                {{ flight.arrival_city }}
+                            </p>
+                            <p class="card-text float-left mr-5 text-dark font-weight-bold">Departure : {{ flight.date_of_departure }}</p>
+                            <p class="card-text mr-5 text-dark font-weight-bold">Arrival : {{ flight.date_of_arrival }}</p>
+                        </div>
+                        <div class="card-footer">
+                            <button class="btn-show-more-front float-right">
+                                <i class="fa fa-chevron-right" aria-hidden="true"></i>
+                            </button>
+                            <p class="card-text mr-5">Post the {{ flight.date | date }}</p>
+                        </div>
                     </div>
                 </div>
-            </div>
-        {% else %}
-            <div class="alert alert-danger">Sorry, no flights match your expectations.</div>
-        {% endfor %}
+            {% else %}
+                <div class="">
+                    <h2>No flights were found.</h2>
+                </div>
+            {% endfor %}
+        </div>
+        <div class="form-criteria--">
+            {% include 'front/includes/form_criteria.html.twig' %}
+        </div>
     </div>
 {% endblock content %}

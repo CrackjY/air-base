@@ -1,9 +1,9 @@
-<nav class="front">
-    <a class="" href="/air-base/?page=admin">Shortcut Admin</a>
-    <a class="" href="/air-base/">Home</a>
+<nav class="nav front">
+    <a class="nav-link" href="/air-base/?page=admin">Shortcut Admin</a>
+    <a class="nav-link" href="/air-base/">Home</a>
     {% if session.pseudo is not defined %}
-        <a class="" href="/air-base/?page=register">Register</a>
-        <a class="" href="/air-base/?page=login">Login</a>
+        <a class="nav-link" href="/air-base/?page=register">Register</a>
+        <a class="nav-link" href="/air-base/?page=login">Login</a>
     {% endif %}
 
     {% if session.pseudo %}
@@ -12,16 +12,16 @@
             <li class="li-pseudo"><i class="fa fa-user-circle" aria-hidden="true"></i> {{ session.pseudo | capitalize }} <i class="fa fa-caret-down" aria-hidden="true"></i>
                 <ul class="sub-profile-ul">
                     <li class="sub-profile">
-                        <a href="#">My profile</a>
+                        <a class="nav-link" href="#">My profile</a>
                     </li>
                     <li class="sub-profile">
-                        <a href="#">Link !</a>
+                        <a class="nav-link" href="#">Link !</a>
                     </li>
                     <li class="sub-profile">
-                        <a href="#">Link !</a>
+                        <a class="nav-link" href="#">Link !</a>
                     </li>
                     <li class="sub-profile">
-                        <a class="" href="/air-base/?page=logout">Logout</a>
+                        <a class="nav-link" class="" href="/air-base/?page=logout">Logout</a>
                     </li>
                 </ul>
             </li>

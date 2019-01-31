@@ -24,7 +24,18 @@ class FlightController extends Controller
     public function newAction()
     {
         if($_SERVER['REQUEST_METHOD'] == 'POST') {
-            $this->flightModel->insert($this->post('name'), $this->post('departureCityId'), $this->post('arrivalCityId'), $this->post('pilotId'), $this->post('airplaneId'));
+            $this->flightModel->insert(
+                $this->post('name'),
+                $this->post('dateOfDeparture'),
+                $this->post('dateOfArrival'),
+                $this->post('departureCityId'),
+                $this->post('arrivalCityId'),
+                $this->post('pilotId'),
+                $this->post('price'),
+                $this->post('airplaneId')
+            );
+
+            $this->redirect('/air-base/?page=admin/flights');
         }
 
         $this->render('back/flight/new.html.twig', array(
@@ -45,6 +56,8 @@ class FlightController extends Controller
                 $this->post('airplaneId'),
                 $this->get('id')
             );
+
+            $this->redirect('/air-base/?page=admin/flights');
         }
 
         $this->render('back/flight/edit.html.twig', array(
