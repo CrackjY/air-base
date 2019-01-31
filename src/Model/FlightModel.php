@@ -186,7 +186,7 @@ class FlightModel extends Model
                 '%'.$departureCity.'%',
                 '%'.$arrivalCity.'%'
             ));
-    
+
             return $sql->fetchAll(\PDO::FETCH_ASSOC);
         }
     }
