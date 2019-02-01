@@ -21,9 +21,9 @@
                             <p class="card-text mr-5 text-dark font-weight-bold">Arrival : {{ flight.date_of_arrival }}</p>
                         </div>
                         <div class="card-footer">
-                            <button class="btn-show-more-front float-right">
+                            <a href="/air-base/?page=flight/show&amp;id={{ flight.id }}" class="btn-show-more-front float-right">
                                 <i class="fa fa-chevron-right" aria-hidden="true"></i>
-                            </button>
+                            </a>
                             <p class="card-text mr-5">Post the {{ flight.date | date }}</p>
                         </div>
                     </div>

@@ -31,13 +31,13 @@ nav.back a:hover, nav.front a:hover {
     border-radius: 0;
 }
 .btn-show-more-front {
-    background: #383d41;
+/*    background: #383d41;
     color: white;
     border: none;
     width: 30px;
     height: 30px;
     border-radius: 100%;
-    cursor: pointer;
+    cursor: pointer;*/
 }
 .btn-show-more-front:focus {
     outline:none;

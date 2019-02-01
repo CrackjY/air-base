@@ -26,6 +26,13 @@ class FrontController extends Controller
         $this->jsonEncode($this->flightModel->listingWithPilotAndAirplaneFront());
     }
 
+    public function showAction()
+    {
+        $this->render('front/flight/show.html.twig', array(
+            'flight' => $this->flightModel->findById($this->get('id')),
+        ));
+    }
+
     public function searchAction() {
         $this->render('front/search_result.html.twig', [
             'flights' => $this->flightModel->searchByTerm($this->post('flightSearch')),

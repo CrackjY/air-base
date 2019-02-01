@@ -44,6 +44,9 @@ class FlightModel extends Model
             city2.name as arrival_city,
             p.name as pilot_name,
             a.name as airplane_name,
+            a.capacity_economic as capacity_economic,
+            a.capacity_business as capacity_business,
+            a.capacity_first as capacity_first,
             flight.date,
             flight.enabled
             FROM flight
