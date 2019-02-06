@@ -10,7 +10,7 @@
         </div>
         <div class="form-group col-md-6">
             <label for="DateOfArrival">Date of arrival</label>
-            <input type="date" id="DateOfArrival" name="searchByDateOfarrival" class="form-control" />
+            <input type="date" id="DateOfArrival" name="searchByDateOfArrival" class="form-control" />
         </div>
     </div>
     <div class="form-row">
@@ -25,7 +25,7 @@
         </div>
         <div class="form-group col-md-6">
             <label for="arrivalCity">Arrival city</label>
-            <select class="form-control" id="arrivalCity" name="searchByarrivalCity" placeholder="Arrival city">
+            <select class="form-control" id="arrivalCity" name="searchByArrivalCity" placeholder="Arrival city">
                 <option>...</option>
                 {% for arrivalCity in cities %}
                     <option>{{ arrivalCity.name }}</option>

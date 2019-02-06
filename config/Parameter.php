@@ -51,6 +51,6 @@ abstract class Parameter
      */
     public function getPassword()
     {
-        return $this->password = '';
+        return $this->password = 'root';
     }
 }

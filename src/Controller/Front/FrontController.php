@@ -8,12 +8,6 @@ class FrontController extends Controller
 {
     public function homeAction()
     {
-       /* $imgsRandom = [
-            'assets/imgs/random-ban-1',
-            'assets/imgs/random-ban-2',
-            'assets/imgs/random-ban-3',
-        ];*/
-
         $this->render('front/home.html.twig', [
             'msg' => $this->flash->unsetMessage('authenticationSuccess'),
             'flights' => $this->flightModel->listingWithPilotAndAirplaneFront(),
@@ -40,13 +34,20 @@ class FrontController extends Controller
         ]);
     }
 
-    public function advancedSearchAction() {
-        $criteria = $this->flightModel->advancedSearch(
-            $this->post('searchByDateOfDeparture'),
-            $this->post('searchByDateOfarrival'),
-            $this->post('searchByDepartureCity'),
-            $this->post('searchByarrivalCity')
-        );
+    public function advancedSearchAction()
+    {
+        $criteria = [];
+
+        $searchByDateOfDeparture = $this->post('searchByDateOfDeparture');
+        $searchByDateOfArrival = $this->post('searchByDateOfArrival');
+        $searchByDepartureCity = $this->post('searchByDepartureCity');
+        $searchByArrivalCity = $this->post('searchByArrivalCity');
+
+        if ($searchByDateOfDeparture < $searchByDateOfArrival || $searchByDepartureCity !==  $searchByArrivalCity) {
+            $criteria = $this->flightModel->advancedSearch($searchByDateOfDeparture, $searchByDateOfArrival, $searchByDepartureCity, $searchByArrivalCity);
+        } else {
+            var_dump('Error !');
+        }
 
         $this->render('front/advanced_search.html.twig', [
             'cities' => $this->cityModel->listNames(),

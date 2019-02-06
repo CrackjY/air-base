@@ -106,17 +106,6 @@ INSERT INTO `traveler` (`id`, `name`, `date`, `enabled`) VALUES
 (3, 'baby', '2019-01-04 00:00:00', 1);
 COMMIT;
 
-INSERT INTO `flight` (`id`, `name`, `departure_city_id`, `arrival_city_id`, `date_of_departure`, `date_of_arrival`, `pilot_id`, `price`, `airplane_id`, `date`, `enabled`) VALUES
-(1, 'etats unis', 3, 2, '2019-02-02', '2019-02-09', 1, '150.00', 1, '2019-01-31 15:01:58', 1),
-(2, 'angleterre', 4, 1, '2019-02-16', '2019-02-26', 2, '410.00', 3, '2019-01-31 15:01:13', 1),
-(3, 'france', 4, 5, '2019-03-01', '2019-03-06', 2, '90.00', 3, '2019-01-31 15:01:18', 1);
-
-INSERT INTO `airplane` (`id`, `name`, `capacity_economic`, `capacity_business`, `capacity_first`, `capacity`, `type_id`, `date`, `enabled`) VALUES
-(1, 'a245', 150, 100, 100, 450, 1, '2019-01-31 15:01:56', 1),
-(2, 'a625', 200, 150, 50, 400, 1, '2019-01-31 15:01:28', 1),
-(3, 'b285', 203, 105, 40, 348, 2, '2019-01-31 15:01:53', 1),
-(4, 'b625', 71, 69, 154, 294, 2, '2019-01-31 15:01:19', 1),
-(5, 'a412', 366, 100, 50, 516, 1, '2019-01-31 15:01:55', 1);
 
 INSERT INTO `city` (`id`, `name`, `date`, `enabled`) VALUES
 (1, 'london', '2019-01-31 15:01:15', 1),
@@ -136,6 +125,18 @@ INSERT INTO `type` (`id`, `name`, `date`, `enabled`) VALUES
 (1, 'airbus', '2019-01-31 15:01:18', 1),
 (2, 'boeing', '2019-01-31 15:01:28', 1);
 COMMIT;
+
+INSERT INTO `airplane` (`id`, `name`, `capacity_economic`, `capacity_business`, `capacity_first`, `capacity`, `type_id`, `date`, `enabled`) VALUES
+(1, 'a245', 150, 100, 100, 450, 1, '2019-01-31 15:01:56', 1),
+(2, 'a625', 200, 150, 50, 400, 1, '2019-01-31 15:01:28', 1),
+(3, 'b285', 203, 105, 40, 348, 2, '2019-01-31 15:01:53', 1),
+(4, 'b625', 71, 69, 154, 294, 2, '2019-01-31 15:01:19', 1),
+(5, 'a412', 366, 100, 50, 516, 1, '2019-01-31 15:01:55', 1);
+
+INSERT INTO `flight` (`id`, `name`, `departure_city_id`, `arrival_city_id`, `date_of_departure`, `date_of_arrival`, `pilot_id`, `price`, `airplane_id`, `date`, `enabled`) VALUES
+(1, 'etats unis', 3, 2, '2019-02-02', '2019-02-09', 1, '150.00', 1, '2019-01-31 15:01:58', 1),
+(2, 'angleterre', 4, 1, '2019-02-16', '2019-02-26', 2, '410.00', 3, '2019-01-31 15:01:13', 1),
+(3, 'france', 4, 5, '2019-03-01', '2019-03-06', 2, '90.00', 3, '2019-01-31 15:01:18', 1);
 
 ALTER TABLE `airplane`
   ADD CONSTRAINT `fk_type_id` FOREIGN KEY (`type_id`) REFERENCES `type` (`id`) ON DELETE CASCADE;
