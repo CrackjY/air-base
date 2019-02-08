@@ -151,46 +151,43 @@ class FlightModel extends Model
         }
     }
 
-    public function advancedSearch($dateOfDeparture, $dateOfarrival, $departureCity, $arrivalCity)
+    public function advancedSearch($dateOfDeparture, $dateOfArrival, $departureCity, $arrivalCity)
     {
-        if (!empty($dateOfDeparture) && !empty($dateOfarrival) && !empty($departureCity) && !empty($arrivalCity)) {
+        $sql = $this->prepareSql('
+            SELECT 
+            flight.id, 
+            flight.name,
+            flight.date_of_departure,
+            flight.date_of_arrival,
+            flight.price,
+            city1.name as departure_city,
+            city2.name as arrival_city,
+            p.name as pilot_name,
+            flight.price,
+            a.name as airplane_name,
+            a.capacity,
+            flight.date,
+            flight.enabled
+            FROM flight
+            INNER JOIN city AS city1 ON city1.id = flight.departure_city_id 
+            INNER JOIN city AS city2 ON city2.id = flight.arrival_city_id 
+            INNER JOIN pilot AS p ON p.id = flight.pilot_id 
+            INNER JOIN airplane AS a ON a.id = flight.airplane_id
+            WHERE flight.date_of_departure >= ?
+            AND flight.date_of_arrival <= ?
+            OR city1.name
+            LIKE ?
+            AND city2.name
+            LIKE ?
+        ');
 
-            $sql = $this->prepareSql('
-                SELECT 
-                flight.id, 
-                flight.name,
-                flight.date_of_departure,
-                flight.date_of_arrival,
-                flight.price,
-                city1.name as departure_city,
-                city2.name as arrival_city,
-                p.name as pilot_name,
-                flight.price,
-                a.name as airplane_name,
-                a.capacity,
-                flight.date, 
-                flight.enabled
-                FROM flight 
-                INNER JOIN city AS city1 ON city1.id = flight.departure_city_id 
-                INNER JOIN city AS city2 ON city2.id = flight.arrival_city_id 
-                INNER JOIN pilot AS p ON p.id = flight.pilot_id 
-                INNER JOIN airplane AS a ON a.id = flight.airplane_id
-                WHERE flight.date_of_departure >= ?
-                AND flight.date_of_arrival <= ?
-                OR city1.name
-                LIKE ?
-                AND city2.name
-                LIKE ?
-            ');
+        $sql->execute(array(
+            $dateOfDeparture,
+            $dateOfArrival,
+            '%'.$departureCity.'%',
+            '%'.$arrivalCity.'%'
+        ));
 
-            $sql->execute(array(
-                $dateOfDeparture,
-                $dateOfarrival,
-                '%'.$departureCity.'%',
-                '%'.$arrivalCity.'%'
-            ));
-
-            return $sql->fetchAll(\PDO::FETCH_ASSOC);
-        }
+        return $sql->fetchAll(\PDO::FETCH_ASSOC);
     }
 }
