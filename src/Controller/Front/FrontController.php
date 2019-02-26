@@ -44,7 +44,7 @@ class FrontController extends Controller
             $this->post('searchByArrivalCity')
         );
 
-        $this->render('front/advanced_search.html.twig', [
+        $this->render('front/advanced_search_result.html.twig', [
             'cities' => $this->cityModel->listNames(),
             'criteria' => $criteria,
         ]);
