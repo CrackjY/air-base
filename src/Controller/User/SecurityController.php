@@ -3,6 +3,7 @@
 namespace App\Controller\User;
 
 use Helper\Core\Controller;
+use App\Model\User\UserModel;
 
 /**
  * Class SecurityController
@@ -10,9 +11,15 @@ use Helper\Core\Controller;
  */
 class SecurityController extends Controller
 {
-
+    /**
+     * @throws \Twig_Error_Loader
+     * @throws \Twig_Error_Runtime
+     * @throws \Twig_Error_Syntax
+     */
     public function registerAction()
     {
+        $userModel = new UserModel();
+
         $errors = [];
 
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -27,10 +34,11 @@ class SecurityController extends Controller
                 $phoneNumber = $this->post('phone');
                 $email =$this->post('email');
 
-                $this->userModel->register($firstname, $lastname, $pseudo, $adress, $zipCode, $city, $phoneNumber, $email);
-                //$roleModel->newUserRole($userModel->getRoleId(), $pseudo);
+                $userModel->register($firstname, $lastname, $pseudo, $adress, $zipCode, $city, $phoneNumber, $email);
 
-                $this->flash->setMessage('registrationSuccess', 'Registration success, check your email !');
+                $this
+                    ->flash()
+                    ->setMessage('registrationSuccess', 'Registration success, check your email !');
 
                 $this->redirect('/air-base/?page=login');
             } else {
@@ -43,22 +51,28 @@ class SecurityController extends Controller
         ));
     }
 
-
+    /**
+     * @throws \Twig_Error_Loader
+     * @throws \Twig_Error_Runtime
+     * @throws \Twig_Error_Syntax
+     */
     public function loginAction()
     {
+        $userModel = new UserModel();
+
         $email = $this->post('email');
         $password = $this->post('password');
 
         $messages = [];
 
-        $credentials = $this->userModel->getCredentials($email);
+        $credentials = $userModel->getCredentials($email);
 
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
             if (password_verify($password, $credentials['encrypt_password'])) {
-                $this->session->set('id', $credentials['id']);
-                $this->session->set('pseudo', $credentials['pseudo']);
-                $this->flash->setMessage('authenticationSuccess', 'Authentication success ! :)');
+                $this->session()->set('id', $credentials['id']);
+                $this->session()->set('pseudo', $credentials['pseudo']);
+                $this->flash()->setMessage('authenticationSuccess', 'Authentication success ! :)');
 
                 $this->redirect('/air-base/');
             }
@@ -70,7 +84,7 @@ class SecurityController extends Controller
 
         $this->render('security/login.html.twig', array(
             'messages' => $messages,
-            'flashSuccess' => $this->flash->unsetMessage('registrationSuccess'),
+            'flashSuccess' => $this->flash()->unsetMessage('registrationSuccess'),
         ));
     }
 

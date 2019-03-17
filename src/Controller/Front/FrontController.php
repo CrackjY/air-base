@@ -3,41 +3,58 @@
 namespace App\Controller\Front;
 
 use Helper\Core\Controller;
+use App\Model\FlightModel;
+use App\Model\CityModel;
 
 class FrontController extends Controller
 {
     public function homeAction()
     {
+        $cityModel = new CityModel();
+        $flightModel = new FlightModel();
+
+        $unsetAuthSuccessMsg = $this->flash()->unsetMessage('authenticationSuccess');
+
         $this->render('front/home.html.twig', [
-            'msg' => $this->flash->unsetMessage('authenticationSuccess'),
-            'flights' => $this->flightModel->listingWithPilotAndAirplaneFront(),
-            'cities' => $this->cityModel->listNames(),
+            'msg' => $unsetAuthSuccessMsg,
+            'flights' => $flightModel->listingWithPilotAndAirplaneFront(),
+            'cities' => $cityModel->listNames(),
         ]);
     }
 
     public function flightDataJson()
     {
-        $this->jsonEncode($this->flightModel->listingWithPilotAndAirplaneFront());
+        $flightModel = new FlightModel();
+
+        $this->jsonEncode($flightModel->listingWithPilotAndAirplaneFront());
     }
 
     public function showAction()
     {
+        $flightModel = new FlightModel();
+
         $this->render('front/flight/show.html.twig', array(
-            'flight' => $this->flightModel->findById($this->get('id')),
+            'flight' => $flightModel->findById($this->get('id')),
         ));
     }
 
     public function searchAction()
     {
+        $cityModel = new CityModel();
+        $flightModel = new FlightModel();
+
         $this->render('front/search_result.html.twig', [
-            'flights' => $this->flightModel->searchByTerm($this->post('flightSearch')),
-            'cities' => $this->cityModel->listNames(),
+            'flights' => $flightModel->searchByTerm($this->post('flightSearch')),
+            'cities' => $cityModel->listNames(),
         ]);
     }
 
     public function advancedSearchAction()
     {
-        $criteria = $this->flightModel->advancedSearch(
+        $cityModel = new CityModel();
+        $flightModel = new FlightModel();
+
+        $criteria = $flightModel->advancedSearch(
             $this->post('searchByDateOfDeparture'),
             $this->post('searchByDateOfArrival'),
             $this->post('searchByDepartureCity'),
@@ -45,7 +62,7 @@ class FrontController extends Controller
         );
 
         $this->render('front/advanced_search_result.html.twig', [
-            'cities' => $this->cityModel->listNames(),
+            'cities' => $cityModel->listNames(),
             'criteria' => $criteria,
         ]);
     }

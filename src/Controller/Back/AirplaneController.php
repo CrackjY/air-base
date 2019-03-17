@@ -3,18 +3,22 @@
 namespace App\Controller\Back;
 
 use Helper\Core\Controller;
+use App\Model\AirplaneModel;
+use App\Model\TypeModel;
 
 class AirplaneController extends Controller
 {
-    public function __construct()
-    {
-        parent::__construct();
-    }
-
+    /**
+     * @throws \Twig_Error_Loader
+     * @throws \Twig_Error_Runtime
+     * @throws \Twig_Error_Syntax
+     */
     public function listAction()
     {
+        $airplaneModel = new AirplaneModel();
+
         $limit = 5;
-        $airplanes = $this->airplaneModel->findAllWithTypeById();
+        $airplanes = $airplaneModel->findAllWithTypeById();
         $all = count($airplanes);
 
         if (isset($_GET['pagination']) AND !empty($_GET['pagination']) AND $_GET['pagination'] > 0) {
@@ -29,14 +33,22 @@ class AirplaneController extends Controller
         // $this->jsonEncode($this->airplaneModel->listingWithType($start, $limit));
 
         $this->render('back/airplane/list.html.twig', array(
-            'airplanesWithType' => $this->airplaneModel->listingWithType($start, $limit),
+            'airplanesWithType' => $airplaneModel->listingWithType($start, $limit),
         ));
     }
 
+    /**
+     * @throws \Twig_Error_Loader
+     * @throws \Twig_Error_Runtime
+     * @throws \Twig_Error_Syntax
+     */
     public function newAction()
     {
+        $airplaneModel = new AirplaneModel();
+        $typeModel =new TypeModel();
+
         if($_SERVER['REQUEST_METHOD'] == 'POST') {
-            $this->airplaneModel->insert(
+            $airplaneModel->insert(
                 $this->post('name'),
                 $this->post('capacityEconomic'),
                 $this->post('capacityBusiness'),
@@ -49,7 +61,7 @@ class AirplaneController extends Controller
         }
 
         $this->render('back/airplane/new.html.twig', array(
-            'types' => $this->typeModel->listing(),
+            'types' => $typeModel->listing(),
         ));
     }
 }

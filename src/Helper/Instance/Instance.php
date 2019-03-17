@@ -48,14 +48,9 @@ class Instance
         // flash && Session
         $this->flash = new Flash();
         $this->session = new Session();
-        // Security
-        $this->securityController = new SecurityController();
 
         // SUPER GLOBAL
         $this->sg = new SuperGlobal();
-
-        // FRONT
-        $this->frontController = new FrontController();
 
         //BACK
         $this->backController  = new BackController();
@@ -64,5 +59,73 @@ class Instance
         $this->typeController = new TypeController();
         $this->pilotController = new PilotController();
         $this->flightController = new FlightController();
+    }
+
+    /**
+     * @return FrontController
+     */
+    public function getFrontController()
+    {
+        $this->frontController = new FrontController();
+
+        return $this->frontController;
+    }
+
+    /**
+     * @return BackController
+     */
+    public function getBackController()
+    {
+        return $this->backController;
+    }
+
+    /**
+     * @return CityController
+     */
+    public function getCityController()
+    {
+        return $this->cityController;
+    }
+
+    /**
+     * @return AirplaneController
+     */
+    public function getAirplaneController()
+    {
+        return $this->airplaneController;
+    }
+
+    /**
+     * @return TypeController
+     */
+    public function getTypeController()
+    {
+        return $this->typeController;
+    }
+
+    /**
+     * @return PilotController
+     */
+    public function getPilotController()
+    {
+        return $this->pilotController;
+    }
+
+    /**
+     * @return FlightController
+     */
+    public function getFlightController()
+    {
+        return $this->flightController;
+    }
+
+    /**
+     * @return SecurityController
+     */
+    public function getSecurityController()
+    {
+        $this->securityController = new SecurityController();
+
+        return $this->securityController;
     }
 }

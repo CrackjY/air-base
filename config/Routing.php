@@ -11,33 +11,48 @@ class Routing extends Instance
         parent::__construct();
 
         if ($_SERVER['REQUEST_URI'] == '/air-base/') {
-            $this->frontController->homeAction();
+            $this
+                ->getFrontController()
+                ->homeAction();
         }
 
         if (isset($_GET['page'])) {
             switch ($_GET['page']) {
                 // Front
                 case 'flights/search';
-                    $this->frontController->searchAction();
+                    $this
+                        ->getFrontController()
+                        ->searchAction();
                     exit;
                 case 'flights/advanced-search';
-                    $this->frontController->advancedSearchAction();
+                    $this
+                        ->getFrontController()
+                        ->advancedSearchAction();
                     exit;
                 // Flight
                 case 'flight/show';
-                    $this->frontController->showAction();
+                    $this
+                        ->getFrontController()
+                        ->showAction();
                     exit;
 
                 // Security
                 case 'register';
-                    $this->securityController->registerAction();
+                    $this
+                        ->getSecurityController()
+                        ->registerAction();
                     exit;
                 case 'login';
-                    $this->securityController->loginAction();
+                    $this
+                        ->getSecurityController()
+                        ->loginAction();
                     exit;
                 case 'logout';
-                    $this->securityController->logout();
+                    $this
+                        ->getSecurityController()
+                        ->logout();
                     exit;
+
                 //Back
                 case 'admin';
                     $this->backController->homeAction();
@@ -94,5 +109,13 @@ class Routing extends Instance
                     exit;
             }
         }
+    }
+
+    public function routingFrontAction()
+    {
+    }
+
+    public function routingBackAction()
+    {
     }
 }

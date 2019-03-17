@@ -2,9 +2,6 @@
 
 namespace Helper\Core;
 
-use App\Model\AirplaneModel;
-use App\Model\CityModel;
-use App\Model\FlightModel;
 use App\Model\TypeModel;
 use App\Model\PilotModel;
 use Helper\Session\Session;
@@ -48,19 +45,9 @@ abstract class Controller extends SuperGlobal
      */
     public function __construct() // i will optimise
     {
-        // User
-        $this->userModel = new userModel();
-
-        // Session && flash
-        $this->session = new Session();
-        $this->flash = new Flash();
-
         // Instance Model
-        $this->airplaneModel = new AirplaneModel();
-        $this->cityModel = new CityModel();
-        $this->typeModel = new TypeModel();
         $this->pilotModel = new PilotModel();
-        $this->flightModel = new FlightModel();
+        //$this->flightModel = new FlightModel();
     }
 
     public function twigOption(TwigOption $twigOption)
@@ -68,6 +55,13 @@ abstract class Controller extends SuperGlobal
         return $this->twig = $twigOption;
     }
 
+    /**
+     * @param $string
+     * @param array $array
+     * @throws \Twig_Error_Loader
+     * @throws \Twig_Error_Runtime
+     * @throws \Twig_Error_Syntax
+     */
     public function render($string, $array = [])
     {
         $twig = $this->twigOption(new TwigOption())->getTwig();
@@ -75,7 +69,11 @@ abstract class Controller extends SuperGlobal
         echo $twig->render($string, $array);
     }
 
-    public function jsonEncode($array) {
+    /**
+     * @param mixed
+     */
+    public function jsonEncode($array)
+    {
         echo json_encode($array);
     }
 
@@ -84,7 +82,25 @@ abstract class Controller extends SuperGlobal
      */
     public function redirect($string)
     {
-        return header("Location: $string");
+        header("Location: $string");
         exit;
     }
+
+    /**
+     * @return Session
+     */
+    public function session()
+    {
+        $this->session = new Session();
+
+        return $this->session;
+    }
+
+    public function flash()
+    {
+        $this->flash = new Flash();
+
+        return $this->flash;
+    }
+
 }
