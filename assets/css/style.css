@@ -3,15 +3,23 @@ html, body {
     height: 100%;
     color: #818182;
 }
+
+a:hover {
+    text-decoration: none;
+}
+
 nav.front, nav.back {
     background: #383d41;
 }
+
 nav.back a, nav.front  a {
     color: white;
 }
+
 nav.back a:hover, nav.front a:hover {
     background: #ec6d26;
 }
+
 /* content front */
 .content {
     margin-top: 30px;
@@ -20,25 +28,19 @@ nav.back a:hover, nav.front a:hover {
     margin-left: 30px;
     margin-right: 30px;
 }
+
 /* cards for home, search and advanced search */
 .card {
     border-radius: 0;
 }
+
 .cards-xysn .block-front-flight .row-card .card .card-body {
     padding: 8px;
 }
 .cards-xysn .block-front-flight .row-card .card .card-footer {
     border-radius: 0;
 }
-.btn-show-more-front {
-/*    background: #383d41;
-    color: white;
-    border: none;
-    width: 30px;
-    height: 30px;
-    border-radius: 100%;
-    cursor: pointer;*/
-}
+
 .btn-show-more-front:focus {
     outline:none;
 }
@@ -48,13 +50,16 @@ nav.back a:hover, nav.front a:hover {
 .btn:focus {
     box-shadow: 0 0 0 white;
 }
+
 /* back new item */
 .link-new-item {
     float: right;
 }
+
 .link-new-item:hover {
     text-decoration: none;
 }
+
 .link-new-item .btn-more {
     border: solid 2px #de3b34;
     border-radius: 100%;
@@ -62,10 +67,12 @@ nav.back a:hover, nav.front a:hover {
     padding: 0 10px 0 10px;
     color: #de3b34;
 }
+
 .link-new-item .btn-more:hover {
     background: #de3b34;
     color: white;
 }
+
 /* back btn edition */
 .btn-edit {
     background: #888888;
@@ -78,21 +85,26 @@ nav.back a:hover, nav.front a:hover {
     cursor: pointer;
     float: right;
 }
+
 .btn-edit:hover{
     background: #888888;
     color: white;
 }
+
 table .th-trash {
     cursor: pointer;
 }
+
 .toggle-group {
     background: transparent !important;
 }
+
 .toggle-group .toggle-on {
     background: #4CAF50;
     border: solid 1px grey !important;
     border-radius: 6px !important;
 }
+
 /*Listing*/
 .container-add {
     width: 100%;
@@ -102,6 +114,7 @@ table .th-trash {
     display: flex;
     justify-content: center;
 }
+
 .container-add .add {
     background: #0000008f;
     background-image: url('../../assets/imgs/bg-flight.svg');
@@ -112,6 +125,7 @@ table .th-trash {
     height: 45em;
     width: 50%;
 }
+
 .block-star-spec {
     display: flex;
     justify-content: center;
@@ -122,6 +136,7 @@ table .th-trash {
     height: 1px;
     background: #fdd8d1;
 }
+
 .block-star-spec i {
     position: relative;
     right: 81px;
@@ -130,10 +145,12 @@ table .th-trash {
     z-index: 1000;
     color: #dc3545;
 }
+
 /* back close popup new */
 .close {
 position: relative;
 }
+
 /* front home, search and advanced search */
 .landing-div {
     background-image: url(../imgs/landing.jpg);
@@ -142,25 +159,30 @@ position: relative;
     background-size: cover;
     background-repeat: no-repeat;
 }
+
 .cards-xysn {
     width: 100%;
     height: 60em;
     display: flex;
     padding: 9px;
 }
+
 .block-front-flight {
     width: 60%;
 }
+
 .btn-show-more {
     background: orange;
     color:white;
     padding: 5px;
 }
+
 .btn-show-more:hover {
     background: orange;
     color:white;
     padding: 5px;
 }
+
 img.airplane-icon {
     width: 40px;
     margin: 0 10px 0 10px;
