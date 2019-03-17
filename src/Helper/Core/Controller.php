@@ -2,12 +2,6 @@
 
 namespace Helper\Core;
 
-use App\Model\TypeModel;
-use App\Model\PilotModel;
-use Helper\Session\Session;
-use Helper\Session\Flash;
-use App\Model\User\UserModel;
-
 /**
  * Class Controller
  * @package Helper\Controller
@@ -22,34 +16,10 @@ abstract class Controller extends SuperGlobal
 
     protected $method;
 
-    protected $flash;
-
-    protected $session;
-
-    // User
-    protected $userModel;
-
-    // Model
-    protected $airplaneModel;
-
-    protected $cityModel;
-
-    protected $typeModel;
-
-    protected $pilotModel;
-
-    protected $flightModel;
-
     /**
-     * Controller constructor.
+     * @param TwigOption $twigOption
+     * @return TwigOption
      */
-    public function __construct() // i will optimise
-    {
-        // Instance Model
-        $this->pilotModel = new PilotModel();
-        //$this->flightModel = new FlightModel();
-    }
-
     public function twigOption(TwigOption $twigOption)
     {
         return $this->twig = $twigOption;
@@ -85,22 +55,4 @@ abstract class Controller extends SuperGlobal
         header("Location: $string");
         exit;
     }
-
-    /**
-     * @return Session
-     */
-    public function session()
-    {
-        $this->session = new Session();
-
-        return $this->session;
-    }
-
-    public function flash()
-    {
-        $this->flash = new Flash();
-
-        return $this->flash;
-    }
-
 }

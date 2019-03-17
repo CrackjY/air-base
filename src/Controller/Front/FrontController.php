@@ -8,6 +8,9 @@ use App\Model\CityModel;
 
 class FrontController extends Controller
 {
+    /**
+     *
+     */
     public function homeAction()
     {
         $cityModel = new CityModel();
@@ -22,6 +25,9 @@ class FrontController extends Controller
         ]);
     }
 
+    /**
+     *
+     */
     public function flightDataJson()
     {
         $flightModel = new FlightModel();
@@ -29,6 +35,9 @@ class FrontController extends Controller
         $this->jsonEncode($flightModel->listingWithPilotAndAirplaneFront());
     }
 
+    /**
+     *
+     */
     public function showAction()
     {
         $flightModel = new FlightModel();
@@ -49,6 +58,9 @@ class FrontController extends Controller
         ]);
     }
 
+    /**
+     *
+     */
     public function advancedSearchAction()
     {
         $cityModel = new CityModel();

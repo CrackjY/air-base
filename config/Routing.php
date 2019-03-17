@@ -8,8 +8,6 @@ class Routing extends Instance
 {
     public function __construct()
     {
-        parent::__construct();
-
         if ($_SERVER['REQUEST_URI'] == '/air-base/') {
             $this
                 ->getFrontController()
@@ -55,57 +53,87 @@ class Routing extends Instance
 
                 //Back
                 case 'admin';
-                    $this->backController->homeAction();
+                    $this
+                        ->getBackController()
+                        ->homeAction();
                     exit;
                 //City
                 case 'admin/cities';
-                    $this->cityController->listAction();
+                    $this
+                        ->getCityController()
+                        ->listAction();
                     exit;
                 case 'admin/cities/new';
-                    $this->cityController->newAction();
+                    $this
+                        ->getCityController()
+                        ->newAction();
                     exit;
                 //Airplane
                 case 'admin/airplanes';
-                    $this->airplaneController->listAction();
+                    $this
+                        ->getAirplaneController()
+                        ->listAction();
                     exit;
                 case 'admin/airplanes/new';
-                    $this->airplaneController->newAction();
+                    $this
+                        ->getAirplaneController()
+                        ->newAction();
                     exit;
                 //Type
                 case 'admin/types';
-                    $this->typeController->listAction();
+                    $this
+                        ->getTypeController()
+                        ->listAction();
                     exit;
                 case 'admin/types/new';
-                    $this->typeController->newAction();
+                    $this
+                        ->getTypeController()
+                        ->newAction();
                     exit;
                 //Pilot
                 case 'admin/pilots';
-                    $this->pilotController->listAction();
+                    $this
+                        ->getPilotController()
+                        ->listAction();
                     exit;
                 case 'admin/pilots/new';
-                    $this->pilotController->newAction();
+                    $this
+                        ->getPilotController()
+                        ->newAction();
                     exit;
                 //Flight
                 case 'admin/flights';
-                    $this->flightController->listAction();
+                    $this
+                        ->getFlightController()
+                        ->listAction();
                     exit;
                 case 'admin/flights/new';
-                    $this->flightController->newAction();
+                    $this
+                        ->getFlightController()
+                        ->newAction();
                     exit;
                 case 'admin/flights/edit';
-                    $this->flightController->editAction();
+                    $this
+                        ->getFlightController()
+                        ->editAction();
                     exit;
                 case 'admin/flights/delete';
-                    $this->flightController->deleteAction();
+                    $this
+                        ->getFlightController()
+                        ->deleteAction();
                     exit;
 
                 //API Flight
                 case 'api/admin/flights';
-                    $this->flightController->flightDataJson();
+                    $this
+                        ->getFlightController()
+                        ->flightDataJson();
                     exit;
                     // front
                 case 'api/flights';
-                    $this->frontController->flightDataJson();
+                    $this
+                        ->getFrontController()
+                        ->flightDataJson();
                     exit;
             }
         }

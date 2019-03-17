@@ -7,6 +7,9 @@ use App\Model\CityModel;
 
 class CityController extends Controller
 {
+    /**
+     *
+     */
     public function listAction()
     {
         $cityModel = new CityModel();
@@ -16,6 +19,9 @@ class CityController extends Controller
         ));
     }
 
+    /**
+     *
+     */
     public function newAction()
     {
         $cityModel = new CityModel();

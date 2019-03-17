@@ -1,11 +1,19 @@
 <?php
+
 namespace Helper\Core;
+
+use Helper\Session\Session;
+use Helper\Session\Flash;
 
 class SuperGlobal
 {
     protected $get;
 
     protected $post;
+
+    protected $flash;
+
+    protected $session;
 
     /**
      * @param $value
@@ -46,5 +54,25 @@ class SuperGlobal
     public function getPost()
     {
         return $this->post;
+    }
+
+    /**
+     * @return Session
+     */
+    public function session()
+    {
+        $this->session = new Session();
+
+        return $this->session;
+    }
+
+    /**
+     * @return Flash
+     */
+    public function flash()
+    {
+        $this->flash = new Flash();
+
+        return $this->flash;
     }
 }

@@ -3,14 +3,16 @@
 namespace App\Controller\Back;
 
 use Helper\Core\Controller;
+use App\Model\FlightModel;
+use App\Model\AirplaneModel;
+use App\Model\CityModel;
+use App\Model\PilotModel;
 
 class FlightController extends Controller
 {
-    public function __construct()
-    {
-        parent::__construct();
-    }
-
+    /**
+     *
+     */
     public function listAction()
     {
         $this->render('back/flight/list.html.twig', []);
@@ -18,13 +20,23 @@ class FlightController extends Controller
    
     public function flightDataJson()
     {
-        $this->jsonEncode($this->flightModel->listingWithPilotAndAirplane());
+        $flightModel = new FlightModel();
+
+        $this->jsonEncode($flightModel->listingWithPilotAndAirplane());
     }
 
+    /**
+     *
+     */
     public function newAction()
     {
+        $flightModel = new FlightModel();
+        $airplaneModel = new AirplaneModel();
+        $pilotModel = new PilotModel();
+        $cityModel = new CityModel();
+
         if($_SERVER['REQUEST_METHOD'] == 'POST') {
-            $this->flightModel->insert(
+            $flightModel->insert(
                 $this->post('name'),
                 $this->post('dateOfDeparture'),
                 $this->post('dateOfArrival'),
@@ -39,16 +51,24 @@ class FlightController extends Controller
         }
 
         $this->render('back/flight/new.html.twig', array(
-            'airplanes' => $this->airplaneModel->listNames(),
-            'pilots' => $this->pilotModel->listNames(),
-            'cities' => $this->cityModel->listNames(),
+            'airplanes' => $airplaneModel->listNames(),
+            'pilots' => $pilotModel->listNames(),
+            'cities' => $cityModel->listNames(),
         ));
     }
 
+    /**
+     *
+     */
     public function editAction()
     {
+        $flightModel = new FlightModel();
+        $airplaneModel = new AirplaneModel();
+        $pilotModel = new PilotModel();
+        $cityModel = new CityModel();
+
         if($_SERVER['REQUEST_METHOD'] == 'POST') {
-            $this->flightModel->edit(
+            $flightModel->edit(
                 $this->post('name'),
                 $this->post('departureCityId'),
                 $this->post('arrivalCityId'),
@@ -61,14 +81,20 @@ class FlightController extends Controller
         }
 
         $this->render('back/flight/edit.html.twig', array(
-            'flight' => $this->flightModel->findById($this->get('id')),
-            'airplanes' => $this->airplaneModel->listNames(),
-            'pilots' => $this->pilotModel->listNames(),
-            'cities' => $this->cityModel->listNames(),
+            'flight' => $flightModel->findById($this->get('id')),
+            'airplanes' => $airplaneModel->listNames(),
+            'pilots' => $pilotModel->listNames(),
+            'cities' => $cityModel->listNames(),
         ));
     }
 
-    public function deleteAction() {
-        $this->flightModel->delete($this->get('id'));
+    /**
+     *
+     */
+    public function deleteAction()
+    {
+        $flightModel = new FlightModel();
+
+        $flightModel->delete($this->get('id'));
     }
 }

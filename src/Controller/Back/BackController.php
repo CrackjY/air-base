@@ -6,6 +6,9 @@ use Helper\Core\Controller;
 
 class BackController extends Controller
 {
+    /**
+     *
+     */
     public function homeAction()
     {
         $this->render('back/home.html.twig');

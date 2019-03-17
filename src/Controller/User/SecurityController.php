@@ -12,9 +12,7 @@ use App\Model\User\UserModel;
 class SecurityController extends Controller
 {
     /**
-     * @throws \Twig_Error_Loader
-     * @throws \Twig_Error_Runtime
-     * @throws \Twig_Error_Syntax
+     *
      */
     public function registerAction()
     {
@@ -52,9 +50,7 @@ class SecurityController extends Controller
     }
 
     /**
-     * @throws \Twig_Error_Loader
-     * @throws \Twig_Error_Runtime
-     * @throws \Twig_Error_Syntax
+     *
      */
     public function loginAction()
     {
@@ -88,6 +84,9 @@ class SecurityController extends Controller
         ));
     }
 
+    /**
+     *
+     */
     public function logout()
     {
         session_destroy();
