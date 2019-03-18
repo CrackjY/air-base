@@ -11,11 +11,6 @@ use Helper\Core\Model;
 class RoleModel extends Model
 {
     /**
-     * @var string
-     */
-    private $name;
-
-    /**
      * @param $name
      * @return bool
      */

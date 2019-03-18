@@ -2,27 +2,26 @@
 
 namespace App\Model;
 
-use Helper\Core\Model;
+use App\Manager\TypeManager;
 
-class TypeModel extends Model
+class TypeModel
 {
+    private $typeManager;
+
     public function __construct()
     {
-        parent::__construct();
+        $this->typeManager = new TypeManager();
     }
 
-    public function insert($name)
+    public function newType($name)
     {
-        return $this
-            ->prepareSql('INSERT INTO type(name, date, enabled) VALUES(?, ?, ?)')
-            ->execute([$name, $this->dateFormat, $this->enabled]);
+        return $this->typeManager->insert($name);
     }
 
-    public function listing()
+    public function findAll()
     {
-        $sql = $this->prepareSql('SELECT id, name, date, enabled FROM type');
-        $sql->execute([]);
-
-        return $sql->fetchAll(\PDO::FETCH_ASSOC);
+        return $this->typeManager->getAll();
     }
+
+
 }

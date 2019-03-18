@@ -2,36 +2,29 @@
 
 namespace App\Model;
 
-use Helper\Core\Model;
+use App\Manager\CityManager;
 
-class CityModel extends Model
+class CityModel
 {
+    private $cityManager;
+
     public function __construct()
     {
-        parent::__construct();
+        $this->cityManager = new CityManager();
     }
 
-    public function insert($name)
+    public function newCity($name)
     {
-        return $this
-            ->prepareSql('INSERT INTO city(name, date, enabled) VALUES(?, ?, ?)')
-            ->execute([$name, $this->dateFormat, $this->enabled]);
+        return $this->cityManager->insert($name);
     }
 
-    public function listing()
+    public function findAll()
     {
-        $sql = $this->prepareSql('SELECT * FROM city');
-        $sql->execute([]);
-
-        return $sql->fetchAll(\PDO::FETCH_ASSOC);
+        return $this->cityManager->getAll();
     }
 
-
-    public function listNames()
+    public function findNames()
     {
-        $sql = $this->prepareSql('SELECT id, name FROM city');
-        $sql->execute([]);
-
-        return $sql->fetchAll(\PDO::FETCH_ASSOC);
+        return $this->cityManager->getNames();
     }
 }

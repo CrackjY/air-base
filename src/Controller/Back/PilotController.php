@@ -15,7 +15,7 @@ class PilotController extends Controller
         $pilotModel = new PilotModel();
 
         $this->render('back/pilot/list.html.twig', array(
-            'pilots' => $pilotModel->listing(),
+            'pilots' => $pilotModel->findAll(),
         ));
     }
 
@@ -27,7 +27,7 @@ class PilotController extends Controller
         $pilotModel = new PilotModel();
 
         if($_SERVER['REQUEST_METHOD'] == 'POST') {
-            $pilotModel->insert($this->post('name'), $this->post('address'), $this->post('salary'));
+            $pilotModel->newPilot($this->post('name'), $this->post('address'), $this->post('salary'));
 
             $this->redirect('/air-base/?page=admin/pilots');
         }

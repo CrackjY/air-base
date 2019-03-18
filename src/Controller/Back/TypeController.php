@@ -15,7 +15,7 @@ class TypeController extends Controller
         $typeModel = new TypeModel();
 
         $this->render('back/type/list.html.twig', array(
-            'types' => $typeModel->listing(),
+            'types' => $typeModel->findAll(),
         ));
     }
 
@@ -27,7 +27,7 @@ class TypeController extends Controller
         $typeModel = new TypeModel();
 
         if($_SERVER['REQUEST_METHOD'] == 'POST') {
-            $typeModel->insert($this->post('name'));
+            $typeModel->newType($this->post('name'));
 
             $this->redirect('/air-base/?page=admin/types');
         }

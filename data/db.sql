@@ -78,10 +78,10 @@ CREATE TABLE IF NOT EXISTS `user` (
   `lastname` varchar(255),
   `pseudo` varchar(255),
   `birth_date` varchar(255),
-  `adress` varchar(255),
-  `zip_code` int(20),
+  `address` varchar(255),
+  `zip_code` varchar(255),
   `city` varchar(255),
-  `phone_number` int(20),
+  `phone_number` varchar(255),
   `email` varchar(255),
   `encrypt_password` varchar(255),
   `date` datetime,
@@ -91,7 +91,7 @@ CREATE TABLE IF NOT EXISTS `user` (
   UNIQUE KEY `pseudo` (`pseudo`)
 ) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
-INSERT INTO `user` (`id`, `firstname`, `lastname`, `pseudo`, `birth_date`, `adress`, `zip_code`, `city`, `phone_number`, `email`, `encrypt_password`, `date`, `enabled`) VALUES
+INSERT INTO `user` (`id`, `firstname`, `lastname`, `pseudo`, `birth_date`, `address`, `zip_code`, `city`, `phone_number`, `email`, `encrypt_password`, `date`, `enabled`) VALUES
 (1, 'yassine', 'latti', 'crack', '03/08/1993', '3 boulevard', 71000, 'Macon', 768887944, 'yassine.latti@gmail.com', '$2y$10$ePDhdDkq8VMOy4S67KqWF.poT2XtWg3Wx3zjJGGMusOYHaAmMtuAy', '2019-01-28 10:01:03', 1);
 
 INSERT INTO `class` (`id`, `name`, `date`, `enabled`) VALUES

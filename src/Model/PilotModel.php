@@ -2,35 +2,29 @@
 
 namespace App\Model;
 
-use Helper\Core\Model;
+use App\Manager\PilotManager;
 
-class PilotModel extends Model
+class PilotModel
 {
+    private $pilotManager;
+
     public function __construct()
     {
-        parent::__construct();
+        $this->pilotManager = new PilotManager();
     }
 
-    public function insert($name, $address, $salary)
+    public function newPilot($name, $address, $salary)
     {
-        return $this
-            ->prepareSql('INSERT INTO pilot(name, address, salary, date, enabled) VALUES(?, ?, ?, ?, ?)')
-            ->execute([$name, $address, $salary, $this->dateFormat, $this->enabled]);
+        return $this->pilotManager->insert($name, $address, $salary);
     }
 
-    public function listing()
+    public function findAll()
     {
-        $sql = $this->prepareSql('SELECT * FROM pilot');
-        $sql->execute([]);
-
-        return $sql->fetchAll(\PDO::FETCH_ASSOC);
+        return $this->pilotManager->getAll();
     }
 
-    public function listNames()
+    public function findNames()
     {
-        $sql = $this->prepareSql('SELECT id, name FROM pilot');
-        $sql->execute([]);
-
-        return $sql->fetchAll(\PDO::FETCH_ASSOC);
+        return $this->pilotManager->getNames();
     }
 }

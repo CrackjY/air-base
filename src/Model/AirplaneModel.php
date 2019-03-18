@@ -2,52 +2,39 @@
 
 namespace App\Model;
 
-use Helper\Core\Model;
+use App\Manager\AirplaneManager;
 
-class AirplaneModel extends Model
+class AirplaneModel
 {
+    private $airplaneManager;
+
     public function __construct()
     {
-        parent::__construct();
+        $this->airplaneManager = new AirplaneManager();
     }
 
-    public function insert($name, $capicityEconomic, $capacityBusiness, $capacityFirst, $capacity, $type_id)
+    public function newAirplane($name, $capacityEconomic, $capacityBusiness, $capacityFirst, $capacity, $type_id)
     {
-        return $this
-            ->prepareSql('INSERT INTO airplane(name, capacity_economic, capacity_business, capacity_first, capacity, type_id, date, enabled) VALUES(?, ?, ?, ?, ?, ?, ?, ?)')
-            ->execute([$name, $capicityEconomic, $capacityBusiness, $capacityFirst, $capacity, $type_id, $this->dateFormat, $this->enabled]);
+        return $this->airplaneManager->insert($name, $capacityEconomic, $capacityBusiness, $capacityFirst, $capacity, $type_id);
     }
 
-    public function listing()
+    public function findAll()
     {
-        $sql = $this->prepareSql('SELECT * FROM airplane');
-        $sql->execute([]);
-
-        return $sql->fetchAll(\PDO::FETCH_ASSOC);
+        return $this->airplaneManager->getAll();
     }
 
-    public function listNames()
+    public function findNames()
     {
-        $sql = $this->prepareSql('SELECT id, name FROM airplane');
-        $sql->execute([]);
-
-        return $sql->fetchAll(\PDO::FETCH_ASSOC);
+        return $this->airplaneManager->getNames();
     }
 
-    public function listingWithType($start, $limit)
+    public function findAllWithRelationship($start, $limit)
     {
-        $sql = $this->prepareSql('SELECT airplane.id, airplane.name as airplane_name, airplane.capacity_economic, airplane.capacity_business, airplane.capacity_first, airplane.capacity, type.name as type_name, airplane.date, airplane.enabled FROM airplane, type WHERE airplane.type_id = type.id ORDER BY airplane.id DESC LIMIT '.$start.','.$limit);
-        $sql->execute([]);
-
-        return $sql->fetchAll(\PDO::FETCH_ASSOC);
+        return $this->airplaneManager->getAllWithRelationship($start, $limit);
     }
 
-        public function findAllWithTypeById()
+    public function findAllWithRelationshipById()
     {
-        $sql = $this->prepareSql('SELECT airplane.id  FROM airplane, type WHERE airplane.type_id = type.id');
-        $sql->execute([]);
-
-        return $sql->fetchAll(\PDO::FETCH_ASSOC);
+        return $this->airplaneManager->getAllWithRelationshipById();
     }
-
 }

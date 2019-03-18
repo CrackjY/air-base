@@ -11,11 +11,6 @@ use Helper\Core\Model;
 class UserModel extends Model
 {
     /**
-     * @var array
-     */
-    private $roleId;
-
-    /**
      * UserModel constructor.
      */
     public function __construct()
@@ -27,18 +22,20 @@ class UserModel extends Model
      * @param $firstname
      * @param $lastname
      * @param $pseudo
-     * @param $adress
+     * @param $birth_date
+     * @param $address
      * @param $zipCode
      * @param $city
      * @param $phoneNumber
      * @param $email
      * @return bool
      */
-    public function register($firstname, $lastname, $pseudo, $adress, $zipCode, $city, $phoneNumber, $email)
+    public function register($firstname, $lastname, $pseudo, $birth_date, $address, $zipCode, $city, $phoneNumber, $email)
     {
-        $query = $this->prepareSql('INSERT INTO user(firstname, lastname, pseudo, adress, zip_code, city, phone_number, email, encrypt_password, date, enabled) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)');
 
-        return $query->execute(array($firstname, $lastname, $pseudo, $adress, $zipCode, $city, $phoneNumber, $email, $this->getEncryptPassword(), $this->dateFormat, $this->enabled));
+        $query = $this->prepareSql('INSERT INTO user(firstname, lastname, pseudo, birth_date, address, zip_code, city, phone_number, email, encrypt_password, date, enabled) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)');
+
+        return $query->execute(array($firstname, $lastname, $pseudo, $birth_date, $address, $zipCode, $city, $phoneNumber, $email, $this->getEncryptPassword(), $this->dateFormat, $this->enabled));
     }
 
     /**
@@ -58,7 +55,7 @@ class UserModel extends Model
      * @param $firstname
      * @param $lastname
      * @param $pseudo
-     * @param $adress
+     * @param $address
      * @param $zipCode
      * @param $city
      * @param $phoneNumber
@@ -66,10 +63,10 @@ class UserModel extends Model
      * @param $id
      * @return bool
      */
-    public function editUser($firstname, $lastname, $pseudo, $adress, $zipCode, $city, $phoneNumber, $email, $id) {
-        $query = $this->prepareSql('UPDATE user SET firstname = ?, lastname = ?, pseudo = ?, adress = ?, zip_code = ?, city = ?, phone_number = ?, email = ?, encrypt_password = ?, date = ?, enabled = ? WHERE id = ?');
+    public function editUser($firstname, $lastname, $pseudo, $birth_date, $address, $zipCode, $city, $phoneNumber, $email, $id) {
+        $query = $this->prepareSql('UPDATE user SET firstname = ?, lastname = ?, pseudo = ?, birth_date = ?, address = ?, zip_code = ?, city = ?, phone_number = ?, email = ?, encrypt_password = ?, date = ?, enabled = ? WHERE id = ?');
 
-        return $query->execute(array($firstname, $lastname, $pseudo, $adress, $zipCode, $city, $phoneNumber, $email, $this->getEncryptPassword(), $this->dateFormat, $this->enabled, $id));
+        return $query->execute(array($firstname, $lastname, $pseudo, $birth_date, $address, $zipCode, $city, $phoneNumber, $email, $this->getEncryptPassword(), $this->dateFormat, $this->enabled, $id));
     }
 
     //I will optimise
@@ -91,50 +88,9 @@ class UserModel extends Model
      */
     public function findAll()
     {
-        $query = $this->prepareSql('SELECT id, firstname, lastname, pseudo, adress, zip_code, city, phone_number, email, enabled FROM user');
+        $query = $this->prepareSql('SELECT id, firstname, lastname, pseudo, address, zip_code, city, phone_number, email, enabled FROM user');
         $query->execute(array());
 
         return $query->fetchAll(\PDO::FETCH_ASSOC);
     }
-
-    /**
-     * @return array
-     */
-    public function findAllWithRole()
-    {
-        $query = $this->prepareSql('SELECT us.id, ro.name, us.pseudo, us.email, us.adress, us.city, us.phone_number FROM user_role as ur inner join user as us on us.id = ur.user_id inner join role as ro on ro.id = ur.role_id');
-        $query->execute(array());
-
-        return $query->fetchAll(\PDO::FETCH_ASSOC);
-    }
-
-    /**
-     * @param $userId
-     * @return mixed
-     */
-    public function findByUserIdWithRole($userId)
-    {
-        $query = $this->prepareSql('SELECT ro.id, ro.name, us.firstname, us.lastname, us.pseudo, us.adress, us.zip_code, us.city, us.phone_number, us.email, us.enabled FROM user_role as ur inner join user as us on us.id = ur.user_id inner join role as ro on ro.id = ur.role_id WHERE us.id = ?');
-        $query->execute(array($userId));
-
-        return $query->fetch(\PDO::FETCH_ASSOC);
-    }
-
-    /**
-     * @return array
-     */
-    public function findByUserId()
-    {
-        $query = $this->prepareSql('select user.id, user_role.role_id from user, user_role where user.id = user_role.user_id');
-        $query->execute(array());
-
-        return $query->fetchAll(\PDO::FETCH_ASSOC);
-    }
-
-    /*
-    public function getUserId($pseudo)
-    {
-        return $this->getUserIdByPseudo($pseudo);
-    }
-    */
 }

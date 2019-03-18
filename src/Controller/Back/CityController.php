@@ -15,7 +15,7 @@ class CityController extends Controller
         $cityModel = new CityModel();
 
         $this->render('back/city/list.html.twig', array(
-            'cities' => $cityModel->listing(),
+            'cities' => $cityModel->findAll(),
         ));
     }
 
@@ -27,7 +27,7 @@ class CityController extends Controller
         $cityModel = new CityModel();
 
         if($_SERVER['REQUEST_METHOD'] == 'POST') {
-            $cityModel->insert($this->post('name'));
+            $cityModel->newCity($this->post('name'));
 
             $this->redirect('/air-base/?page=admin/cities');
         }

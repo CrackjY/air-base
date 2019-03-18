@@ -11,7 +11,7 @@ class Database extends Parameter
     /**
      * @var $db
      */
-    private $db;
+    protected $db;
 
     public function dbConnect()
     {

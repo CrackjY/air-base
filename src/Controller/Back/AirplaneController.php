@@ -16,7 +16,7 @@ class AirplaneController extends Controller
         $airplaneModel = new AirplaneModel();
 
         $limit = 5;
-        $airplanes = $airplaneModel->findAllWithTypeById();
+        $airplanes = $airplaneModel->findAllWithRelationshipById();
         $all = count($airplanes);
 
         if (isset($_GET['pagination']) AND !empty($_GET['pagination']) AND $_GET['pagination'] > 0) {
@@ -31,7 +31,7 @@ class AirplaneController extends Controller
         // $this->jsonEncode($this->airplaneModel->listingWithType($start, $limit));
 
         $this->render('back/airplane/list.html.twig', array(
-            'airplanesWithType' => $airplaneModel->listingWithType($start, $limit),
+            'airplanesWithType' => $airplaneModel->findAllWithRelationship($start, $limit),
         ));
     }
 
@@ -41,10 +41,10 @@ class AirplaneController extends Controller
     public function newAction()
     {
         $airplaneModel = new AirplaneModel();
-        $typeModel =new TypeModel();
+        $typeModel = new TypeModel();
 
         if($_SERVER['REQUEST_METHOD'] == 'POST') {
-            $airplaneModel->insert(
+            $airplaneModel->newAirplane(
                 $this->post('name'),
                 $this->post('capacityEconomic'),
                 $this->post('capacityBusiness'),
@@ -57,7 +57,7 @@ class AirplaneController extends Controller
         }
 
         $this->render('back/airplane/new.html.twig', array(
-            'types' => $typeModel->listing(),
+            'types' => $typeModel->findAll(),
         ));
     }
 }

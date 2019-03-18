@@ -22,7 +22,7 @@ class FlightController extends Controller
     {
         $flightModel = new FlightModel();
 
-        $this->jsonEncode($flightModel->listingWithPilotAndAirplane());
+        $this->jsonEncode($flightModel->findAllWithRelationship());
     }
 
     /**
@@ -36,7 +36,7 @@ class FlightController extends Controller
         $cityModel = new CityModel();
 
         if($_SERVER['REQUEST_METHOD'] == 'POST') {
-            $flightModel->insert(
+            $flightModel->newFlight(
                 $this->post('name'),
                 $this->post('dateOfDeparture'),
                 $this->post('dateOfArrival'),
@@ -51,9 +51,9 @@ class FlightController extends Controller
         }
 
         $this->render('back/flight/new.html.twig', array(
-            'airplanes' => $airplaneModel->listNames(),
-            'pilots' => $pilotModel->listNames(),
-            'cities' => $cityModel->listNames(),
+            'airplanes' => $airplaneModel->findNames(),
+            'pilots' => $pilotModel->findNames(),
+            'cities' => $cityModel->findNames(),
         ));
     }
 
@@ -68,7 +68,7 @@ class FlightController extends Controller
         $cityModel = new CityModel();
 
         if($_SERVER['REQUEST_METHOD'] == 'POST') {
-            $flightModel->edit(
+            $flightModel->editFlight(
                 $this->post('name'),
                 $this->post('departureCityId'),
                 $this->post('arrivalCityId'),
@@ -82,9 +82,9 @@ class FlightController extends Controller
 
         $this->render('back/flight/edit.html.twig', array(
             'flight' => $flightModel->findById($this->get('id')),
-            'airplanes' => $airplaneModel->listNames(),
-            'pilots' => $pilotModel->listNames(),
-            'cities' => $cityModel->listNames(),
+            'airplanes' => $airplaneModel->findNames(),
+            'pilots' => $pilotModel->findNames(),
+            'cities' => $cityModel->findNames(),
         ));
     }
 
@@ -95,6 +95,6 @@ class FlightController extends Controller
     {
         $flightModel = new FlightModel();
 
-        $flightModel->delete($this->get('id'));
+        $flightModel->deleteFlight($this->get('id'));
     }
 }
