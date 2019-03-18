@@ -2,26 +2,17 @@
 
 namespace App\Model;
 
-use App\Manager\TypeManager;
+use Helper\Core\Model;
 
-class TypeModel
+class TypeModel extends Model
 {
-    private $typeManager;
-
-    public function __construct()
-    {
-        $this->typeManager = new TypeManager();
-    }
-
     public function newType($name)
     {
-        return $this->typeManager->insert($name);
+        return $this->getTypeManager()->insert($name);
     }
 
     public function findAll()
     {
-        return $this->typeManager->getAll();
+        return $this->getTypeManager()->getAll();
     }
-
-
 }

@@ -2,39 +2,32 @@
 
 namespace App\Model;
 
-use App\Manager\AirplaneManager;
+use Helper\Core\Model;
 
-class AirplaneModel
+class AirplaneModel extends Model
 {
-    private $airplaneManager;
-
-    public function __construct()
-    {
-        $this->airplaneManager = new AirplaneManager();
-    }
-
     public function newAirplane($name, $capacityEconomic, $capacityBusiness, $capacityFirst, $capacity, $type_id)
     {
-        return $this->airplaneManager->insert($name, $capacityEconomic, $capacityBusiness, $capacityFirst, $capacity, $type_id);
+        return $this->getAirplaneManager()->insert($name, $capacityEconomic, $capacityBusiness, $capacityFirst, $capacity, $type_id);
     }
 
     public function findAll()
     {
-        return $this->airplaneManager->getAll();
+        return $this->getAirplaneManager()->getAll();
     }
 
     public function findNames()
     {
-        return $this->airplaneManager->getNames();
+        return $this->getAirplaneManager()->getNames();
     }
 
     public function findAllWithRelationship($start, $limit)
     {
-        return $this->airplaneManager->getAllWithRelationship($start, $limit);
+        return $this->getAirplaneManager()->getAllWithRelationship($start, $limit);
     }
 
     public function findAllWithRelationshipById()
     {
-        return $this->airplaneManager->getAllWithRelationshipById();
+        return $this->getAirplaneManager()->getAllWithRelationshipById();
     }
 }

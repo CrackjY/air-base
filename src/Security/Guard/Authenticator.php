@@ -8,7 +8,7 @@ use Helper\Core\SuperGlobal;
  * Class Authenticator
  * @package App\Security\Guard
  */
-abstract class Authenticator
+class Authenticator
 {
     /**
      * @var $encryptPassword

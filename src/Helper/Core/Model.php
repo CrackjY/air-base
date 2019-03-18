@@ -2,45 +2,66 @@
 
 namespace Helper\Core;
 
-use Config\Database;
+use App\Manager\User\UserManager;
+use App\Manager\TypeManager;
+use App\Manager\CityManager;
+use App\Manager\PilotManager;
+use App\Manager\AirplaneManager;
+use App\Manager\FlightManager;
 
 abstract class Model
 {
-    private $db;
+    protected $userManager;
 
-    private $date;
+    protected $airplaneManager;
 
-    protected $dateFormat;
+    protected $cityManager;
 
-    protected $enabled;
+    protected $flightManager;
 
-    protected $sg;
+    protected $pilotManager;
 
-    protected $encryptPassword;
+    protected $typeManager;
 
-    public function __construct()
+    public function getUserManager()
     {
-        $this->date = new \DateTime();
-        $this->dateFormat = $this->date->format('Y-m-d H:m:s');
-        $this->enabled = true;
+        $this->userManager = new UserManager();
+
+        return $this->userManager;
     }
 
-    public function prepareSql($string, $array = [])
+    public function getAirplaneManager()
     {
-        $this->db = new Database();
+        $this->airplaneManager = new AirplaneManager();
 
-        return $this->db->dbConnect()->prepare($string, $array);
+        return $this->airplaneManager;
     }
 
-    private function encryptPassword($plainPassword)
+    public function getCityManager()
     {
-        return password_hash($plainPassword, PASSWORD_DEFAULT);
+        $this->cityManager = new CityManager();
+
+        return $this->cityManager;
     }
 
-    protected function getEncryptPassword() {
-        $sg = new SuperGlobal();
-        $this->encryptPassword = $this->encryptPassword($sg->post('password'));
+    public function getFlightManager()
+    {
+        $this->flightManager = new FlightManager();
 
-        return $this->encryptPassword;
+        return $this->flightManager;
+    }
+
+    public function getPilotManager()
+    {
+        $this->pilotManager = new PilotManager();
+
+        return $this->pilotManager;
+    }
+
+    public function getTypeManager()
+    {
+        $this->typeManager = new TypeManager();
+
+        return $this->typeManager;
     }
 }

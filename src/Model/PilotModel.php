@@ -2,29 +2,22 @@
 
 namespace App\Model;
 
-use App\Manager\PilotManager;
+use Helper\Core\Model;
 
-class PilotModel
+class PilotModel extends Model
 {
-    private $pilotManager;
-
-    public function __construct()
-    {
-        $this->pilotManager = new PilotManager();
-    }
-
     public function newPilot($name, $address, $salary)
     {
-        return $this->pilotManager->insert($name, $address, $salary);
+        return $this->getPilotManager()->insert($name, $address, $salary);
     }
 
     public function findAll()
     {
-        return $this->pilotManager->getAll();
+        return $this->getPilotManager()->getAll();
     }
 
     public function findNames()
     {
-        return $this->pilotManager->getNames();
+        return $this->getPilotManager()->getNames();
     }
 }

@@ -2,29 +2,22 @@
 
 namespace App\Model;
 
-use App\Manager\CityManager;
+use Helper\Core\Model;
 
-class CityModel
+class CityModel extends Model
 {
-    private $cityManager;
-
-    public function __construct()
-    {
-        $this->cityManager = new CityManager();
-    }
-
     public function newCity($name)
     {
-        return $this->cityManager->insert($name);
+        return $this->getCityManager()->insert($name);
     }
 
     public function findAll()
     {
-        return $this->cityManager->getAll();
+        return $this->getCityManager()->getAll();
     }
 
     public function findNames()
     {
-        return $this->cityManager->getNames();
+        return $this->getCityManager()->getNames();
     }
 }

@@ -20,20 +20,19 @@ class FrontController extends Controller
 
         $this->render('front/home.html.twig', [
             'msg' => $unsetAuthSuccessMsg,
-            'flights' => $flightModel->listingWithPilotAndAirplaneFront(),
-            'cities' => $cityModel->listNames(),
+            'flights' => $flightModel->findAllWithRelationship(),
+            'cities' => $cityModel->findNames(),
         ]);
     }
 
-    /**
-     *
-     */
+    /*
     public function flightDataJson()
     {
         $flightModel = new FlightModel();
 
-        $this->jsonEncode($flightModel->listingWithPilotAndAirplaneFront());
+        $this->jsonEncode($flightModel->findAllWithRelationship());
     }
+    */
 
     /**
      *
@@ -54,7 +53,7 @@ class FrontController extends Controller
 
         $this->render('front/search_result.html.twig', [
             'flights' => $flightModel->searchByTerm($this->post('flightSearch')),
-            'cities' => $cityModel->listNames(),
+            'cities' => $cityModel->findNames(),
         ]);
     }
 
@@ -74,7 +73,7 @@ class FrontController extends Controller
         );
 
         $this->render('front/advanced_search_result.html.twig', [
-            'cities' => $cityModel->listNames(),
+            'cities' => $cityModel->findNames(),
             'criteria' => $criteria,
         ]);
     }

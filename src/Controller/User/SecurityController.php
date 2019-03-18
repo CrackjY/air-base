@@ -33,7 +33,7 @@ class SecurityController extends Controller
                 $phoneNumber = $this->post('phone');
                 $email =$this->post('email');
 
-                $userModel->register($firstname, $lastname, $pseudo, $birth_date, $address, $zipCode, $city, $phoneNumber, $email);
+                $userModel->newUser($firstname, $lastname, $pseudo, $birth_date, $address, $zipCode, $city, $phoneNumber, $email);
 
                 $this
                     ->flash()
@@ -62,7 +62,7 @@ class SecurityController extends Controller
 
         $messages = [];
 
-        $credentials = $userModel->getCredentials($email);
+        $credentials = $userModel->findCredentials($email);
 
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 

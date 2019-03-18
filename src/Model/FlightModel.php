@@ -2,49 +2,42 @@
 
 namespace App\Model;
 
-use App\Manager\FlightManager;
+use Helper\Core\Model;
 
-class FlightModel
+class FlightModel extends Model
 {
-    private $flightManager;
-
-    public function __construct()
-    {
-        $this->flightManager = new FlightManager();
-    }
-
     public function newFlight($name, $dateOfDeparture, $dateOfArrival, $departureCity, $arrivalCity, $pilot, $price, $airplane)
     {
-        return $this->flightManager->insert($name, $dateOfDeparture, $dateOfArrival, $departureCity, $arrivalCity, $pilot, $price, $airplane);
+        return $this->getFlightManager()->insert($name, $dateOfDeparture, $dateOfArrival, $departureCity, $arrivalCity, $pilot, $price, $airplane);
     }
 
     public function editFlight($name, $departureCity, $arrivalCity, $pilot, $airplane, $id)
     {
-        return $this->flightManager->edit($name, $departureCity, $arrivalCity, $pilot, $airplane, $id);
+        return $this->getFlightManager()->edit($name, $departureCity, $arrivalCity, $pilot, $airplane, $id);
     }
 
     public function findAllWithRelationship()
     {
-        return $this->flightManager->getAllWithRelationship();
+        return $this->getFlightManager()->getAllWithRelationship();
     }
 
     public function findById($id)
     {
-        return $this->flightManager->getById($id);
+        return $this->getFlightManager()->getById($id);
     }
 
     public function deleteFlight($ids)
     {
-        return $this->flightManager->delete($ids);
+        return $this->getFlightManager()->delete($ids);
     }
 
     public function searchByTerm($term)
     {
-        return $this->flightManager->searchByTerm($term);
+        return $this->getFlightManager()->searchByTerm($term);
     }
 
     public function advancedSearch($dateOfDeparture, $dateOfArrival, $departureCity, $arrivalCity)
     {
-        return $this->flightManager->advancedSearch($dateOfDeparture, $dateOfArrival, $departureCity, $arrivalCity);
+        return $this->getFlightManager()->advancedSearch($dateOfDeparture, $dateOfArrival, $departureCity, $arrivalCity);
     }
 }
