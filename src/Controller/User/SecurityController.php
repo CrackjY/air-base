@@ -22,11 +22,11 @@ class SecurityController extends Controller
 
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
-            if (!empty($this->post('firstname')) && !empty($this->post('lastname')) && !empty($this->post('pseudo')) && !empty($this->post('adress')) && !empty($this->post('zip_code')) && !empty($this->post('city')) && !empty($this->post('phone')) && !empty($this->post('email')) && !empty($this->post('password'))) {
+            if (!empty($this->post('firstname')) && !empty($this->post('lastname')) && !empty($this->post('pseudo')) && !empty($this->post('address')) && !empty($this->post('zip_code')) && !empty($this->post('city')) && !empty($this->post('phone')) && !empty($this->post('email')) && !empty($this->post('password'))) {
                 $firstname = $this->post('firstname');
                 $lastname = $this->post('lastname');
                 $pseudo = $this->post('pseudo');
-                $adress = $this->post('adress');
+                $adress = $this->post('address');
                 $zipCode = $this->post('zip_code');
                 $city = $this->post('city');
                 $phoneNumber = $this->post('phone');
@@ -87,11 +87,13 @@ class SecurityController extends Controller
     /**
      *
      */
-    public function logout()
+    public function logoutAction()
     {
-        session_destroy();
-        session_unset();
-        $this->redirect('/air-base/');
-    }
+        if (session_start()) {
+            session_destroy();
+            session_unset();
 
+            $this->redirect('/air-base/');
+       }
+    }
 }

@@ -48,7 +48,7 @@ class Routing extends Instance
                 case 'logout';
                     $this
                         ->getSecurityController()
-                        ->logout();
+                        ->logoutAction();
                     exit;
 
                 //Back
