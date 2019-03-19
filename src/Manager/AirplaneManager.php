@@ -4,8 +4,21 @@ namespace App\Manager;
 
 use Helper\Sql\SqlFeature;
 
+/**
+ * Class AirplaneManager
+ * @package App\Manager
+ */
 class AirplaneManager extends SqlFeature
 {
+    /**
+     * @param $name
+     * @param $capacityEconomic
+     * @param $capacityBusiness
+     * @param $capacityFirst
+     * @param $capacity
+     * @param $type_id
+     * @return bool
+     */
     public function insert($name, $capacityEconomic, $capacityBusiness, $capacityFirst, $capacity, $type_id)
     {
         return $this
@@ -13,6 +26,9 @@ class AirplaneManager extends SqlFeature
             ->execute([$name, $capacityEconomic, $capacityBusiness, $capacityFirst, $capacity, $type_id, $this->dateFormat, $this->enabled]);
     }
 
+    /**
+     * @return array
+     */
     public function getAll()
     {
         $sql = $this->prepareSql('SELECT * FROM airplane');
@@ -21,6 +37,9 @@ class AirplaneManager extends SqlFeature
         return $sql->fetchAll(\PDO::FETCH_ASSOC);
     }
 
+    /**
+     * @return array
+     */
     public function getNames()
     {
         $sql = $this->prepareSql('SELECT id, name FROM airplane');
@@ -29,6 +48,11 @@ class AirplaneManager extends SqlFeature
         return $sql->fetchAll(\PDO::FETCH_ASSOC);
     }
 
+    /**
+     * @param $start
+     * @param $limit
+     * @return array
+     */
     public function getAllWithRelationship($start, $limit)
     {
         $sql = $this->prepareSql('SELECT airplane.id, airplane.name as airplane_name, airplane.capacity_economic, airplane.capacity_business, airplane.capacity_first, airplane.capacity, type.name as type_name, airplane.date, airplane.enabled FROM airplane, type WHERE airplane.type_id = type.id ORDER BY airplane.id DESC LIMIT '.$start.','.$limit);
@@ -37,6 +61,9 @@ class AirplaneManager extends SqlFeature
         return $sql->fetchAll(\PDO::FETCH_ASSOC);
     }
 
+    /**
+     * @return array
+     */
     public function getAllWithRelationshipById()
     {
         $sql = $this->prepareSql('SELECT airplane.id  FROM airplane, type WHERE airplane.type_id = type.id');

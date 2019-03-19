@@ -129,21 +129,7 @@ class Routing extends Instance
                         ->getFlightController()
                         ->flightDataJson();
                     exit;
-                    // front
-                case 'api/flights';
-                    $this
-                        ->getFrontController()
-                        ->flightDataJson();
-                    exit;
             }
         }
-    }
-
-    public function routingFrontAction()
-    {
-    }
-
-    public function routingBackAction()
-    {
     }
 }

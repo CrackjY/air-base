@@ -4,8 +4,18 @@ namespace App\Manager;
 
 use Helper\Sql\SqlFeature;
 
+/**
+ * Class PilotManager
+ * @package App\Manager
+ */
 class PilotManager extends SqlFeature
 {
+    /**
+     * @param $name
+     * @param $address
+     * @param $salary
+     * @return bool
+     */
     public function insert($name, $address, $salary)
     {
         return $this
@@ -13,6 +23,9 @@ class PilotManager extends SqlFeature
             ->execute([$name, $address, $salary, $this->dateFormat, $this->enabled]);
     }
 
+    /**
+     * @return array
+     */
     public function getAll()
     {
         $sql = $this->prepareSql('SELECT * FROM pilot');
@@ -21,6 +34,9 @@ class PilotManager extends SqlFeature
         return $sql->fetchAll(\PDO::FETCH_ASSOC);
     }
 
+    /**
+     * @return array
+     */
     public function getNames()
     {
         $sql = $this->prepareSql('SELECT id, name FROM pilot');

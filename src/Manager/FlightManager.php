@@ -4,8 +4,23 @@ namespace App\Manager;
 
 use Helper\Sql\SqlFeature;
 
+/**
+ * Class FlightManager
+ * @package App\Manager
+ */
 class FlightManager extends SqlFeature
 {
+    /**
+     * @param $name
+     * @param $dateOfDeparture
+     * @param $dateOfArrival
+     * @param $departureCity
+     * @param $arrivalCity
+     * @param $pilot
+     * @param $price
+     * @param $airplane
+     * @return bool
+     */
     public function insert($name, $dateOfDeparture, $dateOfArrival, $departureCity, $arrivalCity, $pilot, $price, $airplane)
     {
         return $this
@@ -15,6 +30,15 @@ class FlightManager extends SqlFeature
             ->execute([$name, $dateOfDeparture, $dateOfArrival,  $departureCity, $arrivalCity, $pilot,  $price, $airplane,  $this->dateFormat, $this->enabled]);
     }
 
+    /**
+     * @param $name
+     * @param $departureCity
+     * @param $arrivalCity
+     * @param $pilot
+     * @param $airplane
+     * @param $id
+     * @return bool
+     */
     public function edit($name, $departureCity, $arrivalCity, $pilot, $airplane, $id)
     {
         return $this
@@ -22,6 +46,10 @@ class FlightManager extends SqlFeature
             ->execute([$name, $departureCity, $arrivalCity, $pilot, $airplane,  $this->dateFormat, $this->enabled, $id]);
     }
 
+    /**
+     * @param $id
+     * @return mixed
+     */
     public function getById($id)
     {
         $sql = $this->prepareSql('
@@ -56,7 +84,9 @@ class FlightManager extends SqlFeature
         return $sql->fetch(\PDO::FETCH_ASSOC);
     }
 
-
+    /**
+     * @return array
+     */
     public function getAllWithRelationship()
     {
         $sql = $this->prepareSql('
@@ -84,6 +114,9 @@ class FlightManager extends SqlFeature
         return $sql->fetchAll(\PDO::FETCH_ASSOC);
     }
 
+    /**
+     * @return array
+     */
     public function getAllWithRelationshipFront()
     {
         $sql = $this->prepareSql('
@@ -110,6 +143,10 @@ class FlightManager extends SqlFeature
         return $sql->fetchAll(\PDO::FETCH_ASSOC);
     }
 
+    /**
+     * @param $ids
+     * @return bool
+     */
     public function delete($ids) {
         return $this
             ->prepareSql("DELETE FROM flight WHERE id IN ($ids)")
@@ -146,6 +183,13 @@ class FlightManager extends SqlFeature
         }
     }
 
+    /**
+     * @param $dateOfDeparture
+     * @param $dateOfArrival
+     * @param $departureCity
+     * @param $arrivalCity
+     * @return array
+     */
     public function advancedSearch($dateOfDeparture, $dateOfArrival, $departureCity, $arrivalCity)
     {
         $sql = $this->prepareSql('

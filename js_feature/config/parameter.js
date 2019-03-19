@@ -11,4 +11,4 @@ let urlPieces = {
 // Back flight
 let $locationHrefFlightBack = 'http://localhost/air-base/?page=admin/flights';
 let $urlApiFlightBack = 'http://localhost/air-base/?page=api/admin/flights';
-let $urlDeleteFlightBack = 'http://localhost/air-base/?page=admin/flights/delete&id=';
+let $urlDeleteFlightBack = 'http://localhost/air-base/?page=admin/flights/delete&ids=';

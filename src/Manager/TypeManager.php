@@ -10,6 +10,10 @@ use Helper\Sql\SqlFeature;
  */
 class TypeManager extends SqlFeature
 {
+    /**
+     * @param $name
+     * @return bool
+     */
     public function insert($name)
     {
         return $this
@@ -17,6 +21,9 @@ class TypeManager extends SqlFeature
             ->execute([$name, $this->dateFormat, $this->enabled]);
     }
 
+    /**
+     * @return array
+     */
     public function getAll()
     {
         $sql = $this->prepareSql('SELECT id, name, date, enabled FROM type');

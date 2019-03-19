@@ -95,6 +95,6 @@ class FlightController extends Controller
     {
         $flightModel = new FlightModel();
 
-        $flightModel->deleteFlight($this->get('id'));
+        $flightModel->deleteFlight($this->get('ids'));
     }
 }

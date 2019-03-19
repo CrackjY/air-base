@@ -4,8 +4,25 @@ namespace App\Manager\User;
 
 use Helper\Sql\SqlFeature;
 
+/**
+ * Class UserManager
+ * @package App\Manager\User
+ */
 class UserManager extends SqlFeature
 {
+    /**
+     * @param $firstname
+     * @param $lastname
+     * @param $pseudo
+     * @param $birth_date
+     * @param $address
+     * @param $zipCode
+     * @param $city
+     * @param $phoneNumber
+     * @param $email
+     * @param $encryptPassword
+     * @return bool
+     */
     public function register($firstname, $lastname, $pseudo, $birth_date, $address, $zipCode, $city, $phoneNumber, $email, $encryptPassword)
     {
 
