@@ -43,7 +43,7 @@ abstract class Parameter
      */
     public function getUser()
     {
-        return $this->user = 'root';
+        return $this->user = 'postgres';
     }
 
     /**
@@ -51,6 +51,6 @@ abstract class Parameter
      */
     public function getPassword()
     {
-        return $this->password = '';
+        return $this->password = 'plop06';
     }
 }

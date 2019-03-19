@@ -15,6 +15,6 @@ class Database extends Parameter
 
     public function dbConnect()
     {
-        return $this->db = new \PDO("mysql:host=".$this->getHost().";dbname=".$this->getName().";", $this->getUser(), $this->getPassword());
+        return $this->db = new \PDO("pgsql:host=".$this->getHost().";dbname=".$this->getName().";", $this->getUser(), $this->getPassword());
     }
 }

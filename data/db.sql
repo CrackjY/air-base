@@ -112,7 +112,8 @@ INSERT INTO `city` (`id`, `name`, `date`, `enabled`) VALUES
 (2, 'miami', '2019-01-31 15:01:31', 1),
 (3, 'los angeles', '2019-01-31 15:01:47', 1),
 (4, 'paris', '2019-01-31 15:01:01', 1),
-(5, 'mÃ¢con', '2019-01-31 15:01:09', 1);
+(5, 'milan', '2019-05-31 17:01:09', 1),
+(6, 'mâcon', '2019-01-31 15:01:09', 1);
 COMMIT;
 
 INSERT INTO `pilot` (`id`, `name`, `address`, `salary`, `date`, `enabled`) VALUES

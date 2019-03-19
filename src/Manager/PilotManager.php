@@ -19,7 +19,7 @@ class PilotManager extends SqlFeature
     public function insert($name, $address, $salary)
     {
         return $this
-            ->prepareSql('INSERT INTO pilot(name, address, salary, date, enabled) VALUES(?, ?, ?, ?, ?)')
+            ->prepareSql('INSERT INTO air_base_pilot(name, address, salary, date, enabled) VALUES(?, ?, ?, ?, ?)')
             ->execute([$name, $address, $salary, $this->dateFormat, $this->enabled]);
     }
 
@@ -28,7 +28,7 @@ class PilotManager extends SqlFeature
      */
     public function getAll()
     {
-        $sql = $this->prepareSql('SELECT * FROM pilot');
+        $sql = $this->prepareSql('SELECT * FROM air_base_pilot');
         $sql->execute([]);
 
         return $sql->fetchAll(\PDO::FETCH_ASSOC);
@@ -39,7 +39,7 @@ class PilotManager extends SqlFeature
      */
     public function getNames()
     {
-        $sql = $this->prepareSql('SELECT id, name FROM pilot');
+        $sql = $this->prepareSql('SELECT id, name FROM air_base_pilot');
         $sql->execute([]);
 
         return $sql->fetchAll(\PDO::FETCH_ASSOC);
