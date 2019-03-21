@@ -193,7 +193,7 @@ class FlightManager extends SqlFeature
      */
     public function delete($ids) {
         return $this
-            ->prepareSql("DELETE FROM air_base_flight WHERE id IN ($ids) CASCADE")
-            ->execute(array($ids));
+            ->prepareSql("DELETE FROM air_base_flight WHERE id IN ($ids)")
+            ->execute(array());
     }
 }
