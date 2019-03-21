@@ -66,7 +66,7 @@ class AirplaneManager extends SqlFeature
      */
     public function getAllWithRelationshipById()
     {
-        $sql = $this->prepareSql('SELECT airplane.id  FROM air_base_airplane, type WHERE airplane.type_id = air_base_type.id');
+        $sql = $this->prepareSql('SELECT air_base_airplane.id  FROM air_base_airplane, type WHERE air_base_airplane.type_id = air_base_type.id');
         $sql->execute([]);
 
         return $sql->fetchAll(\PDO::FETCH_ASSOC);

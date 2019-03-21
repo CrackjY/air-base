@@ -114,16 +114,6 @@ class FlightManager extends SqlFeature
         return $sql->fetchAll(\PDO::FETCH_ASSOC);
     }
 
-    /**
-     * @param $ids
-     * @return bool
-     */
-    public function delete($ids) {
-        return $this
-            ->prepareSql("DELETE FROM flight WHERE id IN ($ids)")
-            ->execute([$ids]);
-    }
-
     public function searchByTerm($term)
     {
         if (!empty($term)) {
@@ -195,5 +185,15 @@ class FlightManager extends SqlFeature
         ));
 
         return $sql->fetchAll(\PDO::FETCH_ASSOC);
+    }
+
+    /**
+     * @param $ids
+     * @return bool
+     */
+    public function delete($ids) {
+        return $this
+            ->prepareSql("DELETE FROM air_base_flight WHERE id IN ($ids) CASCADE")
+            ->execute(array($ids));
     }
 }

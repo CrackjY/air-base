@@ -60,9 +60,7 @@
 				});
 	
 				trash.addEventListener('click', (e) => {
-					e.preventDefault();
-	
-					if (flightIds.length < 0) {
+					/*if (flightIds.length < 0) {
 						console.log('empty !');
 					} else {
 						fetch($urlDeleteFlightBack + flightIds.join(), {
@@ -70,14 +68,13 @@
 						});
 	
 						flightIds = [];
-					}
+					}*/
 	
-					document.querySelectorAll('.row-flight').forEach((row) => {
+					/*document.querySelectorAll('.row-flight').forEach((row) => {
 						if (row.getAttribute('checked')) {
 							row.style.display = 'none';
 						}
-					});
-	
+					});*/
 				}); 
 			});
 	}
