@@ -82,6 +82,20 @@ CREATE TABLE air_base_user (
   enabled boolean
 );
 
+CREATE TABLE air_base_role (
+  id serial primary key,
+  name varchar(255),
+  date timestamp without time zone,
+  enabled boolean
+);
+
+CREATE TABLE air_base_user_role (
+  user_id int,
+  role_id int,
+  foreign key (user_id) REFERENCES air_base_user (id),
+  foreign key (role_id) REFERENCES air_base_role (id)
+);
+
 INSERT INTO air_base_city (name, date, enabled) VALUES
 ('london', '2019-01-31 15:01:15', true),
 ('miami', '2019-01-31 15:01:31', true),
