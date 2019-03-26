@@ -109,7 +109,7 @@ INSERT INTO air_base_class (name, date, enabled) VALUES
 COMMIT;
 
 INSERT INTO air_base_pilot (name, address, salary, date, enabled) VALUES
-('yassine', '3 rue de paris 71 000 mÃ¢con', '5000.00', '2019-01-28 08:01:23', true),
+('yassine', '3 rue de paris 71 000 mâcon', '5000.00', '2019-01-28 08:01:23', true),
 ('myriam', '10 rue de londre 40 001', '43.00', '2019-01-28 08:01:51', true),
 ('max', '1 rue président kenedy', '6000.00', '2019-01-28 08:01:18', true);
 COMMIT;

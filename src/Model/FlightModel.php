@@ -58,15 +58,15 @@ class FlightModel extends Model
     }
 
     /**
-     * @param $dateOfDeparture
-     * @param $dateOfArrival
      * @param $departureCity
      * @param $arrivalCity
+     * @param $dateOfDeparture
+     * @param $dateOfArrival
      * @return array
      */
-    public function advancedSearch($dateOfDeparture, $dateOfArrival, $departureCity, $arrivalCity)
+    public function advancedSearch($departureCity, $arrivalCity, $dateOfDeparture, $dateOfArrival)
     {
-        return $this->getFlightManager()->advancedSearch($dateOfDeparture, $dateOfArrival, $departureCity, $arrivalCity);
+        return $this->getFlightManager()->advancedSearch($departureCity, $arrivalCity, $dateOfDeparture, $dateOfArrival);
     }
 
     /**

@@ -16,6 +16,7 @@ class Routing extends Instance
 
         if (isset($_GET['page'])) {
             switch ($_GET['page']) {
+
                 // Front
                 case 'flights/search';
                     $this
@@ -27,6 +28,7 @@ class Routing extends Instance
                         ->getFrontController()
                         ->advancedSearchAction();
                     exit;
+
                 // Flight
                 case 'flight/show';
                     $this
@@ -57,6 +59,7 @@ class Routing extends Instance
                         ->getBackController()
                         ->homeAction();
                     exit;
+
                 //City
                 case 'admin/cities';
                     $this
@@ -68,6 +71,7 @@ class Routing extends Instance
                         ->getCityController()
                         ->newAction();
                     exit;
+
                 //Airplane
                 case 'admin/airplanes';
                     $this
@@ -79,6 +83,7 @@ class Routing extends Instance
                         ->getAirplaneController()
                         ->newAction();
                     exit;
+
                 //Type
                 case 'admin/types';
                     $this
@@ -90,6 +95,7 @@ class Routing extends Instance
                         ->getTypeController()
                         ->newAction();
                     exit;
+
                 //Pilot
                 case 'admin/pilots';
                     $this
@@ -101,6 +107,7 @@ class Routing extends Instance
                         ->getPilotController()
                         ->newAction();
                     exit;
+
                 //Flight
                 case 'admin/flights';
                     $this

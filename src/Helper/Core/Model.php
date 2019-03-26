@@ -23,6 +23,9 @@ abstract class Model
 
     protected $typeManager;
 
+    /**
+     * @return UserManager
+     */
     public function getUserManager()
     {
         $this->userManager = new UserManager();
@@ -30,6 +33,9 @@ abstract class Model
         return $this->userManager;
     }
 
+    /**
+     * @return AirplaneManager
+     */
     public function getAirplaneManager()
     {
         $this->airplaneManager = new AirplaneManager();
@@ -37,6 +43,9 @@ abstract class Model
         return $this->airplaneManager;
     }
 
+    /**
+     * @return CityManager
+     */
     public function getCityManager()
     {
         $this->cityManager = new CityManager();
@@ -44,6 +53,9 @@ abstract class Model
         return $this->cityManager;
     }
 
+    /**
+     * @return FlightManager
+     */
     public function getFlightManager()
     {
         $this->flightManager = new FlightManager();
@@ -51,6 +63,9 @@ abstract class Model
         return $this->flightManager;
     }
 
+    /**
+     * @return PilotManager
+     */
     public function getPilotManager()
     {
         $this->pilotManager = new PilotManager();
@@ -58,6 +73,9 @@ abstract class Model
         return $this->pilotManager;
     }
 
+    /**
+     * @return TypeManager
+     */
     public function getTypeManager()
     {
         $this->typeManager = new TypeManager();

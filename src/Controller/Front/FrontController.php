@@ -25,15 +25,6 @@ class FrontController extends Controller
         ]);
     }
 
-    /*
-    public function flightDataJson()
-    {
-        $flightModel = new FlightModel();
-
-        $this->jsonEncode($flightModel->findAllWithRelationship());
-    }
-    */
-
     /**
      *
      */
@@ -66,11 +57,12 @@ class FrontController extends Controller
         $flightModel = new FlightModel();
 
         $criteria = $flightModel->advancedSearch(
-            $this->post('searchByDateOfDeparture'),
-            $this->post('searchByDateOfArrival'),
             $this->post('searchByDepartureCity'),
-            $this->post('searchByArrivalCity')
+            $this->post('searchByArrivalCity'),
+            $this->post('searchByDateOfDeparture'),
+            $this->post('searchByDateOfArrival')
         );
+
 
         $this->render('front/advanced_search_result.html.twig', [
             'cities' => $cityModel->findNames(),

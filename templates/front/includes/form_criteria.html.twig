@@ -1,18 +1,8 @@
 <form method="POST" action="/air-base/?page=flights/advanced-search">
     <div class="form-row">
         <div class="form-group col-md-6">
-            <label for="DateOfDeparture">Date of departure</label>
-            <input type="date" id="DateOfDeparture" name="searchByDateOfDeparture" class="form-control" />
-        </div>
-        <div class="form-group col-md-6">
-            <label for="DateOfArrival">Date of arrival</label>
-            <input type="date" id="DateOfArrival" name="searchByDateOfArrival" class="form-control" />
-        </div>
-    </div>
-    <div class="form-row">
-        <div class="form-group col-md-6">
-            <label for="DepartureCity">Departure city</label>
-            <select class="form-control" id="DepartureCity" name="searchByDepartureCity" placeholder="Departure city">
+            <label for="departure-city">Departure city</label>
+            <select class="form-control" id="Departure-city" name="searchByDepartureCity" placeholder="Departure city">
                 <option>...</option>
                 {% for departureCity in cities %}
                     <option>{{ departureCity.name }}</option>
@@ -20,13 +10,23 @@
             </select>
         </div>
         <div class="form-group col-md-6">
-            <label for="arrivalCity">Arrival city</label>
-            <select class="form-control" id="arrivalCity" name="searchByArrivalCity" placeholder="Arrival city">
+            <label for="arrival-city">Arrival city</label>
+            <select class="form-control" id="arrival-city" name="searchByArrivalCity" placeholder="Arrival city">
                 <option>...</option>
                 {% for arrivalCity in cities %}
                     <option>{{ arrivalCity.name }}</option>
                 {% endfor %}
             </select>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label for="date-of-departure">Date of departure</label>
+            <input type="date" id="date-of-departure" name="searchByDateOfDeparture" class="form-control" />
+        </div>
+        <div class="form-group col-md-6">
+            <label for="date-of-arrival">Date of arrival</label>
+            <input type="date" id="date-of-arrival" name="searchByDateOfArrival" class="form-control" />
         </div>
     </div>
     <button class="btn btn-block btn-criteria" type="submit"><i class='fa fa-search'></i></button>

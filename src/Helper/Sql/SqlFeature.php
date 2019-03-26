@@ -10,10 +10,19 @@ use Config\Database;
  */
 class SqlFeature extends Database
 {
+    /**
+     * @var \DateTime
+     */
     private $date;
 
+    /**
+     * @var string
+     */
     protected $dateFormat;
 
+    /**
+     * @var bool
+     */
     protected $enabled;
 
     /**
