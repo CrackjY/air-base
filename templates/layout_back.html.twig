@@ -16,6 +16,10 @@
 
         <div class="content-back">
             {% block content %}
+                <div class="container">
+                    {% block new %}
+                    {% endblock new %}
+                </div>
             {% endblock content %}
         </div>
 
@@ -23,7 +27,6 @@
             <script src="node_modules/jquery/dist/jquery.min.js" type="text/javascript"></script>
             <script src="js_feature/config/parameter.js" type="text/javascript"></script>
             <script src="js_feature/back/flight/crud.js" type="text/javascript"></script>
-            {#<script src="js_feature/back/edit.js" type="text/javascript"></script>#}
         {% endblock footer %}
     </body>
 </html>

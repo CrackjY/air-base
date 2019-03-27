@@ -1,15 +1,29 @@
 {% extends 'layout_back.html.twig' %}
 
-{% block content %}
-    <div class="add">
-        <div class="row">
-            <form class="form" method="POST">
-                <label>Name of fly</label>
-                <div class="form-group">
-                    <input value="{{flight.name}}" type="text" class="form-control" id="name" name="name" placeholder="Fly name">
+{% block new %}
+    <div class="edit">
+        <form class="form" method="POST">
+            <label>Name of flight</label>
+            <div class="form-row">
+                <div class="col">
+                    <input  value="{{flight.name}}" type="text" class="form-control" id="name" name="name" placeholder="flight name">
                 </div>
-                <label>Departure city</label>
-                <div class="form-group">
+            </div>
+            <div class="form-row">
+                <div class="col">
+                    <label>Date of departure</label>
+                    <p class="text-primary">Current : {{ flight.date_of_departure | date("Y/m/d") }}</p>
+                    <input value="{{ flight.date_of_departure | date("Y-m-d") }}" class="form-control" type="date" name="dateOfDeparture">
+                </div>
+                <div class="col">
+                    <label>Date of arrival</label>
+                    <p class="text-primary">Current : {{ flight.date_of_arrival | date("Y/m/d") }}</p>
+                    <input value="{{ flight.date_of_arrival | date("Y-m-d") }}" class="form-control" type="date" name="dateOfArrival">
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="col">
+                    <label>Departure city</label>
                     <select class="form-control" id="departureCityId" name="departureCityId">
                         <option value="{{flight.departure_city_id}}">{{flight.departure_city}}</option>
                         {% for departureCity in cities %}
@@ -17,8 +31,8 @@
                         {% endfor %}
                     </select>
                 </div>
-                <label>Arrival city</label>
-                <div class="form-group">
+                <div class="col">
+                    <label>Arrival city</label>
                     <select class="form-control" id="arrivalCityId" name="arrivalCityId">
                         <option value="{{flight.arrival_city_id}}">{{flight.arrival_city}}</option>
                         {% for arrivalCity in cities %}
@@ -26,8 +40,10 @@
                         {% endfor %}
                     </select>
                 </div>
-                <label>Pilot name</label>
-                <div class="form-group">
+            </div>
+            <div class="form-row">
+                <div class="col">
+                    <label>Pilot</label>
                     <select class="form-control" id="pilotId"  name="pilotId">
                         <option value="{{flight.pilot_id}}">{{flight.pilot_name}}</option>
                         {% for pilot in pilots %}
@@ -35,8 +51,8 @@
                         {% endfor %}
                     </select>
                 </div>
-                <label>Airplane name</label>
-                <div class="form-group">
+                <div class="col">
+                    <label>Airplane name</label>
                     <select class="form-control" id="airplaneId" name="airplaneId">
                         <option value="{{flight.airplane_id}}">{{flight.airplane_name}}</option>
                         {% for airplane in airplanes %}
@@ -44,8 +60,13 @@
                         {% endfor %}
                     </select>
                 </div>
-                <button type="submit" class="btn-edit confirm">Confirm</button>
-            </form>
-        </div>
+            </div>
+            <div class="form-row">
+                <div class="col">
+                    <input value="{{ flight.price }}" type="text" class="form-control" id="price" name="price" placeholder="Price">
+                </div>
+            </div>
+            <button type="submit" class="btn-edit text-white confirm">Confirm</button>
+        </form>
     </div>
-{% endblock content %}
+{% endblock new %}

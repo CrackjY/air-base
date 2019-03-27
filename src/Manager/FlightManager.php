@@ -32,6 +32,8 @@ class FlightManager extends SqlFeature
 
     /**
      * @param $name
+     * @param $dateOfDeparture
+     * @param $dateOfArrival
      * @param $departureCity
      * @param $arrivalCity
      * @param $pilot
@@ -39,11 +41,11 @@ class FlightManager extends SqlFeature
      * @param $id
      * @return bool
      */
-    public function edit($name, $departureCity, $arrivalCity, $pilot, $airplane, $id)
+    public function edit($name, $dateOfDeparture, $dateOfArrival, $departureCity, $arrivalCity, $pilot, $price, $airplane, $id)
     {
         return $this
-            ->prepareSql('UPDATE air_base_flight SET name = ?, departure_city_id = ?, arrival_city_id = ?, pilot_id = ?, airplane_id = ?, date = ?, enabled = ? where id = ?')
-            ->execute([$name, $departureCity, $arrivalCity, $pilot, $airplane,  $this->dateFormat, $this->enabled, $id]);
+            ->prepareSql('UPDATE air_base_flight SET name = ?, date_of_departure = ?, date_of_arrival = ?, departure_city_id = ?, arrival_city_id = ?, pilot_id = ?, price = ?, airplane_id = ?, date = ?, enabled = ? where id = ?')
+            ->execute([$name, $dateOfDeparture, $dateOfArrival, $departureCity, $arrivalCity, $pilot, $price, $airplane,  $this->dateFormat, $this->enabled, $id]);
     }
 
     /**
@@ -174,7 +176,7 @@ class FlightManager extends SqlFeature
             INNER JOIN air_base_pilot AS p ON p.id = air_base_flight.pilot_id 
             INNER JOIN air_base_airplane AS a ON a.id = air_base_flight.airplane_id
             WHERE (city1.name LIKE ? AND city2.name LIKE ?)
-            -- OR (air_base_flight.date_of_departure >= ? AND air_base_flight.date_of_arrival <= ?)
+            -- OR (departure_city_1 >= ? AND arrival_city_2 <= ?)
         ");
 
         $sql->execute(array(

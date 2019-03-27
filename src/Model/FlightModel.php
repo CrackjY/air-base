@@ -28,16 +28,19 @@ class FlightModel extends Model
 
     /**
      * @param $name
+     * @param $dateOfDeparture
+     * @param $dateOfArrival
      * @param $departureCity
      * @param $arrivalCity
      * @param $pilot
+     * @param $price
      * @param $airplane
      * @param $id
      * @return bool
      */
-    public function editFlight($name, $departureCity, $arrivalCity, $pilot, $airplane, $id)
+    public function editFlight($name, $dateOfDeparture, $dateOfArrival, $departureCity, $arrivalCity, $pilot, $price, $airplane, $id)
     {
-        return $this->getFlightManager()->edit($name, $departureCity, $arrivalCity, $pilot, $airplane, $id);
+        return $this->getFlightManager()->edit($name, $dateOfDeparture, $dateOfArrival, $departureCity, $arrivalCity, $pilot, $price, $airplane, $id);
     }
 
     /**

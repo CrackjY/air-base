@@ -57,3 +57,12 @@ input[type=checkbox].input-checkbox {
     background: #ec6d26;
     color: white;
 }
+
+/* back form */
+.container > .add .form-control, .container >  .edit .form-control{
+    border-top: none;
+    border-right: none;
+    border-left: none;
+    border-bottom: 2px #adb5bd solid;
+    margin-bottom: 30px;
+}

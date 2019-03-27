@@ -70,9 +70,12 @@ class FlightController extends Controller
         if($_SERVER['REQUEST_METHOD'] == 'POST') {
             $flightModel->editFlight(
                 $this->post('name'),
+                $this->post('dateOfDeparture'),
+                $this->post('dateOfArrival'),
                 $this->post('departureCityId'),
                 $this->post('arrivalCityId'),
                 $this->post('pilotId'),
+                $this->post('price'),
                 $this->post('airplaneId'),
                 $this->get('id')
             );
