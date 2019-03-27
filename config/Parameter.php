@@ -29,7 +29,7 @@ abstract class Parameter
      */
     public function getPort()
     {
-        return $this->port = '';
+        return $this->port = '5433';
     }
 
     /**
