@@ -2,6 +2,8 @@
 
 namespace Helper\Instance;
 
+use App\Controller\Back\RoleController;
+use App\Controller\Back\UserController;
 use App\Controller\User\SecurityController;
 use App\Controller\Back\AirplaneController;
 use App\Controller\Back\BackController;
@@ -21,6 +23,10 @@ class Instance
     protected $frontController;
 
     // Back
+    protected $userController;
+
+    protected $roleController;
+
     protected $backController;
 
     protected $cityController;
@@ -41,6 +47,26 @@ class Instance
         $this->frontController = new FrontController();
 
         return $this->frontController;
+    }
+
+    /**
+     * @return UserController
+     */
+    public function getUserController()
+    {
+        $this->userController = new UserController();
+
+        return $this->userController;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getRoleController()
+    {
+        $this->roleController = new RoleController();
+
+        return $this->roleController;
     }
 
     /**

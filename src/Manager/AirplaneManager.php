@@ -22,7 +22,7 @@ class AirplaneManager extends SqlFeature
     public function insert($name, $capacityEconomic, $capacityBusiness, $capacityFirst, $capacity, $type_id)
     {
         return $this
-            ->prepareSql('INSERT INTO airplane(name, capacity_economic, capacity_business, capacity_first, capacity, type_id, date, enabled) VALUES(?, ?, ?, ?, ?, ?, ?, ?)')
+            ->prepareSql('INSERT INTO air_base_airplane(name, capacity_economic, capacity_business, capacity_first, capacity, type_id, date, enabled) VALUES(?, ?, ?, ?, ?, ?, ?, ?)')
             ->execute([$name, $capacityEconomic, $capacityBusiness, $capacityFirst, $capacity, $type_id, $this->dateFormat, $this->enabled]);
     }
 
@@ -31,7 +31,7 @@ class AirplaneManager extends SqlFeature
      */
     public function getAll()
     {
-        $sql = $this->prepareSql('SELECT * FROM airplane');
+        $sql = $this->prepareSql('SELECT * FROM air_base_airplane');
         $sql->execute([]);
 
         return $sql->fetchAll(\PDO::FETCH_ASSOC);
@@ -42,7 +42,7 @@ class AirplaneManager extends SqlFeature
      */
     public function getNames()
     {
-        $sql = $this->prepareSql('SELECT id, name FROM airplane');
+        $sql = $this->prepareSql('SELECT id, name FROM air_base_airplane');
         $sql->execute([]);
 
         return $sql->fetchAll(\PDO::FETCH_ASSOC);
@@ -53,9 +53,9 @@ class AirplaneManager extends SqlFeature
      * @param $limit
      * @return array
      */
-    public function getAllWithRelationship($start, $limit)
+    public function getAllWithRelationship()
     {
-        $sql = $this->prepareSql('SELECT airplane.id, airplane.name as airplane_name, airplane.capacity_economic, airplane.capacity_business, airplane.capacity_first, airplane.capacity, type.name as type_name, airplane.date, airplane.enabled FROM airplane, type WHERE airplane.type_id = type.id ORDER BY airplane.id DESC LIMIT '.$start.','.$limit);
+        $sql = $this->prepareSql('SELECT air_base_airplane.id, air_base_airplane.name, air_base_airplane.capacity_economic, air_base_airplane.capacity_business, air_base_airplane.capacity_first, air_base_airplane.capacity, air_base_type.name as type_name, air_base_airplane.date, air_base_airplane.enabled FROM air_base_airplane, air_base_type WHERE air_base_airplane.type_id = air_base_type.id');
         $sql->execute([]);
 
         return $sql->fetchAll(\PDO::FETCH_ASSOC);
@@ -66,7 +66,7 @@ class AirplaneManager extends SqlFeature
      */
     public function getAllWithRelationshipById()
     {
-        $sql = $this->prepareSql('SELECT airplane.id  FROM airplane, type WHERE airplane.type_id = type.id');
+        $sql = $this->prepareSql('SELECT air_base_airplane.id  FROM air_base_airplane, type WHERE air_base_airplane.type_id = air_base_type.id');
         $sql->execute([]);
 
         return $sql->fetchAll(\PDO::FETCH_ASSOC);

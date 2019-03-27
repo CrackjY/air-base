@@ -8,13 +8,15 @@ namespace Helper\Core;
  */
 abstract class Controller extends SuperGlobal
 {
-    protected $request;
-
+    /**
+     * @var $twigOption
+     */
     protected $twigOption;
 
+    /**
+     * @var $twig
+     */
     protected $twig;
-
-    protected $method;
 
     /**
      * @param TwigOption $twigOption

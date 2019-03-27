@@ -17,7 +17,7 @@ class CityManager extends SqlFeature
     public function insert($name)
     {
         return $this
-            ->prepareSql('INSERT INTO city(name, date, enabled) VALUES(?, ?, ?)')
+            ->prepareSql('INSERT INTO air_base_city(name, date, enabled) VALUES(?, ?, ?)')
             ->execute([$name, $this->dateFormat, $this->enabled]);
     }
 
@@ -26,7 +26,7 @@ class CityManager extends SqlFeature
      */
     public function getAll()
     {
-        $sql = $this->prepareSql('SELECT * FROM city');
+        $sql = $this->prepareSql('SELECT * FROM air_base_city');
         $sql->execute([]);
 
         return $sql->fetchAll(\PDO::FETCH_ASSOC);
@@ -37,7 +37,7 @@ class CityManager extends SqlFeature
      */
     public function getNames()
     {
-        $sql = $this->prepareSql('SELECT id, name FROM city');
+        $sql = $this->prepareSql('SELECT id, name FROM air_base_city');
         $sql->execute([]);
 
         return $sql->fetchAll(\PDO::FETCH_ASSOC);

@@ -24,9 +24,10 @@ nav.back a:hover, nav.front a:hover {
 .content {
     margin-top: 30px;
 }
+
+/* content-back table back*/
 .content-back {
-    margin-left: 30px;
-    margin-right: 30px;
+    margin: 30px;
 }
 
 /* cards for home, search and advanced search */
@@ -103,27 +104,6 @@ table .th-trash {
     background: #4CAF50;
     border: solid 1px grey !important;
     border-radius: 6px !important;
-}
-
-/*Listing*/
-.container-add {
-    width: 100%;
-    position: absolute;
-    left: 0;
-    top: 13%;
-    display: flex;
-    justify-content: center;
-}
-
-.container-add .add {
-    background: #0000008f;
-    background-image: url('../../assets/imgs/bg-flight.svg');
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
-    padding: 20px;
-    height: 45em;
-    width: 50%;
 }
 
 .block-star-spec {

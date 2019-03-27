@@ -21,9 +21,9 @@ class AirplaneModel extends Model
         return $this->getAirplaneManager()->getNames();
     }
 
-    public function findAllWithRelationship($start, $limit)
+    public function findAllWithRelationship()
     {
-        return $this->getAirplaneManager()->getAllWithRelationship($start, $limit);
+        return $this->getAirplaneManager()->getAllWithRelationship();
     }
 
     public function findAllWithRelationshipById()

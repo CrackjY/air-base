@@ -1,32 +1,36 @@
 {% extends 'layout_back.html.twig' %}
 
 {% block content %}
-    <h1>Roles</h1>
-    <div class="content">
-        <a href="/admin-role-new" class="badge badge-pill badge-primary">New role</a>
-        <div class="table-responsive">
-            <table class="table-crud table">
-                <thead>
+    <h2 class="mt-3 mb-3 text-center">Roles</h2>
+    <div class="block-star-spec">
+        <div class="line-spec"></div>
+        <i class="fa fa-bolt" aria-hidden="true"></i>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table">
+            <thead>
                 <tr>
                     <th>#</th>
                     <th>Name</th>
                     <th>Actions</th>
                 </tr>
-                </thead>
-                <tbody>
-                {% for role in roles %}
-                    <tr class="tr-content">
-                        <td class="text-primary"><b>{{ role.id }}</b></td>
-                        <td>{{ role.name }}</td>
-                        <td>
-                            <a href="/admin-role-edit?id={{ role.id }}" class="badge badge-pill badge-primary">Edit</a>
-                            <a href="" class=""></a>
-                        </td>
-                    </tr>
-                {% endfor %}
-                </tbody>
-            </table>
-        </div>
+            </thead>
+            <tbody>
+            {% for role in roles %}
+                <tr class="">
+                    <td>{{ role.id }}</td>
+                    <td>{{ role.name }}</td>
+                    <td>
+                       working ...
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+        <a class="link-new-item mb-3" href="/air-base/?page=admin/roles/new"><strong class="btn-more">+</strong></a>
+
     </div>
 
-{% endblock %}
+{% endblock content %}

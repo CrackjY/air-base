@@ -3,12 +3,12 @@
 	let tbodyFlight = document.querySelector('.tbody-flight');
 	let trash = document.querySelector('.th-trash');
 	
-	if (location.href == $locationHrefFlightBack) {
+	if (location.href === $locationHrefFlightBack) {
 		fetch($urlApiFlightBack)
 			.then(response => response.json())
 			.then(data => {
 				data.forEach(flight => {	
-					const enabledText = (flight.enabled == true)
+					const enabledText = (flight.enabled === true)
 						? '<div class="text-success font-weight-bold">on</div>'
 						: '<div class="text-danger font-weight-bold">off</div>';
 	
@@ -42,10 +42,12 @@
 						element.removeAttribute('checked');
 						element.style.backgroundImage = "";
 						element.parentNode.parentNode.removeAttribute('checked');
+
 						const index = flightIds.indexOf(element.getAttribute('value'));
+
 						flightIds.splice(index, 1);
 					} else {
-						element.setAttribute('checked', 'checked')
+						element.setAttribute('checked', 'checked');
 						element.style.backgroundImage = "url('assets/imgs/checked.png')";
 						element.parentNode.parentNode.setAttribute('checked', 'checked');
 						flightIds.push(element.getAttribute('value'));
@@ -60,8 +62,6 @@
 				});
 	
 				trash.addEventListener('click', (e) => {
-					e.preventDefault();
-	
 					if (flightIds.length < 0) {
 						console.log('empty !');
 					} else {
@@ -77,7 +77,6 @@
 							row.style.display = 'none';
 						}
 					});
-	
 				}); 
 			});
 	}

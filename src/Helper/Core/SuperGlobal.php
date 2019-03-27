@@ -7,12 +7,24 @@ use Helper\Session\Flash;
 
 class SuperGlobal
 {
+    /**
+     * @var $get
+     */
     protected $get;
 
+    /**
+     * @var $post
+     */
     protected $post;
 
+    /**
+     * @var $flash
+     */
     protected $flash;
 
+    /**
+     * @var $session
+     */
     protected $session;
 
     /**
@@ -38,22 +50,6 @@ class SuperGlobal
      */
     public function isMethod($value)
     {
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getGet()
-    {
-        return $this->get;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getPost()
-    {
-        return $this->post;
     }
 
     /**
