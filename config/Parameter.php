@@ -29,7 +29,7 @@ abstract class Parameter
      */
     public function getPort()
     {
-        return $this->port = '5433';
+        return $this->port = '3306';
     }
 
     /**
@@ -53,7 +53,7 @@ abstract class Parameter
      */
     public function getUser()
     {
-        return $this->user = '';
+        return $this->user = 'root';
     }
 
     /**
