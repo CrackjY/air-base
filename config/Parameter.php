@@ -29,7 +29,7 @@ abstract class Parameter
      */
     public function getPort()
     {
-        return $this->port = '5432';
+        return $this->port = '';
     }
 
     /**
@@ -53,7 +53,7 @@ abstract class Parameter
      */
     public function getUser()
     {
-        return $this->user = 'postgres';
+        return $this->user = '';
     }
 
     /**
@@ -61,6 +61,6 @@ abstract class Parameter
      */
     public function getPassword()
     {
-        return $this->password = 'plop06';
+        return $this->password = '';
     }
 }
