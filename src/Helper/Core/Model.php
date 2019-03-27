@@ -2,6 +2,7 @@
 
 namespace Helper\Core;
 
+use App\Manager\User\RoleManager;
 use App\Manager\User\UserManager;
 use App\Manager\TypeManager;
 use App\Manager\CityManager;
@@ -12,6 +13,8 @@ use App\Manager\FlightManager;
 abstract class Model
 {
     protected $userManager;
+
+    protected $roleManager;
 
     protected $airplaneManager;
 
@@ -31,6 +34,16 @@ abstract class Model
         $this->userManager = new UserManager();
 
         return $this->userManager;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getRoleManager()
+    {
+        $this->roleManager = new RoleManager();
+
+        return $this->roleManager;
     }
 
     /**

@@ -1,23 +1,13 @@
 {% extends 'layout_back.html.twig' %}
 
 {% block new %}
-
-    <div class="">
-        <h1>New role</h1>
-
-        {% include 'security/message.html.twig' %}
-
-        <form id="" method="POST" action="">
-            <div class="form-group row">
-                <label for="name" class="col-sm-2 col-form-label col-form-label-sm">Name</label>
-                <div class="col-sm-10">
-                    <input class="form-control form-control-sm" type="text" name="name" id="name">
-                </div>
+    <h2 class="mb-3 text-center">New Role</h2>
+    <div class="add">
+        <form class="form" method="POST">
+            <div class="form-group">
+                <input type="text" class="form-control" id="name" name="name" placeholder="Role name">
             </div>
-            <div class="text-center">
-                <button class="btn btn-info" type="submit">Confirm</button>
-            </div>
+            <button type="submit" class="btn-edit confirm">Confirm</button>
         </form>
     </div>
-
 {% endblock new %}

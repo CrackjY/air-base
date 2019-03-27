@@ -60,6 +60,17 @@ class Routing extends Instance
                         ->homeAction();
                     exit;
 
+                // Users - Roles
+                case 'admin/users';
+                    $this->getUserController()->listAction();
+                    exit;
+                case 'admin/roles';
+                    $this->getRoleController()->listAction();
+                    exit;
+                case 'admin/roles/new';
+                    $this->getRoleController()->newAction();
+                    exit;
+
                 //City
                 case 'admin/cities';
                     $this
