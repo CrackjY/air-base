@@ -8,6 +8,8 @@ abstract class Parameter
 
     protected $name;
 
+    protected $port;
+
     protected $charset;
 
     protected $user;
@@ -20,6 +22,14 @@ abstract class Parameter
     public function getHost()
     {
         return $this->host = '127.0.0.1';
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPort()
+    {
+        return $this->port = '';
     }
 
     /**
