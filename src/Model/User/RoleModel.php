@@ -15,4 +15,14 @@ class RoleModel extends Model
     {
         return $this->getRoleManager()->insert($name);
     }
+
+    public function findById($id)
+    {
+        return $this->getRoleManager()->getById($id);
+    }
+
+    public function findByName($name)
+    {
+        return $this->getRoleManager()->getByName($name);
+    }
 }

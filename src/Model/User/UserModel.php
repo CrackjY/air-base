@@ -34,4 +34,24 @@ class UserModel extends Model
     {
         return $this->getUserManager()->getAll();
     }
+
+    public function findById($id)
+    {
+        return $this->getUserManager()->getById($id);
+    }
+
+    public function newRoleInUser($userId, $roleId)
+    {
+        return $this->getUserManager()->insertUserIdAndRoleId($userId, $roleId);
+    }
+
+    public function findAllWithRelationship()
+    {
+        return $this->getUserManager()->getAllWithRelationship();
+    }
+
+    public function findByIdWithRelationship($id)
+    {
+        return $this->getUserManager()->getByIdWithRelationship($id);
+    }
 }

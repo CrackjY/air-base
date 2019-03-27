@@ -21,7 +21,7 @@ abstract class Parameter
      */
     public function getHost()
     {
-        return $this->host = '127.0.0.1';
+        return $this->host = 'localhost';
     }
 
     /**
@@ -29,7 +29,7 @@ abstract class Parameter
      */
     public function getPort()
     {
-        return $this->port = '5433';
+        return $this->port = '5432';
     }
 
     /**
@@ -53,7 +53,7 @@ abstract class Parameter
      */
     public function getUser()
     {
-        return $this->user = '';
+        return $this->user = 'postgres';
     }
 
     /**
@@ -61,6 +61,6 @@ abstract class Parameter
      */
     public function getPassword()
     {
-        return $this->password = '';
+        return $this->password = 'plop06';
     }
 }

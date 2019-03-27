@@ -26,7 +26,23 @@ class RoleManager extends SqlFeature
     }
 
     public function edit($name)
-    {
+    {}
 
+    public function getById($id)
+    {
+        $query = $this->prepareSql('SELECT id, name FROM air_base_role WHERE id = ?');
+
+        $query->execute(array($id));
+
+        return $query->fetch(\PDO::FETCH_ASSOC);
+    }
+
+    public function getByName($name)
+    {
+        $query = $this->prepareSql('SELECT id, name FROM air_base_role WHERE name = ?');
+
+        $query->execute(array($name));
+
+        return $query->fetch(\PDO::FETCH_ASSOC);
     }
 }

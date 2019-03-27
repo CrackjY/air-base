@@ -27,7 +27,11 @@
                 <tr>
                     <td>{{ user.id }}</td>
                     <td>
-
+                        {% for userWithRole in usersWithRoles %}
+                            {% if user.id == userWithRole.user_id_from_user_role %}
+                                [{{ userWithRole.role_name }}] -
+                            {% endif %}
+                        {% endfor %}
                     </td>
                     <td>{{ user.pseudo }}</td>
                     <td>{{ user.email }}</td>
@@ -42,7 +46,7 @@
                         {% endif %}
                     </td>
                     <td>
-                        Working ...
+                        <a href="/air-base/?page=admin/users/edit&amp;id={{ user.id }}"><i class="fa fa-pencil fa-2x text-danger text-center" aria-hidden="true"></i></a>
                     </td>
                 </tr>
             {% endfor %}

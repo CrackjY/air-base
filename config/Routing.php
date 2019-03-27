@@ -64,6 +64,9 @@ class Routing extends Instance
                 case 'admin/users';
                     $this->getUserController()->listAction();
                     exit;
+                case 'admin/users/edit';
+                    $this->getUserController()->editAction();
+                    exit;
                 case 'admin/roles';
                     $this->getRoleController()->listAction();
                     exit;

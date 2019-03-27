@@ -37,7 +37,7 @@ abstract class Model
     }
 
     /**
-     * @return mixed
+     * @return RoleManager
      */
     public function getRoleManager()
     {

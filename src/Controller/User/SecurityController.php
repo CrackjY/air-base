@@ -38,11 +38,20 @@ class SecurityController extends Controller
                 $this
                     ->flash()
                     ->setMessage('registrationSuccess', 'Registration success, check your email !');
-
-                $this->redirect('/air-base/?page=login');
             } else {
                 $errors['error'] = 'Error !';
             }
+        }
+
+        $users = $userModel->findAll();
+
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+
+            $currentUserId = end($users)['id'];
+            $roleId = 1;
+            $userModel->newRoleInUser($currentUserId, $roleId);
+
+            $this->redirect('/air-base/?page=login');
         }
 
         $this->render('security/register.html.twig', array(
