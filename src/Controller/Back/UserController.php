@@ -44,6 +44,17 @@ class UserController extends Controller
         $userId = $user['id'];
         $roleId = $this->post('role');
 
+        $rolesByUserId = $roleModel->findByAllByUserId($userId);
+
+        echo '<pre>';
+        var_dump(
+        [
+            'roles' => $rolesByUserId,
+        ]
+        );
+        echo '</pre>';
+        die;
+
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $userModel->editUser($firstname, $lastname, $pseudo, $birth_date, $address, $zipCode, $city, $phoneNumber, $email, $id);
             $userModel->newRoleInUser($userId, $roleId);
