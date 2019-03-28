@@ -26,8 +26,8 @@ class RoleModel extends Model
         return $this->getRoleManager()->getByName($name);
     }
 
-    public function findByAllByUserId($userId)
+    public function findRolesByUserId($userId)
     {
-        return $this->getRoleManager()->getAllByUserId($userId);
+        return $this->getRoleManager()->getRolesByUserId($userId);
     }
 }

@@ -46,10 +46,10 @@ class RoleManager extends SqlFeature
         return $query->fetch(\PDO::FETCH_ASSOC);
     }
 
-    public function getAllByUserId($userId)
+    public function getRolesByUserId($userId)
     {
         $query = $this->prepareSql('
-          SELECT ur.user_id, ur.role_id, ro.name
+          SELECT ro.id, ro.name
           FROM air_base_user_role AS ur
           INNER JOIN air_base_role AS ro ON ro.id = ur.role_id
           WHERE ur.user_id = ?');
