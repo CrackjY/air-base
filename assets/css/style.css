@@ -167,3 +167,7 @@ img.airplane-icon {
     width: 40px;
     margin: 0 10px 0 10px;
 }
+
+.fa-pencil {
+    color: orange;
+}

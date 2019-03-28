@@ -2,6 +2,7 @@
 
 namespace Helper\Core;
 
+use App\Twig\Extension\AppExtension;
 use Twig_Loader_Filesystem;
 use Twig_Environment;
 use Twig_Extension_Debug;
@@ -38,6 +39,7 @@ class TwigOption
          isset($_SESSION) ? $this->twig->addGlobal('session', $_SESSION) : null;
 
          $this->twig->addExtension(new Twig_Extension_Debug());
+         $this->twig->addExtension(new AppExtension());
      }
 
     /**

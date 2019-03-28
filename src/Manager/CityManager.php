@@ -16,6 +16,10 @@ class CityManager extends SqlFeature
      */
     public function insert($name)
     {
+
+/*        var_dump($this->date);
+        die;*/
+
         return $this
             ->prepareSql('INSERT INTO air_base_city(name, date, enabled) VALUES(?, ?, ?)')
             ->execute([$name, $this->dateFormat, $this->enabled]);

@@ -145,3 +145,9 @@ COMMIT;
 INSERT INTO air_base_user (firstname, lastname, pseudo, birth_date, address, zip_code, city, phone_number, email, encrypt_password, date, enabled) VALUES
 ('yassine', 'latti', 'crack', '03/08/1993', '3 boulevard', 71000, 'Macon', 768887944, 'yassine.latti@gmail.com', '$2y$10$ePDhdDkq8VMOy4S67KqWF.poT2XtWg3Wx3zjJGGMusOYHaAmMtuAy', '2019-01-28 10:01:03', true);
 COMMIT;
+
+INSERT INTO air_base_role (name, date, enabled) VALUES
+('ROLE_USER', '2019-01-31 15:01:15', true),
+('ROLE_ADMIN', '2019-01-31 15:01:31', true),
+('ROLE_SUPER_ADMIN', '2019-01-31 15:01:47', true);
+COMMIT;

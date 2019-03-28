@@ -12,18 +12,8 @@ class UserController extends Controller
     {
         $userModel = new UserModel();
 
-        $roles = [];
-
         $users = $userModel->findAll();
         $usersWithRoles = $userModel->findAllWithRelationship();
-
-        foreach ($usersWithRoles as $user) {
-            if ($user['id'] == $user['user_id_from_user_role']) {
-                var_dump($user['role_name']);
-            }
-        }
-
-        //die;
 
         $this->render('back/user/list.html.twig', [
             'users' => $users,

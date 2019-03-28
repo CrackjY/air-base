@@ -13,7 +13,7 @@ class SqlFeature extends Database
     /**
      * @var \DateTime
      */
-    private $date;
+    protected $date;
 
     /**
      * @var string

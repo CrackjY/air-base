@@ -56,13 +56,17 @@ class FrontController extends Controller
         $cityModel = new CityModel();
         $flightModel = new FlightModel();
 
-        $criteria = $flightModel->advancedSearch(
-            $this->post('searchByDepartureCity'),
-            $this->post('searchByArrivalCity'),
-            $this->post('searchByDateOfDeparture'),
-            $this->post('searchByDateOfArrival')
-        );
+        $searchByDepartureCity = $this->post('searchByDepartureCity');
+        $searchByArrivalCity = $this->post('searchByArrivalCity');
+        $searchByDateOfDeparture = $this->post('searchByDateOfDeparture');
+        $searchByDateOfArrival = $this->post('searchByDateOfArrival');
 
+        if (empty($searchByDateOfDeparture) && empty($searchByDateOfArrival)) {
+            $searchByDateOfDeparture = null;
+            $searchByDateOfArrival = null;
+        }
+
+        $criteria = $flightModel->advancedSearch($searchByDepartureCity, $searchByArrivalCity, $searchByDateOfDeparture, $searchByDateOfArrival);
 
         $this->render('front/advanced_search_result.html.twig', [
             'cities' => $cityModel->findNames(),

@@ -130,6 +130,7 @@ class UserManager extends SqlFeature
             air_base_user.firstname,
             air_base_user.lastname,
             air_base_user.pseudo,
+            air_base_user.birth_date,
             air_base_user.address,
             air_base_user.zip_code,
             air_base_user.city,

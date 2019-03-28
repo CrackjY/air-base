@@ -155,6 +155,7 @@ class FlightManager extends SqlFeature
      */
     public function advancedSearch($departureCity, $arrivalCity, $dateOfDeparture, $dateOfArrival)
     {
+
         $sql = $this->prepareSql("
             SELECT 
             air_base_flight.id, 
@@ -171,20 +172,27 @@ class FlightManager extends SqlFeature
             air_base_flight.date,
             air_base_flight.enabled
             FROM air_base_flight
-            INNER JOIN air_base_city AS city1 ON city1.id = air_base_flight.departure_city_id 
-            INNER JOIN air_base_city AS city2 ON city2.id = air_base_flight.arrival_city_id 
+            INNER JOIN air_base_city AS city1 ON city1.id = air_base_flight.departure_city_id
+            INNER JOIN air_base_city AS city2 ON city2.id = air_base_flight.arrival_city_id
             INNER JOIN air_base_pilot AS p ON p.id = air_base_flight.pilot_id 
             INNER JOIN air_base_airplane AS a ON a.id = air_base_flight.airplane_id
-            WHERE (city1.name LIKE ? AND city2.name LIKE ?)
-            -- OR (departure_city_1 >= ? AND arrival_city_2 <= ?)
+            WHERE (city1.name LIKE :departureCity AND city2.name LIKE :arrivalCity)
+            OR (date_of_departure >= :date_of_departure AND date_of_arrival <= :date_of_arrival)
         ");
 
         $sql->execute(array(
-            '%'.$departureCity.'%',
-            '%'.$arrivalCity.'%',
-            /*$dateOfDeparture,
-            $dateOfArrival*/
+            'departureCity' => '%'.$departureCity.'%',
+            'arrivalCity' => '%'.$arrivalCity.'%',
+            'date_of_departure' => $dateOfDeparture,
+            'date_of_arrival' => $dateOfArrival
         ));
+
+        return $sql->fetchAll(\PDO::FETCH_ASSOC);
+    }
+
+    public function getAll()
+    {
+        $sql = $this->prepareSql("SELECT * FROM air_base_flight");
 
         return $sql->fetchAll(\PDO::FETCH_ASSOC);
     }

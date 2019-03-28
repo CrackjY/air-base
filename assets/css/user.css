@@ -1,18 +1,17 @@
 .login{
     border: solid 1px #a0a08d75;
-    width: 40%;
-    margin: auto;
-    margin-top: 7%;
     height: 22em;
     padding: 50px;
 }
+.content-back > .container .register {
+    border: solid #80808040 1px;
+    padding: 30px;
+}
 .register {
     border: solid #80808040 1px;
-    padding: 27px;
-    margin: auto;
-    width: 90%;
+    padding: 30px;
 }
-.register a{
+.register a {
     border: none;
 }
 #form-login {

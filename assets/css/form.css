@@ -59,7 +59,7 @@ input[type=checkbox].input-checkbox {
 }
 
 /* back form */
-.container > .add .form-control, .container >  .edit .form-control{
+.add .form-control, .edit .form-control{
     border-top: none;
     border-right: none;
     border-left: none;

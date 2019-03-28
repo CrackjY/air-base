@@ -1,7 +1,7 @@
 {% extends 'layout_back.html.twig' %}
 
 {% block new %}
-    <div class="edit">
+    <div class="register">
         <form id="" method="POST">
 
             <div class="checkbox-roles">
@@ -18,61 +18,62 @@
                 {% endfor %}
             </div>
 
-            <div class="form-group row">
-                <label for="firstname" class="col-sm-2 col-form-label col-form-label-sm">Firstname</label>
-                <div class="col-sm-10">
-                    <input class="form-control form-control-sm" value="{{ user.firstname }}" type="text" name="firstname" id="firstname">
+            <div class="form-row">
+                <div class="col">
+                    {#<label for="firstname" class="">Firstname</label>#}
+                    <input value="{{ user.firstname }}" class="form-control" type="text" name="firstname" id="firstname" placeholder="Firstname">
+                </div>
+                <div class="col">
+                    {# <label for="lastname" class="">Lastname</label>#}
+                    <input value="{{ user.lastname }}" class="form-control" type="text" name="lastname" id="lastname" placeholder="Lastname">
                 </div>
             </div>
-            <div class="form-group row">
-                <label for="lastname" class="col-sm-2 col-form-label col-form-label-sm">Lastname</label>
-                <div class="col-sm-10">
-                    <input class="form-control form-control-sm" value="{{ user.lastname }}" type="text" name="lastname" id="lastname">
+            <div class="">
+                <div class="">
+                    {#<label for="adress" class="">Adress</label>#}
+                    <input value="{{ user.address }}" class="form-control" type="text" name="address" id="address" placeholder="Address">
                 </div>
             </div>
-            <div class="form-group row">
-                <label for="pseudo" class="col-sm-2 col-form-label col-form-label-sm">Pseudo</label>
-                <div class="col-sm-10">
-                    <input class="form-control form-control-sm" value="{{ user.pseudo }}" type="text" name="pseudo" id="pseudo">
+            <div class="form-row">
+                <div class="col">
+                    {#<label for="zip-code" class="">Zip code</label>#}
+                    <input value="{{ user.zip_code }}" class="form-control" type="text" name="zip_code" id="zip-code" placeholder="Zip code">
+                </div>
+                <div class="col">
+                    {#<label for="city" class="">City</label>#}
+                    <input value="{{ user.city }}" class="form-control" type="text" name="city" id="city" placeholder="City">
                 </div>
             </div>
-            <div class="form-group row">
-                <label for="address" class="col-sm-2 col-form-label col-form-label-sm">Address</label>
-                <div class="col-sm-10">
-                    <input class="form-control form-control-sm" value="{{ user.address }}" type="text" name="address" id="address">
+            <div class="">
+                <div class="">
+                    {#<label for="phone" class="">Phone number</label>#}
+                    <input value="{{ user.phone_number }}" class="form-control" type="text" name="phone" id="phone" placeholder="Phone">
                 </div>
             </div>
-            <div class="form-group row">
-                <label for="zip-code" class="col-sm-2 col-form-label col-form-label-sm">Zip code</label>
-                <div class="col-sm-10">
-                    <input class="form-control form-control-sm" type="text" value="{{ user.zip_code }}" name="zip_code" id="zip-code">
+            <div class="form-row">
+                <div class="col">
+                    {#<label for="email" class="">E-mail</label>#}
+                    <input value="{{ user.email }}" class="form-control" type="email" name="email" id="email" placeholder="Email">
+                </div>
+                <div class="col">
+                    {#<label for="birth_date" class="">City</label>#}
+                    <input value="{{ user.birth_date }}" class="form-control" type="text" name="birth_date" id="birth-date" placeholder="Birth date">
                 </div>
             </div>
-            <div class="form-group row">
-                <label for="city" class="col-sm-2 col-form-label col-form-label-sm">City</label>
-                <div class="col-sm-10">
-                    <input class="form-control form-control-sm" type="text" value="{{ user.city }}" name="city" id="city">
+            <div class="form-row">
+                <div class="col">
+                    {#<label for="pseudo" class="">Pseudo</label>#}
+                    <input value="{{ user.pseudo }}" class="form-control" type="text" name="pseudo" id="pseudo" placeholder="Pseudo">
+                </div>
+                <div class="col">
+                    {#<label for="password" class="">Password</label>#}
+                    <input value="{{ user.encrypt_password }}" class="form-control" type="password" name="password" id="password" placeholder="Password">
                 </div>
             </div>
-            <div class="form-group row">
-                <label for="phone" class="col-sm-2 col-form-label col-form-label-sm">Phone number</label>
-                <div class="col-sm-10">
-                    <input class="form-control form-control-sm" type="text" value="{{ user.phone_number }}" name="phone" id="phone">
-                </div>
+            <div class="">
+                <button class="btn btn-block btn-warning text-white p-3" type="submit">Confirm</button>
             </div>
-            <div class="form-group row">
-                <label for="email" class="col-sm-2 col-form-label col-form-label-sm">E-mail</label>
-                <div class="col-sm-10">
-                    <input class="form-control form-control-sm" type="email" value="{{ user.email }}" name="email" id="email">
-                </div>
-            </div>
-            <div class="form-group row">
-                <label for="password" class="col-sm-2 col-form-label col-form-label-sm">Password</label>
-                <div class="col-sm-10">
-                    <input class="form-control form-control-sm" type="password" value="{{ user.encrypt_password }}" name="password" id="password">
-                </div>
-            </div>
-            <button class="btn btn-edit" type="submit">Confirm</button>
         </form>
     </div>
+
 {% endblock new %}

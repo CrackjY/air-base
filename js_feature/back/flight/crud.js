@@ -32,7 +32,7 @@
 								${enabledText}
 							</td>
 							<td>
-								<a href="/air-base/?page=admin/flights/edit&amp;id=${flight.id}"><i class="fa fa-pencil fa-2x text-danger text-center" aria-hidden="true"></i></a>
+								<a href="/air-base/?page=admin/flights/edit&amp;id=${flight.id}"><i class="fa fa-pencil fa-2x text-center" aria-hidden="true"></i></a>
 							</td>
 						</tr>`;
 				});

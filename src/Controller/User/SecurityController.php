@@ -35,23 +35,19 @@ class SecurityController extends Controller
 
                 $userModel->newUser($firstname, $lastname, $pseudo, $birth_date, $address, $zipCode, $city, $phoneNumber, $email);
 
+                $users = $userModel->findAll();
+                $currentUserId = end($users)['id'];
+                $roleId = 1;
+                $userModel->newRoleInUser($currentUserId, $roleId);
+
                 $this
                     ->flash()
                     ->setMessage('registrationSuccess', 'Registration success, check your email !');
+
+                $this->redirect('/air-base/?page=login');
             } else {
                 $errors['error'] = 'Error !';
             }
-        }
-
-        $users = $userModel->findAll();
-
-        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-
-            $currentUserId = end($users)['id'];
-            $roleId = 1;
-            $userModel->newRoleInUser($currentUserId, $roleId);
-
-            $this->redirect('/air-base/?page=login');
         }
 
         $this->render('security/register.html.twig', array(
@@ -78,13 +74,13 @@ class SecurityController extends Controller
             if (password_verify($password, $credentials['encrypt_password'])) {
                 $this->session()->set('id', $credentials['id']);
                 $this->session()->set('pseudo', $credentials['pseudo']);
-                $this->flash()->setMessage('authenticationSuccess', 'Authentication success ! :)');
+                $this->flash()->setMessage('authenticationSuccess', 'Authentication success.');
 
                 $this->redirect('/air-base/');
             }
 
             if (!password_verify($password, $credentials['encrypt_password'])) {
-                $messages['authenticationFailed'] = 'Wrong authentication ! :(';
+                $messages['authenticationFailed'] = 'Wrong authentication.';
             }
         }
 
